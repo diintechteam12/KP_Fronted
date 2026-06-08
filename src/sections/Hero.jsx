@@ -35,13 +35,23 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0B0F19 0%,#0d1f12 40%,#0B0F19 100%)' }}>
+      style={{ background: '#0B0F19' }}>
 
-      {/* Background blobs */}
-      <motion.div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
+      {/* Full screen video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/K_P_Singh_Kasana_introduction_202606081445.mp4"
+        autoPlay muted loop playsInline
+      />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(11,15,25,0.88) 0%,rgba(13,31,18,0.75) 40%,rgba(11,15,25,0.88) 100%)' }} />
+
+      {/* Background blobs on top of video */}
+      <motion.div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-10"
         style={{ background: 'radial-gradient(circle,#0F5132,transparent)' }}
         animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity }} />
-      <motion.div className="absolute bottom-0 left-0 w-96 h-96 rounded-full pointer-events-none opacity-10"
+      <motion.div className="absolute bottom-0 left-0 w-96 h-96 rounded-full pointer-events-none opacity-8"
         style={{ background: 'radial-gradient(circle,#FF6B00,transparent)' }}
         animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity, delay: 2 }} />
 

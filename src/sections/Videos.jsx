@@ -4,6 +4,17 @@ import { FaPlay, FaTimes, FaClock } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 import { videos } from '../data/data';
 
+const localVideo = {
+  id: 'local1',
+  title: 'K P Singh Kasana - Introduction',
+  thumb: '/Kp image.png',
+  src: '/K_P_Singh_Kasana_introduction_202606081445 (1).mp4',
+  duration: 'Local Video',
+  isLocal: true,
+};
+
+const allVideos = [localVideo, ...videos];
+
 export default function Videos() {
   const [modal, setModal] = useState(null);
 
@@ -14,7 +25,7 @@ export default function Videos() {
           desc="Speeches, program inaugurations, and moments of impact from the ground." />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {videos.map((v, i) => (
+          {allVideos.map((v, i) => (
             <motion.div key={v.id}
               className="relative rounded-2xl overflow-hidden cursor-pointer group"
               style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
@@ -23,7 +34,7 @@ export default function Videos() {
               onClick={() => setModal(v)}>
               <img src={v.thumb} alt={v.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110" style={{ height: 200 }} />
               <div className="absolute inset-0 transition-all duration-300"
-                style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.85) 0%,rgba(0,0,0,0.2) 100%)' }} />
+                style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.88) 0%,rgba(0,0,0,0.2) 100%)' }} />
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div className="w-14 h-14 rounded-full flex items-center justify-center bg-yellow-400/90" whileHover={{ scale: 1.15 }}>
                   <FaPlay style={{ color: '#0B0F19', marginLeft: 3 }} />
@@ -46,11 +57,23 @@ export default function Videos() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setModal(null)}>
             <motion.div className="relative w-full max-w-3xl rounded-2xl overflow-hidden"
               initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }} onClick={e => e.stopPropagation()}>
-              <div className="relative" style={{ paddingTop: '56.25%' }}>
-                <iframe className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${modal.url.split('v=')[1]}?autoplay=1`}
-                  title={modal.title} allow="autoplay; fullscreen" frameBorder="0" />
-              </div>
+
+              {modal.isLocal ? (
+                <video
+                  className="w-full rounded-2xl"
+                  src={modal.src}
+                  controls
+                  autoPlay
+                  style={{ maxHeight: '80vh' }}
+                />
+              ) : (
+                <div className="relative" style={{ paddingTop: '56.25%' }}>
+                  <iframe className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${modal.url.split('v=')[1]}?autoplay=1`}
+                    title={modal.title} allow="autoplay; fullscreen" frameBorder="0" />
+                </div>
+              )}
+
               <button onClick={() => setModal(null)}
                 className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center text-white cursor-pointer bg-white/15 z-10">
                 <FaTimes />
