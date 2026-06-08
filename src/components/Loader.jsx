@@ -50,13 +50,13 @@ export default function Loader({ onComplete }) {
               transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="w-28 h-28 rounded-full flex items-center justify-center relative"
-              style={{ background: 'linear-gradient(135deg, #0F5132, #1a7a4a)', boxShadow: '0 0 40px rgba(15,81,50,0.6)' }}
+              className="w-28 h-28 rounded-full overflow-hidden relative border-2 border-green-700"
+              style={{ boxShadow: '0 0 40px rgba(15,81,50,0.6), 0 0 80px rgba(255,215,0,0.15)' }}
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: 'backOut' }}
             >
-              <span className="text-white text-3xl font-bold" style={{ fontFamily: 'Cinzel, serif' }}>KP</span>
+              <img src="/Kp image.png" alt="KP Singh Kasana" className="w-full h-full object-cover" />
               <motion.div
                 className="absolute inset-0 rounded-full bg-yellow-400/10"
                 animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
