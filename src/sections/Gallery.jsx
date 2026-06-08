@@ -16,7 +16,8 @@ export default function Gallery() {
       style={{ background: 'linear-gradient(135deg,#0B0F19,#0d1a10,#0B0F19)' }}>
 
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Photo Gallery" title="Moments of" highlight="Service & Leadership" light />
+        <SectionTitle subtitle="Photographs" title="Moments From" highlight="The Field"
+          desc="Not a photo shoot. These are real moments from real places with real people." light />
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">

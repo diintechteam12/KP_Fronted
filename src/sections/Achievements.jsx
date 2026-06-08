@@ -57,8 +57,8 @@ export default function Achievements() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="Impact" title="Our" highlight="Achievements"
-          desc="Numbers that speak for themselves — a testament to years of dedicated service." light />
+        <SectionTitle subtitle="The Work Speaks" title="Real Numbers," highlight="Real Lives"
+          desc="Not on paper — on the ground. Every number here represents a real person whose life changed." light />
 
         <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {counters.map((item, i) => (

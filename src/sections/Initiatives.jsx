@@ -7,8 +7,8 @@ export default function Initiatives() {
     <section id="initiatives" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19,#0d1a10,#0B0F19)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Public Initiatives" title="Our" highlight="Programs"
-          desc="Ground-level programs that have transformed lives across communities." light />
+        <SectionTitle subtitle="Real Work" title="Initiatives That" highlight="Actually Deliver"
+          desc="No big announcements. Just programs that show up, do the work, and make a difference you can see." light />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {initiatives.map((item, i) => (

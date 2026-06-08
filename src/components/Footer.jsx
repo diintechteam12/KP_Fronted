@@ -43,7 +43,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
-              Dedicated to empowering communities, supporting education, and creating a stronger future for society since 1988.
+              Since 1988 — a promise that was never broken. Your pain is his pain, your progress is his progress.
             </p>
             <div className="flex gap-3">
               {socials.map(({ Icon, color, href }, i) => (
@@ -77,7 +77,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-5 tracking-wider text-sm uppercase" style={{ color: '#FFD700' }}>Vision Statement</h4>
             <p className="text-gray-500 text-sm leading-relaxed italic">
-              "A society where every individual has the opportunity to grow, contribute, and live with dignity and purpose."
+              "A community where no child goes to bed hungry, no woman goes unheard, and no young person is left without a chance."
             </p>
             <div className="mt-6 p-4 rounded-xl border border-green-900/30 bg-green-900/10">
               <p className="text-green-400 text-xs font-semibold tracking-widest uppercase mb-1">Serving Since</p>
@@ -92,7 +92,7 @@ export default function Footer() {
             © 2024 K P Singh Kasana. All rights reserved.
           </p>
           <p className="text-gray-600 text-sm flex items-center gap-1">
-            Made with <FaHeart className="text-red-500 text-xs" /> for the community
+            Made with <FaHeart className="text-red-500 text-xs" /> for the people
           </p>
         </div>
       </div>

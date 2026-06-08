@@ -14,8 +14,8 @@ export default function Testimonials() {
         style={{ backgroundImage: 'radial-gradient(circle at 20% 50%,#0F5132 0%,transparent 50%),radial-gradient(circle at 80% 50%,#FF6B00 0%,transparent 50%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="Testimonials" title="What People" highlight="Say"
-          desc="Voices from the communities we serve — their stories inspire us to do more." />
+        <SectionTitle subtitle="People Say It Best" title="Straight From" highlight="Their Mouths"
+          desc="No award means more than what the people you served actually say about you." />
 
         <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
           breakpoints={{ 768: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }}

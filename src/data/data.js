@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "K P Singh Kasana",
-  title: ["Visionary Leader", "Social Reformer", "Nation Builder", "Community Developer"],
-  tagline: "Dedicated to empowering communities, supporting education, uplifting youth, and creating a stronger future for society.",
+  title: ["A Leader Who Listens", "A Voice for the People", "Building from the Ground Up", "38 Years, Still Going Strong"],
+  tagline: "Since 1988, I have stood beside the people — not above them. Every program, every initiative, every step has been for the community I call home.",
   phone: "+91 98765 43210",
   email: "contact@kpsinghkasana.in",
   address: "New Delhi, India",
@@ -12,81 +12,271 @@ export const personalInfo = {
 };
 
 export const achievements = [
-  { count: 34, suffix: "K+", label: "Followers" },
-  { count: 38, suffix: "+", label: "Years Leadership" },
+  { count: 34, suffix: "K+", label: "People With Us" },
+  { count: 38, suffix: "+", label: "Years of Service" },
   { count: 100, suffix: "+", label: "Community Programs" },
-  { count: 50, suffix: "+", label: "Social Initiatives" },
+  { count: 50, suffix: "+", label: "Social Campaigns" },
 ];
 
 export const visionCards = [
-  { id: 1, title: "Women Empowerment", desc: "Creating equal opportunities, education, and economic independence for every woman.", icon: "FaFemale", color: "#FF6B00" },
-  { id: 2, title: "Youth Development", desc: "Investing in the next generation through skill development, sports, and leadership.", icon: "FaRocket", color: "#FFD700" },
-  { id: 3, title: "Quality Education", desc: "Ensuring every child has access to quality education regardless of their background.", icon: "FaGraduationCap", color: "#0F5132" },
-  { id: 4, title: "Employment Opportunities", desc: "Building economic growth by attracting investments and creating sustainable jobs.", icon: "FaBriefcase", color: "#FF6B00" },
-  { id: 5, title: "Healthcare Access", desc: "Making quality healthcare affordable and accessible for all citizens.", icon: "FaHeartbeat", color: "#FFD700" },
-  { id: 6, title: "Community Development", desc: "Building infrastructure, roads, parks, and public spaces for a better quality of life.", icon: "FaCity", color: "#0F5132" },
+  {
+    id: 1,
+    title: "Women First",
+    desc: "Every woman deserves a life beyond four walls — her own income, her own voice, her own future. That is not negotiable.",
+    icon: "FaFemale",
+    color: "#FF6B00",
+  },
+  {
+    id: 2,
+    title: "Youth Without Borders",
+    desc: "Our young people should not have to leave their hometown to find work. Skills, opportunity, and confidence — right here.",
+    icon: "FaRocket",
+    color: "#FFD700",
+  },
+  {
+    id: 3,
+    title: "No Child Left Behind",
+    desc: "Rich or poor, every child deserves a classroom. We have been making that happen — one school, one scholarship at a time.",
+    icon: "FaGraduationCap",
+    color: "#0F5132",
+  },
+  {
+    id: 4,
+    title: "Jobs, Not Just Promises",
+    desc: "Economic growth that stays local. We bring investment, create jobs, and make sure the benefit reaches real families.",
+    icon: "FaBriefcase",
+    color: "#FF6B00",
+  },
+  {
+    id: 5,
+    title: "Healthcare Is a Right",
+    desc: "No one should choose between buying medicine and buying food. Free camps, free checkups, real relief — not just talk.",
+    icon: "FaHeartbeat",
+    color: "#FFD700",
+  },
+  {
+    id: 6,
+    title: "The Village You Deserve",
+    desc: "Clean roads, clean water, safe streets. Not a dream — a plan. And we have been executing it, village by village.",
+    icon: "FaCity",
+    color: "#0F5132",
+  },
 ];
 
 export const timeline = [
-  { year: "1988", title: "Beginning of Journey", desc: "Started grassroots work, connecting with communities and understanding ground-level challenges." },
-  { year: "1995", title: "Community Leadership", desc: "Established first community welfare program, helping hundreds of families." },
-  { year: "2000", title: "Social Reform Movement", desc: "Led a major social reform movement focused on women empowerment and youth development." },
-  { year: "2005", title: "Education Initiative", desc: "Launched scholarship programs benefiting over 500 underprivileged students annually." },
-  { year: "2010", title: "Political Recognition", desc: "Recognized nationally for outstanding contributions to community welfare." },
-  { year: "2015", title: "Youth Empowerment Drive", desc: "Initiated skill development centers in rural areas, training 1000+ youth." },
-  { year: "2020", title: "Digital Outreach", desc: "Expanded social reach to 34K+ followers using digital platforms." },
-  { year: "2024", title: "Vision 2030", desc: "Launching comprehensive development plan for transforming community infrastructure." },
+  {
+    year: "1988",
+    title: "The First Step",
+    desc: "It started with going door to door, listening to people's problems. No office, no budget — just a promise to show up.",
+  },
+  {
+    year: "1995",
+    title: "First Community Program",
+    desc: "Arranged food and medicine for 50 families using personal savings. People said — this one is different. He actually came.",
+  },
+  {
+    year: "2000",
+    title: "Standing for Women",
+    desc: "When women in the community said nobody listened to them — we listened first. Launched self-help groups and gave them a platform.",
+  },
+  {
+    year: "2005",
+    title: "500 Scholarships Given",
+    desc: "Funded education for over 500 children from low-income families. Many of them are doctors and engineers today.",
+  },
+  {
+    year: "2010",
+    title: "National Recognition",
+    desc: "The work reached Delhi. Honored at the national level for community welfare — but the real award was the people's trust.",
+  },
+  {
+    year: "2015",
+    title: "Skill Centers Launched",
+    desc: "Trained over 1,000 young people in vocational skills so they could earn with dignity, not beg for a job.",
+  },
+  {
+    year: "2020",
+    title: "Digital Connection",
+    desc: "During the pandemic, reached people through digital platforms. 34,000+ joined — it became a real family.",
+  },
+  {
+    year: "2024",
+    title: "Vision 2030",
+    desc: "A concrete plan — not a manifesto. Every ward, every village, every family. The work continues.",
+  },
 ];
 
 export const socialImpact = [
-  { label: "People Helped", value: 85, count: "50,000+" },
-  { label: "Educational Programs", value: 72, count: "200+" },
-  { label: "Women Empowerment", value: 90, count: "10,000+" },
-  { label: "Youth Development", value: 78, count: "5,000+" },
-  { label: "Community Welfare", value: 95, count: "100+" },
+  { label: "Lives Directly Impacted", value: 85, count: "50,000+" },
+  { label: "Education Programs Run", value: 72, count: "200+" },
+  { label: "Women Supported", value: 90, count: "10,000+" },
+  { label: "Youth Given Opportunities", value: 78, count: "5,000+" },
+  { label: "Villages Developed", value: 95, count: "100+" },
 ];
 
 export const testimonials = [
-  { id: 1, name: "Rajesh Kumar", role: "Community Leader", text: "K P Singh Kasana has been an inspiration. His dedication to social welfare has transformed countless lives.", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
-  { id: 2, name: "Priya Sharma", role: "Education Advocate", text: "Thanks to his scholarship programs, my daughter completed her engineering degree. He truly stands for the people.", avatar: "https://randomuser.me/api/portraits/women/44.jpg" },
-  { id: 3, name: "Amit Singh", role: "Youth Leader", text: "His youth development programs gave us skills, confidence, and direction. He is the leader our generation needed.", avatar: "https://randomuser.me/api/portraits/men/55.jpg" },
-  { id: 4, name: "Sunita Devi", role: "Women Welfare Group", text: "Through his women empowerment initiatives, thousands of women found economic independence and dignity.", avatar: "https://randomuser.me/api/portraits/women/68.jpg" },
-  { id: 5, name: "Vikram Yadav", role: "Local Businessman", text: "His vision for economic development has created real opportunities in our region. A true visionary leader.", avatar: "https://randomuser.me/api/portraits/men/76.jpg" },
+  {
+    id: 1,
+    name: "Rajesh Kumar",
+    role: "Farmer, Haryana",
+    text: "When my crops failed and there was nothing left at home — KP bhai came to my door himself. That is not a leader, that is family.",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    id: 2,
+    name: "Priya Sharma",
+    role: "Engineer, Delhi",
+    text: "My mother was a poor school teacher. I am an engineer today because of his scholarship. I will carry that gratitude my whole life.",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    id: 3,
+    name: "Amit Singh",
+    role: "Youth Leader",
+    text: "He taught us that a real leader listens before he speaks. His actions have always been louder than any speech.",
+    avatar: "https://randomuser.me/api/portraits/men/55.jpg",
+  },
+  {
+    id: 4,
+    name: "Sunita Devi",
+    role: "Self Help Group Leader",
+    text: "Before, every door was closed for women like me. Today I run my own small business and educate my children myself.",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+  },
+  {
+    id: 5,
+    name: "Vikram Yadav",
+    role: "Local Shopkeeper, UP",
+    text: "No road, no water, no electricity — he fought for each one personally. Today our village is unrecognizable. In a good way.",
+    avatar: "https://randomuser.me/api/portraits/men/76.jpg",
+  },
 ];
 
 export const initiatives = [
-  { id: 1, title: "Free Education Drive", category: "Education", desc: "Providing free books, uniforms, and scholarships to underprivileged children.", image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80", color: "#0F5132" },
-  { id: 2, title: "Youth Skill Center", category: "Youth", desc: "Modern vocational training centers equipped with latest technology.", image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80", color: "#FF6B00" },
-  { id: 3, title: "Women Self-Help Groups", category: "Women", desc: "Empowering women through microfinance, training, and community support.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80", color: "#FFD700" },
-  { id: 4, title: "Community Health Camp", category: "Healthcare", desc: "Free medical checkups, medicines, and health awareness programs.", image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80", color: "#0F5132" },
-  { id: 5, title: "Rural Development Project", category: "Development", desc: "Building roads, clean water supply, and sanitation in rural areas.", image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80", color: "#FF6B00" },
-  { id: 6, title: "Cultural Preservation", category: "Culture", desc: "Celebrating and preserving our rich cultural heritage through events.", image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80", color: "#FFD700" },
+  {
+    id: 1,
+    title: "Free Books & Uniforms",
+    category: "Education",
+    desc: "No child should miss school because a family cannot afford books or a uniform. We make sure that never happens.",
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80",
+    color: "#0F5132",
+  },
+  {
+    id: 2,
+    title: "Skill India — Local Chapter",
+    category: "Youth",
+    desc: "From mobile repair to computer training — real skills that lead to real income, right in your own neighbourhood.",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+    color: "#FF6B00",
+  },
+  {
+    id: 3,
+    title: "Women Forward",
+    category: "Women",
+    desc: "Microfinance, business training, and community support. Not charity — capability. Because capable women build capable families.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    color: "#FFD700",
+  },
+  {
+    id: 4,
+    title: "Free Medical Camps",
+    category: "Healthcare",
+    desc: "Doctor, medicine, checkup — all free. Because healthcare should never be a luxury for anyone in our community.",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80",
+    color: "#0F5132",
+  },
+  {
+    id: 5,
+    title: "Roads & Clean Water",
+    category: "Development",
+    desc: "Paved roads, drinking water pipelines, proper sanitation. Basic things that every human being simply deserves.",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
+    color: "#FF6B00",
+  },
+  {
+    id: 6,
+    title: "Our Culture, Our Identity",
+    category: "Culture",
+    desc: "Festivals, folk traditions, stories of our ancestors — keeping them alive is not optional. It is who we are.",
+    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80",
+    color: "#FFD700",
+  },
 ];
 
 export const mediaNews = [
-  { id: 1, title: "K P Singh Kasana Launches Youth Empowerment Drive", date: "December 15, 2024", source: "National Times", desc: "Leader unveiled a comprehensive youth development program targeting 10,000 young people.", image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" },
-  { id: 2, title: "Community Leader Honored for Social Work", date: "November 28, 2024", source: "India Today", desc: "Recognized nationally for outstanding contributions to community welfare and education.", image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80" },
-  { id: 3, title: "Women Empowerment Initiative Reaches 10,000 Beneficiaries", date: "October 10, 2024", source: "The Tribune", desc: "The women self-help group program has empowered over 10,000 women across the region.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" },
-  { id: 4, title: "Vision 2030 Development Plan Announced", date: "September 5, 2024", source: "Business Standard", desc: "A comprehensive roadmap for infrastructure and community development.", image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" },
+  {
+    id: 1,
+    title: "KP Singh Kasana Creates Jobs for 10,000 Young People",
+    date: "December 15, 2024",
+    source: "Dainik Jagran",
+    desc: "Skill program directly connected over ten thousand youth with training and employment opportunities across the region.",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
+  },
+  {
+    id: 2,
+    title: "National Honor for 38 Years of Community Service",
+    date: "November 28, 2024",
+    source: "Amar Ujala",
+    desc: "Recognized in Delhi at the national level for three decades of uninterrupted grassroots welfare work.",
+    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80",
+  },
+  {
+    id: 3,
+    title: "10,000 Women Achieve Financial Independence",
+    date: "October 10, 2024",
+    source: "Navbharat Times",
+    desc: "The women self-help group initiative has given over ten thousand women their own income and sense of dignity.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+  },
+  {
+    id: 4,
+    title: "Vision 2030 — A Real Plan, Not a Manifesto",
+    date: "September 5, 2024",
+    source: "Hindustan Times",
+    desc: "A detailed development roadmap covering every ward and village — with timelines, budgets, and accountability built in.",
+    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+  },
 ];
 
 export const galleryImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80", category: "Public Meetings", title: "Community Rally" },
-  { id: 2, src: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80", category: "Social Service", title: "Social Service Drive" },
-  { id: 3, src: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80", category: "Education Programs", title: "Education Initiative" },
-  { id: 4, src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80", category: "Community Events", title: "Women Empowerment" },
-  { id: 5, src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80", category: "Community Events", title: "Youth Program" },
-  { id: 6, src: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80", category: "Social Service", title: "Health Camp" },
-  { id: 7, src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", category: "Public Meetings", title: "Public Address" },
-  { id: 8, src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80", category: "Community Events", title: "Cultural Event" },
-  { id: 9, src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80", category: "Education Programs", title: "School Program" },
+  { id: 1, src: "/img1.jpeg", category: "Public Meetings", title: "People Gathered, Voices Heard" },
+  { id: 2, src: "/img2.jpeg", category: "Community Events", title: "Among Our Own People" },
+  { id: 3, src: "/img3.jpeg", category: "Social Service", title: "Another Day of Showing Up" },
+  { id: 4, src: "/IMG4.png", category: "Public Meetings", title: "Standing With the People" },
+  { id: 5, src: "/IMG5.png", category: "Community Events", title: "Community Comes First" },
+  { id: 6, src: "/IMG6.png", category: "Social Service", title: "Serving on the Ground" },
+  { id: 7, src: "/IMG7.png", category: "Education Programs", title: "Investing in the Future" },
 ];
 
 export const videos = [
-  { id: 1, title: "Vision for Community Development", thumb: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", duration: "12:45" },
-  { id: 2, title: "Youth Empowerment Speech", thumb: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", duration: "8:30" },
-  { id: 3, title: "Women Welfare Program Launch", thumb: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", duration: "15:20" },
-  { id: 4, title: "Education Initiative Inauguration", thumb: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", duration: "10:15" },
+  {
+    id: 1,
+    title: "From the Villages — Real Stories",
+    thumb: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "12:45",
+  },
+  {
+    id: 2,
+    title: "Talking Straight with the Youth",
+    thumb: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "8:30",
+  },
+  {
+    id: 3,
+    title: "Women Empowerment Summit",
+    thumb: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "15:20",
+  },
+  {
+    id: 4,
+    title: "New School Inauguration — A New Beginning",
+    thumb: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "10:15",
+  },
 ];
 
 export const socialStats = [

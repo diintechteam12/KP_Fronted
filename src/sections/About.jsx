@@ -13,9 +13,9 @@ const stats = [
 ];
 
 const qualities = [
-  'Political Leader & Public Servant', 'Social Reformer & Change Maker',
-  'Education Supporter & Advocate', 'Community Builder & Developer',
-  'Business Leader & Entrepreneur', 'Public Welfare Advocate',
+  'A Leader Who Actually Shows Up', 'Voice for Women in the Community',
+  'Education for Every Child', 'Building Better Villages',
+  'Mentor for Young People', 'Grassroots Welfare Worker',
 ];
 
 function AnimatedNumber({ end, suffix, color, start }) {
@@ -54,8 +54,8 @@ export default function About() {
         style={{ background: 'radial-gradient(circle,#0F5132,transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Who I Am" title="About" highlight="K P Singh Kasana"
-          desc="A lifelong journey of service, leadership, and dedication to building a better society for all." />
+        <SectionTitle subtitle="The Man Behind the Work" title="K P Singh" highlight="Kasana"
+          desc="38 years on the ground — no shortcuts, no shortcuts. A story of a man who stayed when others left." />
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
@@ -82,14 +82,10 @@ export default function About() {
           {/* Content */}
           <motion.div initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
             <p className="text-gray-600 text-lg leading-relaxed mb-5">
-              K P Singh Kasana is a dedicated political leader and social reformer who has spent over
-              <strong className="text-green-800"> 38 years </strong>
-              serving communities with unwavering commitment. Born with a vision to create positive change, he has consistently worked to uplift the underprivileged, empower women, and invest in youth development.
+              K P Singh Kasana is not someone you only see at election time. For <strong className="text-green-800">38 years</strong>, he has been in the streets, in the villages, at people's doorsteps. He did not wait for a position to start helping — he started helping and the recognition followed.
             </p>
             <p className="text-gray-500 text-base leading-relaxed mb-8">
-              His journey from grassroots community work to nationally recognized leader reflects his deep-rooted values of integrity, service, and vision. With
-              <strong className="text-orange-500"> 34,000+ followers </strong>
-              and a legacy of impactful initiatives, he continues to inspire millions.
+              No big office in the beginning. Just a promise — that as long as one child goes to bed hungry, one woman has no voice, one young person is jobless, there will be no rest. Today <strong className="text-orange-500">34,000+ people</strong> walk this journey with him.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">

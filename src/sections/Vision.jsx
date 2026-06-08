@@ -69,8 +69,8 @@ export default function Vision() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="My Vision" title="Vision For" highlight="Society & Nation"
-          desc="Building a future where every citizen has equal opportunities, dignity, and a voice." light />
+        <SectionTitle subtitle="What We Stand For" title="A Future Worth" highlight="Fighting For"
+          desc="These are not campaign promises. These are the things we have been working on — and will keep working on." light />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {visionCards.map((c, i) => <Card key={c.id} card={c} index={i} />)}
         </div>

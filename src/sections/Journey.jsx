@@ -9,8 +9,8 @@ export default function Journey() {
         style={{ background: 'radial-gradient(circle,#0F5132,transparent)' }} />
 
       <div className="max-w-5xl mx-auto px-6">
-        <SectionTitle subtitle="My Journey" title="Leadership" highlight="Timeline"
-          desc="38 years of dedicated service, transformative leadership, and community development." />
+        <SectionTitle subtitle="38 Years on the Ground" title="Step by Step," highlight="We Kept Going"
+          desc="It started in a small village in 1988. It has never stopped. Here is how it happened." />
 
         <div className="relative">
           {/* Center line */}

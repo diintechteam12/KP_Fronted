@@ -12,8 +12,8 @@ export default function SocialImpact() {
         style={{ background: 'radial-gradient(circle,#0F5132,transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Social Impact" title="Creating Real" highlight="Change"
-          desc="Measurable impact across communities through dedicated programs and initiatives." />
+        <SectionTitle subtitle="On the Ground" title="How Much Has" highlight="Actually Changed"
+          desc="These bars are not just metrics. Behind every line is a home that changed, a life that was saved." />
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Progress bars */}

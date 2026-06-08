@@ -4,16 +4,26 @@ import { FaPlay, FaTimes, FaClock } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 import { videos } from '../data/data';
 
-const localVideo = {
-  id: 'local1',
-  title: 'K P Singh Kasana - Introduction',
-  thumb: '/Kp image.png',
-  src: '/K_P_Singh_Kasana_introduction_202606081445 (1).mp4',
-  duration: 'Local Video',
-  isLocal: true,
-};
+const localVideos = [
+  {
+    id: 'local1',
+    title: 'K P Singh Kasana - Introduction',
+    thumb: '/Kp image.png',
+    src: '/K_P_Singh_Kasana_introduction_202606081445.mp4',
+    duration: 'Local Video',
+    isLocal: true,
+  },
+  {
+    id: 'local2',
+    title: 'K P Singh Kasana - Introduction Part 2',
+    thumb: '/Kp image.png',
+    src: '/K_P_Singh_Kasana_introduction_202606081445 (1).mp4',
+    duration: 'Local Video',
+    isLocal: true,
+  },
+];
 
-const allVideos = [localVideo, ...videos];
+const allVideos = [...localVideos, ...videos];
 
 export default function Videos() {
   const [modal, setModal] = useState(null);
@@ -21,8 +31,8 @@ export default function Videos() {
   return (
     <section id="videos" className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Video Gallery" title="Watch" highlight="In Action"
-          desc="Speeches, program inaugurations, and moments of impact from the ground." />
+        <SectionTitle subtitle="Watch & Listen" title="See the Work" highlight="For Yourself"
+          desc="In rallies, in villages, among the people — these videos are proof of what actually happened." />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {allVideos.map((v, i) => (

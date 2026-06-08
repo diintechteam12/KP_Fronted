@@ -12,8 +12,8 @@ export default function SocialMedia() {
         style={{ backgroundImage: 'radial-gradient(circle at 50% 50%,#0F5132 0%,transparent 60%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="Connect With Us" title="Follow on" highlight="Social Media"
-          desc="Stay updated with our latest activities and community initiatives." />
+        <SectionTitle subtitle="Join the Family" title="34,000 Already" highlight="With Us"
+          desc="Follow along and stay part of everything that is happening on the ground." />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialStats.map((s, i) => {

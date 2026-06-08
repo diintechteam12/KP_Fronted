@@ -12,8 +12,8 @@ export default function MediaCoverage() {
     <section id="media" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19,#071a0e,#0B0F19)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Media Coverage" title="In The" highlight="News"
-          desc="National and regional media coverage of our impactful initiatives." light />
+        <SectionTitle subtitle="Press Coverage" title="When the Work" highlight="Makes Headlines"
+          desc="Real work gets noticed. Here is what the press has been saying about the initiatives on the ground." light />
 
         <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
           breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}

@@ -42,14 +42,15 @@ export default function Contact() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="Get In Touch" title="Contact" highlight="Us" light />
+        <SectionTitle subtitle="Get in Touch" title="The Door Is" highlight="Always Open"
+          desc="Any question, any concern, or just want to be part of what we are doing — reach out directly." light />
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left - Info */}
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <h3 className="text-white text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display,serif' }}>Let's Connect</h3>
+            <h3 className="text-white text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display,serif' }}>You Are Welcome Here</h3>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Whether you want to collaborate, seek support, or be part of our community initiatives — we'd love to hear from you.
+              Big issue or small — we listen. Because that is what real service looks like.
             </p>
 
             <div className="space-y-5 mb-10">
@@ -105,7 +106,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(15,81,50,0.6)' }}
                   whileTap={{ scale: 0.98 }}>
                   <FaPaperPlane />
-                  {sent ? 'Message Sent!' : 'Send Message'}
+                  {sent ? 'Message Sent ✓' : 'Send Message'}
                 </motion.button>
               </form>
             </div>

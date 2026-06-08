@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaUsers, FaAward, FaStar, FaHandshake, FaChevronDown } from 'react-icons/fa';
 const heroImg = '/Kp image.png';
 
-const titles = ['Visionary Leader', 'Social Reformer', 'Nation Builder', 'Community Developer'];
+const titles = ['A Leader Who Listens', 'A Voice for the People', 'Building from the Ground Up', '38 Years, Still Going'];
 
 function TypingText({ words }) {
   const [idx, setIdx] = useState(0);
@@ -40,7 +40,7 @@ export default function Hero() {
       {/* Full screen video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/K_P_Singh_Kasana_introduction_202606081445.mp4"
+        src="/K_P_Singh_Kasana_introduction_202606081445 (1).mp4"
         autoPlay muted loop playsInline
       />
 
@@ -76,7 +76,7 @@ export default function Hero() {
               style={{ background: 'rgba(15,81,50,0.2)' }}
               initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">Serving Since 1988</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">Serving the People Since 1988</span>
             </motion.div>
 
             <motion.h1 className="text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4"
@@ -96,16 +96,16 @@ export default function Hero() {
 
             <motion.p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
-              Dedicated to empowering communities, supporting education, uplifting youth, and creating a stronger future for society.
+              Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.
             </motion.p>
 
             {/* Buttons */}
             <motion.div className="flex flex-wrap gap-4 mb-10"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}>
               {[
-                { label: 'Explore Vision', id: '#vision', bg: 'linear-gradient(135deg,#0F5132,#1a7a4a)', shadow: 'rgba(15,81,50,0.5)' },
-                { label: 'Leadership Journey', id: '#journey', bg: 'transparent', border: true },
-                { label: 'Public Initiatives', id: '#initiatives', bg: 'linear-gradient(135deg,#FF6B00,#ff8c00)', shadow: 'rgba(255,107,0,0.4)' },
+                { label: 'Our Vision', id: '#vision', bg: 'linear-gradient(135deg,#0F5132,#1a7a4a)', shadow: 'rgba(15,81,50,0.5)' },
+                { label: 'The Journey', id: '#journey', bg: 'transparent', border: true },
+                { label: 'See the Work', id: '#initiatives', bg: 'linear-gradient(135deg,#FF6B00,#ff8c00)', shadow: 'rgba(255,107,0,0.4)' },
               ].map(btn => (
                 <motion.button key={btn.label} onClick={() => go(btn.id)}
                   className="px-7 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase cursor-pointer text-white"
@@ -119,7 +119,7 @@ export default function Hero() {
 
             {/* Stats row */}
             <motion.div className="flex gap-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}>
-              {[{ v: '34K+', l: 'Followers' }, { v: '38+', l: 'Years' }, { v: '100+', l: 'Programs' }].map(s => (
+              {[{ v: '34K+', l: 'People With Us' }, { v: '38+', l: 'Years Served' }, { v: '100+', l: 'Programs' }].map(s => (
                 <div key={s.l}>
                   <div className="text-2xl font-bold" style={{ fontFamily: 'Cinzel,serif', background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{s.v}</div>
                   <div className="text-xs text-gray-500 tracking-wider">{s.l}</div>
@@ -193,10 +193,10 @@ export default function Hero() {
         <div className="flex gap-12 whitespace-nowrap" style={{ animation: 'marquee 20s linear infinite' }}>
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-4 text-sm font-medium text-white/30">
-              <span className="text-yellow-400">✦</span> Visionary Leader
-              <span className="text-yellow-400">✦</span> Social Reformer
-              <span className="text-yellow-400">✦</span> Nation Builder
-              <span className="text-yellow-400">✦</span> Community Developer
+              <span className="text-yellow-400">✦</span> A Leader Who Listens
+              <span className="text-yellow-400">✦</span> Voice for the People
+              <span className="text-yellow-400">✦</span> Building from the Ground
+              <span className="text-yellow-400">✦</span> 38 Years, Still Going
             </span>
           ))}
         </div>
