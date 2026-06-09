@@ -17,7 +17,7 @@ export default function Initiatives() {
               style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
               whileHover={{ y: -6 }}>
-              <img src={item.image} alt={item.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110" style={{ height: 260 }} />
+              <img src={item.image} alt={item.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110" style={{ height: 260, objectFit: 'cover', objectPosition: item.objPos || 'center center' }} />
               <div className="absolute inset-0 transition-all duration-300 group-hover:opacity-100 opacity-80"
                 style={{ background: `linear-gradient(to top,rgba(11,15,25,0.95) 0%,rgba(11,15,25,0.4) 60%,transparent 100%)` }} />
               <div className="absolute bottom-0 left-0 right-0 p-6">

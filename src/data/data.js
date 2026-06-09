@@ -158,7 +158,7 @@ export const initiatives = [
     title: "Free Books & Uniforms",
     category: "Education",
     desc: "No child should miss school because a family cannot afford books or a uniform. We make sure that never happens.",
-    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80",
+    image: "/Initiatives img1.png",
     color: "#0F5132",
   },
   {
@@ -166,7 +166,7 @@ export const initiatives = [
     title: "Skill India — Local Chapter",
     category: "Youth",
     desc: "From mobile repair to computer training — real skills that lead to real income, right in your own neighbourhood.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+    image: "/Initiatives img2.png",
     color: "#FF6B00",
   },
   {
@@ -174,7 +174,7 @@ export const initiatives = [
     title: "Women Forward",
     category: "Women",
     desc: "Microfinance, business training, and community support. Not charity — capability. Because capable women build capable families.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    image: "/Initiatives img3.png",
     color: "#FFD700",
   },
   {
@@ -182,7 +182,7 @@ export const initiatives = [
     title: "Free Medical Camps",
     category: "Healthcare",
     desc: "Doctor, medicine, checkup — all free. Because healthcare should never be a luxury for anyone in our community.",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80",
+    image: "/Initiatives img4.png",
     color: "#0F5132",
   },
   {
@@ -190,16 +190,18 @@ export const initiatives = [
     title: "Roads & Clean Water",
     category: "Development",
     desc: "Paved roads, drinking water pipelines, proper sanitation. Basic things that every human being simply deserves.",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
+    image: "/Initiatives img5.png",
     color: "#FF6B00",
+    objPos: "top center",
   },
   {
     id: 6,
     title: "Our Culture, Our Identity",
     category: "Culture",
     desc: "Festivals, folk traditions, stories of our ancestors — keeping them alive is not optional. It is who we are.",
-    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80",
+    image: "/Initiatives img6.png",
     color: "#FFD700",
+    objPos: "top center",
   },
 ];
 
@@ -210,7 +212,7 @@ export const mediaNews = [
     date: "December 15, 2024",
     source: "Dainik Jagran",
     desc: "Skill program directly connected over ten thousand youth with training and employment opportunities across the region.",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
   },
   {
     id: 2,
@@ -218,7 +220,7 @@ export const mediaNews = [
     date: "November 28, 2024",
     source: "Amar Ujala",
     desc: "Recognized in Delhi at the national level for three decades of uninterrupted grassroots welfare work.",
-    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80",
   },
   {
     id: 3,
@@ -226,7 +228,7 @@ export const mediaNews = [
     date: "October 10, 2024",
     source: "Navbharat Times",
     desc: "The women self-help group initiative has given over ten thousand women their own income and sense of dignity.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=600&q=80",
   },
   {
     id: 4,
@@ -234,7 +236,7 @@ export const mediaNews = [
     date: "September 5, 2024",
     source: "Hindustan Times",
     desc: "A detailed development roadmap covering every ward and village — with timelines, budgets, and accountability built in.",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
   },
 ];
 
