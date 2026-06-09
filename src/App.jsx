@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 import Lenis from 'lenis';
 
 import Loader from './components/Loader';
@@ -23,6 +24,13 @@ import Contact from './sections/Contact';
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!loaded) return;
@@ -56,6 +64,17 @@ export default function App() {
             <Contact />
           </main>
           <Footer />
+
+          {/* Back to Top */}
+          {showTop && (
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="fixed bottom-8 right-8 z-[9999] w-12 h-12 rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg"
+              style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 20px rgba(15,81,50,0.6)' }}
+            >
+              <FaArrowUp size={16} />
+            </button>
+          )}
         </>
       )}
     </>
