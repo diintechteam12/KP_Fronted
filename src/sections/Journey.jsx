@@ -1,71 +1,201 @@
 import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
-import { timeline } from '../data/data';
+import {
+  FaMapMarkerAlt, FaHandHoldingHeart, FaFemale, FaGraduationCap,
+  FaMedal, FaTools, FaWifi, FaFlag
+} from 'react-icons/fa';
+
+const timeline = [
+  {
+    year: "1988", title: "The First Step",
+    desc: "It started with going door to door, listening to people's problems. No office, no budget — just a promise to show up.",
+    icon: FaMapMarkerAlt, color: "#0F5132", tag: "Beginning",
+    image: "/step1.png",
+  },
+  {
+    year: "1995", title: "First Community Program",
+    desc: "Arranged food and medicine for 50 families using personal savings. People said — this one is different. He actually came.",
+    icon: FaHandHoldingHeart, color: "#FF6B00", tag: "Welfare",
+    image: "/step2.png",
+  },
+  {
+    year: "2000", title: "Standing for Women",
+    desc: "When women in the community said nobody listened to them — we listened first. Launched self-help groups and gave them a platform.",
+    icon: FaFemale, color: "#FFD700", tag: "Women Empowerment",
+    image: "/step3.png",
+  },
+  {
+    year: "2005", title: "500 Scholarships Given",
+    desc: "Funded education for over 500 children from low-income families. Many of them are doctors and engineers today.",
+    icon: FaGraduationCap, color: "#0F5132", tag: "Education",
+    image: "/step4.png",
+  },
+  {
+    year: "2010", title: "National Recognition",
+    desc: "The work reached Delhi. Honored at the national level for community welfare — but the real award was the people's trust.",
+    icon: FaMedal, color: "#FF6B00", tag: "Recognition",
+    image: "/step5.png",
+  },
+  {
+    year: "2015", title: "Skill Centers Launched",
+    desc: "Trained over 1,000 young people in vocational skills so they could earn with dignity, not beg for a job.",
+    icon: FaTools, color: "#FFD700", tag: "Youth Skills",
+    image: "/step6.png",
+  },
+  {
+    year: "2020", title: "Digital Connection",
+    desc: "During the pandemic, reached people through digital platforms. 34,000+ joined — it became a real family.",
+    icon: FaWifi, color: "#0F5132", tag: "Digital Outreach",
+    image: "/step7.png",
+  },
+  {
+    year: "2024", title: "Vision 2030",
+    desc: "A concrete plan — not a manifesto. Every ward, every village, every family. The work continues.",
+    icon: FaFlag, color: "#FF6B00", tag: "Future Plan",
+    image: "/step8.png",
+  },
+];
 
 export default function Journey() {
   return (
     <section id="journey" className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-[0.04] pointer-events-none"
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
         style={{ background: 'radial-gradient(circle,#0F5132,transparent)' }} />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-[0.03] pointer-events-none"
+        style={{ background: 'radial-gradient(circle,#FF6B00,transparent)' }} />
 
-      <div className="max-w-5xl mx-auto px-6">
-        <SectionTitle subtitle="38 Years on the Ground" title="Step by Step," highlight="We Kept Going"
-          desc="It started in a small village in 1988. It has never stopped. Here is how it happened." />
+      <div className="max-w-6xl mx-auto px-6">
+        <SectionTitle
+          subtitle="38 Years on the Ground"
+          title="Step by Step,"
+          highlight="We Kept Going"
+          desc="It started in a small village in 1988. It has never stopped. Here is how it happened."
+        />
 
         <div className="relative">
-          {/* Center line */}
-          <motion.div className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 origin-top"
-            style={{ background: 'linear-gradient(to bottom,transparent,#FFD700,#0F5132,transparent)' }}
-            initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }}
-            transition={{ duration: 2, ease: 'easeInOut' }} />
+          {/* Center vertical line */}
+          <motion.div
+            className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 hidden md:block"
+            style={{ background: 'linear-gradient(to bottom,transparent,#FFD700 10%,#0F5132 50%,#FF6B00 90%,transparent)' }}
+            initial={{ scaleY: 0, originY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: 'easeInOut' }}
+          />
 
-          {timeline.map((item, i) => {
-            const left = i % 2 === 0;
-            return (
-              <div key={i} className={`relative flex items-center mb-12 ${left ? 'flex-row' : 'flex-row-reverse'}`}>
-                {/* Card */}
-                <motion.div className={`w-5/12 ${left ? 'pr-10 text-right' : 'pl-10'}`}
-                  initial={{ opacity: 0, x: left ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                  <div className="inline-block p-5 rounded-2xl bg-gray-50 border border-gray-100 group hover:shadow-xl transition-shadow duration-300"
-                    style={{ boxShadow: '0 8px 25px rgba(0,0,0,0.05)' }}>
-                    <h3 className="font-bold text-gray-900 text-lg mb-2" style={{ fontFamily: 'Playfair Display,serif' }}>{item.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                </motion.div>
+          <div className="space-y-10">
+            {timeline.map((item, i) => {
+              const isLeft = i % 2 === 0;
+              const Icon = item.icon;
+              return (
+                <div key={i} className={`relative flex flex-col md:flex-row items-center gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
-                {/* Center dot */}
-                <div className="absolute left-1/2 -translate-x-1/2 z-10">
-                  <motion.div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                    style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 20px rgba(15,81,50,0.5)', fontFamily: 'Cinzel,serif' }}
-                    initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }}
-                    transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-                    whileHover={{ scale: 1.2 }}>
-                    {item.year.slice(2)}
+                  {/* Card */}
+                  <motion.div
+                    className={`w-full md:w-[45%] ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}
+                    initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                  >
+                    <motion.div
+                      className="bg-white rounded-2xl overflow-hidden border border-gray-100 group"
+                      style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.07)' }}
+                      whileHover={{ y: -5, boxShadow: `0 20px 50px ${item.color}25` }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Image */}
+                      <div className="relative w-full overflow-hidden rounded-t-2xl" style={{ height: 200 }}>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105"
+                          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                        />
+                        <div className="absolute inset-0"
+                          style={{ background: `linear-gradient(to top,${item.color}cc 0%,transparent 60%)` }} />
+                        <div className="absolute top-3 left-3">
+                          <span className="px-3 py-1 rounded-full text-xs font-bold text-white"
+                            style={{ background: item.color }}>
+                            {item.tag}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-3 right-4">
+                          <span className="text-white font-bold text-2xl opacity-90"
+                            style={{ fontFamily: 'Cinzel,serif' }}>
+                            {item.year}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-5">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0"
+                            style={{ background: `linear-gradient(135deg,${item.color},${item.color}bb)`, boxShadow: `0 4px 15px ${item.color}40` }}>
+                            <Icon size={16} />
+                          </div>
+                          <h3 className="font-bold text-gray-900 text-lg leading-snug"
+                            style={{ fontFamily: 'Playfair Display,serif' }}>
+                            {item.title}
+                          </h3>
+                        </div>
+                        <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+
+                      <div className="h-[3px]"
+                        style={{ background: `linear-gradient(90deg,transparent,${item.color},transparent)` }} />
+                    </motion.div>
                   </motion.div>
+
+                  {/* Center icon dot */}
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
+                    <motion.div
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-white border-4 border-white"
+                      style={{
+                        background: `linear-gradient(135deg,${item.color},${item.color}bb)`,
+                        boxShadow: `0 0 0 4px ${item.color}25, 0 0 25px ${item.color}50`,
+                      }}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      <Icon size={18} />
+                    </motion.div>
+                  </div>
+
+                  {/* Spacer */}
+                  <div className="hidden md:block w-[45%]" />
                 </div>
-
-                {/* Year badge */}
-                <motion.div className={`w-5/12 ${left ? 'pl-10' : 'pr-10 text-right'}`}
-                  initial={{ opacity: 0, x: left ? 30 : -30 }} whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}>
-                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold text-white"
-                    style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', fontFamily: 'Cinzel,serif' }}>
-                    {item.year}
-                  </span>
-                </motion.div>
-              </div>
-            );
-          })}
-
-          {/* End marker */}
-          <div className="flex justify-center mt-4">
-            <motion.div className="px-6 py-3 rounded-full font-bold text-white"
-              style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 25px rgba(15,81,50,0.5)', fontFamily: 'Cinzel,serif' }}
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              Present Day ✦
-            </motion.div>
+              );
+            })}
           </div>
+
+          {/* Present Day */}
+          <motion.div
+            className="flex flex-col items-center mt-12 gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="w-[2px] h-10"
+              style={{ background: 'linear-gradient(to bottom,#FF6B00,#0F5132)' }} />
+            <motion.div
+              className="px-8 py-3 rounded-full font-bold text-white flex items-center gap-2"
+              style={{
+                background: 'linear-gradient(135deg,#0F5132,#1a7a4a)',
+                boxShadow: '0 0 30px rgba(15,81,50,0.4)',
+                fontFamily: 'Cinzel,serif',
+              }}
+              animate={{ boxShadow: ['0 0 20px rgba(15,81,50,0.3)', '0 0 40px rgba(15,81,50,0.7)', '0 0 20px rgba(15,81,50,0.3)'] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <FaFlag size={14} style={{ color: '#FFD700' }} />
+              Present Day — Still Going Strong
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
