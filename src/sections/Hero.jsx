@@ -40,7 +40,7 @@ export default function Hero() {
       {/* Full screen video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/K_P_Singh_Kasana_introduction_202606081445 (1).mp4"
+        src="/Hero section2.mp4"
         autoPlay muted loop playsInline
       />
 

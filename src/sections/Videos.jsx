@@ -10,7 +10,7 @@ const localVideos = [
     title: 'K P Singh Kasana - Introduction',
     thumb: '/Kp image.png',
     src: '/K_P_Singh_Kasana_introduction_202606081445.mp4',
-    duration: 'Local Video',
+    duration: 'Watch Now',
     isLocal: true,
   },
   {
@@ -18,12 +18,36 @@ const localVideos = [
     title: 'K P Singh Kasana - Introduction Part 2',
     thumb: '/Kp image.png',
     src: '/K_P_Singh_Kasana_introduction_202606081445 (1).mp4',
-    duration: 'Local Video',
+    duration: 'Watch Now',
+    isLocal: true,
+  },
+  {
+    id: 'local3',
+    title: 'Hero Section Reels',
+    thumb: '/Kp image.png',
+    src: '/Hero section reels.mp4',
+    duration: 'Watch Now',
+    isLocal: true,
+  },
+  {
+    id: 'local4',
+    title: 'Community Reels',
+    thumb: '/Kp image.png',
+    src: '/reels for vedio galry.mp4',
+    duration: 'Watch Now',
+    isLocal: true,
+  },
+  {
+    id: 'local5',
+    title: 'New Reels',
+    thumb: '/Kp image.png',
+    src: '/Vedio galry new reels.mp4',
+    duration: 'Watch Now',
     isLocal: true,
   },
 ];
 
-const allVideos = [...localVideos, ...videos];
+const allVideos = [...localVideos];
 
 export default function Videos() {
   const [modal, setModal] = useState(null);
