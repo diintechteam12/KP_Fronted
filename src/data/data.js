@@ -3,11 +3,11 @@ export const personalInfo = {
   title: ["A Leader Who Listens", "A Voice for the People", "Building from the Ground Up", "38 Years, Still Going Strong"],
   tagline: "Since 1988, I have stood beside the people — not above them. Every program, every initiative, every step has been for the community I call home.",
   phone: "+91 98765 43210",
-  email: "contact@kpsinghkasana.in",
+  email: "kpkasanait@gmail.com",
   address: "New Delhi, India",
   facebook: "https://facebook.com/kpsinghkasana",
-  instagram: "https://instagram.com/kpsinghkasana",
-  youtube: "https://youtube.com/kpsinghkasana",
+  instagram: "https://www.instagram.com/kpkasanait/",
+  youtube: "https://www.youtube.com/@KPKasana-o8o",
   linkedin: "https://linkedin.com/in/kpsinghkasana",
 };
 
@@ -283,7 +283,7 @@ export const videos = [
 
 export const socialStats = [
   { platform: "Facebook", handle: "@kpsinghkasana", followers: "34K+", color: "#1877F2", icon: "FaFacebook" },
-  { platform: "Instagram", handle: "@kpsinghkasana", followers: "12K+", color: "#E4405F", icon: "FaInstagram" },
-  { platform: "YouTube", handle: "KP Singh Kasana", followers: "8K+", color: "#FF0000", icon: "FaYoutube" },
+  { platform: "Instagram", handle: "@kpkasanait", followers: "12K+", color: "#E4405F", icon: "FaInstagram" },
+  { platform: "YouTube", handle: "@KPKasana-o8o", followers: "8K+", color: "#FF0000", icon: "FaYoutube" },
   { platform: "LinkedIn", handle: "K P Singh Kasana", followers: "5K+", color: "#0A66C2", icon: "FaLinkedin" },
 ];
