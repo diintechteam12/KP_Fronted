@@ -1,15 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaUsers, FaAward, FaHandshake, FaStar } from 'react-icons/fa';
+import { FaUsers, FaAward, FaHandshake, FaStar, FaMedal, FaGlobe, FaLeaf, FaHeartbeat } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 
-const counters = [
-  { Icon: FaUsers, count: 34, suffix: 'K+', label: 'Followers', sub: 'Across all platforms', color: '#FFD700' },
-  { Icon: FaAward, count: 38, suffix: '+', label: 'Years Leadership', sub: 'Of dedicated service', color: '#FF6B00' },
-  { Icon: FaHandshake, count: 100, suffix: '+', label: 'Community Programs', sub: 'Implemented successfully', color: '#FFD700' },
-  { Icon: FaStar, count: 50, suffix: '+', label: 'Social Initiatives', sub: 'Benefiting thousands', color: '#FF6B00' },
-];
+const iconMap = { FaUsers, FaAward, FaHandshake, FaStar, FaMedal, FaGlobe, FaLeaf, FaHeartbeat };
 
 function AnimatedNumber({ end, suffix, color, start }) {
   const ref = useRef(null);
@@ -40,6 +35,30 @@ function AnimatedNumber({ end, suffix, color, start }) {
 
 export default function Achievements() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [achievementsData, setAchievementsData] = useState({
+    sectionSubtitle: 'The Work Speaks',
+    sectionTitle: 'Real Numbers,',
+    sectionHighlight: 'Real Lives',
+    sectionDesc: 'Not on paper — on the ground. Every number here represents a real person whose life changed.',
+    cards: [
+      { count: 34, suffix: 'K+', label: 'Followers', sub: 'Across all platforms', icon: 'FaUsers', enabled: true },
+      { count: 38, suffix: '+', label: 'Years Leadership', sub: 'Of dedicated service', icon: 'FaAward', enabled: true }
+    ]
+  });
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.achievements) {
+          setAchievementsData(prev => ({ ...prev, ...data.data.achievements }));
+        }
+      })
+      .catch(err => console.error("Error fetching achievements data:", err));
+  }, []);
+
+  const visibleCards = (achievementsData.cards || []).filter(c => c.enabled !== false);
 
   return (
     <section id="achievements" className="py-24 relative overflow-hidden"
@@ -57,35 +76,39 @@ export default function Achievements() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="The Work Speaks" title="Real Numbers," highlight="Real Lives"
-          desc="Not on paper — on the ground. Every number here represents a real person whose life changed." light />
+        <SectionTitle subtitle={achievementsData.sectionSubtitle} title={achievementsData.sectionTitle} highlight={achievementsData.sectionHighlight}
+          desc={achievementsData.sectionDesc} light />
 
         <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {counters.map((item, i) => (
-            <motion.div key={item.label}
-              className="relative text-center p-8 rounded-3xl overflow-hidden group border border-white/5 backdrop-blur-xl"
-              style={{ background: 'rgba(255,255,255,0.03)' }}
-              initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -8, borderColor: 'rgba(255,215,0,0.2)' }}>
+          {visibleCards.map((item, i) => {
+            const IconComponent = iconMap[item.icon] || FaStar;
+            const color = i % 2 === 0 ? '#FFD700' : '#FF6B00';
+            return (
+              <motion.div key={i}
+                className="relative text-center p-8 rounded-3xl overflow-hidden group border border-white/5 backdrop-blur-xl"
+                style={{ background: 'rgba(255,255,255,0.03)' }}
+                initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                whileHover={{ y: -8, borderColor: 'rgba(255,215,0,0.2)' }}>
 
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
-                style={{ background: `radial-gradient(circle at 50% 50%,${item.color}10,transparent 70%)` }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
+                  style={{ background: `radial-gradient(circle at 50% 50%,${color}10,transparent 70%)` }} />
 
-              <motion.div className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5"
-                style={{ background: `${item.color}15`, border: `1px solid ${item.color}30` }}
-                whileHover={{ rotate: 10, scale: 1.1 }}>
-                <item.Icon style={{ color: item.color }} />
+                <motion.div className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5"
+                  style={{ background: `${color}15`, border: `1px solid ${color}30` }}
+                  whileHover={{ rotate: 10, scale: 1.1 }}>
+                  <IconComponent style={{ color: color }} />
+                </motion.div>
+
+                <AnimatedNumber end={item.count} suffix={item.suffix} color={color} start={inView} />
+                <h3 className="text-white font-semibold text-lg mb-1">{item.label}</h3>
+                <p className="text-gray-500 text-xs">{item.sub}</p>
+
+                <div className="absolute bottom-0 left-0 right-0 h-[2px]"
+                  style={{ background: `linear-gradient(90deg,transparent,${color}60,transparent)` }} />
               </motion.div>
-
-              <AnimatedNumber end={item.count} suffix={item.suffix} color={item.color} start={inView} />
-              <h3 className="text-white font-semibold text-lg mb-1">{item.label}</h3>
-              <p className="text-gray-500 text-xs">{item.sub}</p>
-
-              <div className="absolute bottom-0 left-0 right-0 h-[2px]"
-                style={{ background: `linear-gradient(90deg,transparent,${item.color}60,transparent)` }} />
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

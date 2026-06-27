@@ -1,10 +1,9 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaFemale, FaRocket, FaGraduationCap, FaBriefcase, FaHeartbeat, FaCity } from 'react-icons/fa';
+import { FaFemale, FaRocket, FaGraduationCap, FaBriefcase, FaHeartbeat, FaCity, FaUsers, FaHandshake, FaLeaf, FaGlobe } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
-import { visionCards } from '../data/data';
 
-const iconMap = { FaFemale, FaRocket, FaGraduationCap, FaBriefcase, FaHeartbeat, FaCity };
+const iconMap = { FaFemale, FaRocket, FaGraduationCap, FaBriefcase, FaHeartbeat, FaCity, FaUsers, FaHandshake, FaLeaf, FaGlobe };
 
 function Card({ card, index }) {
   const ref = useRef(null);
@@ -57,6 +56,30 @@ function Card({ card, index }) {
 }
 
 export default function Vision() {
+  const [visionData, setVisionData] = useState({
+    sectionSubtitle: 'What We Stand For',
+    sectionTitle: 'A Future Worth',
+    sectionHighlight: 'Fighting For',
+    sectionDesc: 'These are not campaign promises. These are the things we have been working on — and will keep working on.',
+    cards: [
+      { title: 'Women First', desc: 'Every woman deserves a life beyond four walls...', icon: 'FaFemale', color: '#FF6B00' },
+      { title: 'Youth Without Borders', desc: 'Our young people should not have to leave their hometown...', icon: 'FaRocket', color: '#FFD700' },
+      { title: 'No Child Left Behind', desc: 'Rich or poor, every child deserves a classroom...', icon: 'FaGraduationCap', color: '#0F5132' }
+    ]
+  });
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.vision) {
+          setVisionData(prev => ({ ...prev, ...data.data.vision }));
+        }
+      })
+      .catch(err => console.error("Error fetching vision data:", err));
+  }, []);
+
   return (
     <section id="vision" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19 0%,#0d1a10 50%,#0B0F19 100%)' }}>
@@ -69,10 +92,10 @@ export default function Vision() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle="What We Stand For" title="A Future Worth" highlight="Fighting For"
-          desc="These are not campaign promises. These are the things we have been working on — and will keep working on." light />
+        <SectionTitle subtitle={visionData.sectionSubtitle} title={visionData.sectionTitle} highlight={visionData.sectionHighlight}
+          desc={visionData.sectionDesc} light />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visionCards.map((c, i) => <Card key={c.id} card={c} index={i} />)}
+          {(visionData.cards || []).map((c, i) => <Card key={i} card={c} index={i} />)}
         </div>
       </div>
     </section>

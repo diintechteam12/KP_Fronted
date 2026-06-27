@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaExpand } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
-import { galleryImages } from '../data/data';
 
 const cats = ['All', 'Public Meetings', 'Community Events', 'Social Service', 'Education Programs'];
 
 export default function Gallery() {
   const [active, setActive] = useState('All');
   const [lb, setLb] = useState(null);
-  const filtered = active === 'All' ? galleryImages : galleryImages.filter(g => g.category === active);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/gallery', {
+      headers: { 'x-client-slug': 'kp-kasana-portfolio' }
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.success && res.data) {
+          setImages(res.data.filter(img => img.status === 'active'));
+        }
+      })
+      .catch(err => console.error("Error fetching gallery:", err));
+  }, []);
+
+  const filtered = active === 'All' ? images : images.filter(g => g.category === active);
 
   return (
     <section id="gallery" className="py-24 relative overflow-hidden"
@@ -40,13 +54,13 @@ export default function Gallery() {
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           <AnimatePresence>
             {filtered.map((img, i) => (
-              <motion.div key={img.id}
+              <motion.div key={img._id || i}
                 className="break-inside-avoid relative group cursor-pointer rounded-2xl overflow-hidden"
                 style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}
                 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.4, delay: i * 0.06 }}
                 onClick={() => setLb(img)} whileHover={{ y: -4 }}>
-                <img src={img.src} alt={img.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                <img src={img.image || img.src} alt={img.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   style={{ minHeight: i % 3 === 0 ? 280 : 200 }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-5"
                   style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.9) 0%,transparent 60%)' }}>
@@ -72,7 +86,7 @@ export default function Gallery() {
             <motion.div className="relative max-w-4xl w-full rounded-2xl overflow-hidden"
               initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }}
               onClick={e => e.stopPropagation()}>
-              <img src={lb.src} alt={lb.title} className="w-full object-cover" />
+              <img src={lb.image || lb.src} alt={lb.title} className="w-full object-cover" />
               <div className="absolute bottom-0 left-0 right-0 p-6"
                 style={{ background: 'linear-gradient(to top,rgba(0,0,0,0.9),transparent)' }}>
                 <p className="text-white font-bold text-xl" style={{ fontFamily: 'Playfair Display,serif' }}>{lb.title}</p>

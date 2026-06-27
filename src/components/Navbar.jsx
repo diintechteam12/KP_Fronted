@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const links = [
+const defaultLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Vision', href: '#vision' },
@@ -16,10 +16,28 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('Home');
+  const [navLinks, setNavLinks] = useState(defaultLinks);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', fn);
+    
+    // Fetch dynamic navbar links
+    fetch('http://localhost:5000/api/portfolio-website/kp-kasana-portfolio')
+      .then(res => res.json())
+      .then(res => {
+        if (res.success && res.data && res.data.navbar && res.data.navbar.links) {
+          const links = res.data.navbar.links
+            .filter(link => link.enabled)
+            .sort((a, b) => a.order - b.order);
+            
+          if (links.length > 0) {
+            setNavLinks(links);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching navbar links:", err));
+
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
@@ -51,7 +69,7 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-1">
-            {links.map(l => (
+            {navLinks.map(l => (
               <button key={l.label} onClick={() => go(l.href, l.label)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${active === l.label ? 'text-yellow-400' : 'text-white/80 hover:text-white'}`}>
                 {l.label}
@@ -89,7 +107,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
           >
-            {links.map((l, i) => (
+            {navLinks.map((l, i) => (
               <motion.button key={l.label} onClick={() => go(l.href, l.label)}
                 className={`text-2xl font-bold cursor-pointer ${active === l.label ? 'text-yellow-400' : 'text-white'}`}
                 style={{ fontFamily: 'Playfair Display,serif' }}

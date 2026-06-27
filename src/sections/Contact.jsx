@@ -1,34 +1,75 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
-import { personalInfo } from '../data/data';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState({ loading: false, sent: false, error: null });
+  const [contactData, setContactData] = useState({
+    email: 'kpkasanait@gmail.com',
+    phone: '+91 98765 43210',
+    address: 'New Delhi, India',
+    mapLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.669!2d77.2090!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1717862400000!5m2!1sen!2sin',
+    facebook: '#',
+    instagram: '#',
+    youtube: '#',
+    linkedin: '#'
+  });
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.contact) {
+          setContactData(prev => ({ ...prev, ...data.data.contact }));
+        }
+      })
+      .catch(err => console.error("Error fetching contact data:", err));
+  }, []);
 
   const onChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setForm({ name: '', phone: '', email: '', message: '' });
+    setStatus({ loading: true, sent: false, error: null });
+    
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const res = await fetch(`${apiUrl}/contact-messages/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      
+      const data = await res.json();
+      
+      if (data.success) {
+        setStatus({ loading: false, sent: true, error: null });
+        setTimeout(() => setStatus(prev => ({ ...prev, sent: false })), 3000);
+        setForm({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setStatus({ loading: false, sent: false, error: data.message || 'Failed to send message' });
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      setStatus({ loading: false, sent: false, error: 'Network error. Please try again later.' });
+    }
   };
 
   const info = [
-    { Icon: FaPhone, label: 'Phone', value: personalInfo.phone, color: '#0F5132' },
-    { Icon: FaEnvelope, label: 'Email', value: personalInfo.email, color: '#FF6B00' },
-    { Icon: FaMapMarkerAlt, label: 'Address', value: personalInfo.address, color: '#FFD700' },
+    { Icon: FaPhone, label: 'Phone', value: contactData.phone, color: '#0F5132' },
+    { Icon: FaEnvelope, label: 'Email', value: contactData.email, color: '#FF6B00' },
+    { Icon: FaMapMarkerAlt, label: 'Address', value: contactData.address, color: '#FFD700' },
   ];
 
   const socials = [
-    { Icon: FaFacebook, color: '#1877F2', href: personalInfo.facebook },
-    { Icon: FaInstagram, color: '#E4405F', href: personalInfo.instagram },
-    { Icon: FaYoutube, color: '#FF0000', href: personalInfo.youtube },
-    { Icon: FaLinkedin, color: '#0A66C2', href: personalInfo.linkedin },
-  ];
+    { Icon: FaFacebook, color: '#1877F2', href: contactData.facebook },
+    { Icon: FaInstagram, color: '#E4405F', href: contactData.instagram },
+    { Icon: FaYoutube, color: '#FF0000', href: contactData.youtube },
+    { Icon: FaLinkedin, color: '#0A66C2', href: contactData.linkedin },
+  ].filter(s => s.href && s.href !== '#');
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden"
@@ -81,40 +122,47 @@ export default function Contact() {
               <div className="flex items-center gap-2 px-4 py-2 border-b border-white/10"
                 style={{ background: 'rgba(255,255,255,0.04)' }}>
                 <FaMapMarkerAlt className="text-green-400" size={12} />
-                <span className="text-gray-400 text-xs">New Delhi, India</span>
+                <span className="text-gray-400 text-xs">{contactData.address}</span>
                 <span className="ml-auto w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               </div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.669!2d77.2090!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1717862400000!5m2!1sen!2sin"
+                src={contactData.mapLink}
                 width="100%"
                 height="200"
                 style={{ border: 0, display: 'block', filter: 'grayscale(30%) contrast(1.1)' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="K P Singh Kasana Location"
+                title="Location"
               />
             </motion.div>
 
-            <div>
-              <p className="text-gray-500 text-sm mb-3">Follow on Social Media</p>
-              <div className="flex gap-3">
-                {socials.map(({ Icon, color, href }, i) => (
-                  <motion.a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white cursor-pointer"
-                    style={{ background: `${color}20`, border: `1px solid ${color}30` }}
-                    whileHover={{ scale: 1.15, background: color, boxShadow: `0 0 20px ${color}50` }}
-                    whileTap={{ scale: 0.95 }}>
-                    <Icon size={14} />
-                  </motion.a>
-                ))}
+            {socials.length > 0 && (
+              <div>
+                <p className="text-gray-500 text-sm mb-3">Follow on Social Media</p>
+                <div className="flex gap-3">
+                  {socials.map(({ Icon, color, href }, i) => (
+                    <motion.a key={i} href={href} target="_blank" rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-white cursor-pointer"
+                      style={{ background: `${color}20`, border: `1px solid ${color}30` }}
+                      whileHover={{ scale: 1.15, background: color, boxShadow: `0 0 20px ${color}50` }}
+                      whileTap={{ scale: 0.95 }}>
+                      <Icon size={14} />
+                    </motion.a>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
 
           {/* Right - Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <div className="p-8 rounded-3xl backdrop-blur-xl bg-white/[0.04] border border-white/10">
+              {status.error && (
+                <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 text-red-200 rounded-lg text-sm">
+                  {status.error}
+                </div>
+              )}
               <form onSubmit={onSubmit} className="space-y-5">
                 {[
                   { name: 'name', placeholder: 'Your Full Name', type: 'text' },
@@ -128,13 +176,13 @@ export default function Contact() {
                 <textarea name="message" placeholder="Your Message" rows={4} value={form.message} onChange={onChange} required
                   className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm outline-none focus:border-yellow-400/50 transition-all duration-300 resize-none" />
 
-                <motion.button type="submit"
-                  className="w-full py-4 rounded-xl font-semibold text-white flex items-center justify-center gap-2 cursor-pointer"
-                  style={{ background: sent ? 'linear-gradient(135deg,#1a7a4a,#0F5132)' : 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 25px rgba(15,81,50,0.4)' }}
+                <motion.button type="submit" disabled={status.loading}
+                  className="w-full py-4 rounded-xl font-semibold text-white flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  style={{ background: status.sent ? 'linear-gradient(135deg,#1a7a4a,#0F5132)' : 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 25px rgba(15,81,50,0.4)' }}
                   whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(15,81,50,0.6)' }}
                   whileTap={{ scale: 0.98 }}>
                   <FaPaperPlane />
-                  {sent ? 'Message Sent ✓' : 'Send Message'}
+                  {status.loading ? 'Sending...' : status.sent ? 'Message Sent ✓' : 'Send Message'}
                 </motion.button>
               </form>
             </div>

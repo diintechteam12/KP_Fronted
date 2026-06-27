@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaHeart } from 'react-icons/fa';
 
@@ -10,15 +11,54 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const socials = [
-  { Icon: FaFacebook, color: '#1877F2', href: '#' },
-  { Icon: FaInstagram, color: '#E4405F', href: '#' },
-  { Icon: FaYoutube, color: '#FF0000', href: '#' },
-  { Icon: FaLinkedin, color: '#0A66C2', href: '#' },
-];
-
 export default function Footer() {
   const go = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+
+  const [footerData, setFooterData] = useState({
+    logoText: 'KP SINGH KASANA',
+    logoImage: '/Kp image.png',
+    description: 'Since 1988 — a promise that was never broken. Your pain is his pain, your progress is his progress.',
+    servingYear: '1988',
+    copyrightText: '© 2024 K P Singh Kasana. All rights reserved.'
+  });
+
+  const [visionDesc, setVisionDesc] = useState('"A community where no child goes to bed hungry, no woman goes unheard, and no young person is left without a chance."');
+
+  const [socials, setSocials] = useState([
+    { Icon: FaFacebook, color: '#1877F2', href: '#' },
+    { Icon: FaInstagram, color: '#E4405F', href: '#' },
+    { Icon: FaYoutube, color: '#FF0000', href: '#' },
+    { Icon: FaLinkedin, color: '#0A66C2', href: '#' }
+  ]);
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          if (data.data.footer) {
+            setFooterData(prev => ({ ...prev, ...data.data.footer }));
+          }
+          if (data.data.vision && data.data.vision.sectionDesc) {
+            setVisionDesc(data.data.vision.sectionDesc);
+          }
+          if (data.data.contact) {
+            const { facebook, instagram, youtube, linkedin } = data.data.contact;
+            setSocials([
+              { Icon: FaFacebook, color: '#1877F2', href: facebook || '#' },
+              { Icon: FaInstagram, color: '#E4405F', href: instagram || '#' },
+              { Icon: FaYoutube, color: '#FF0000', href: youtube || '#' },
+              { Icon: FaLinkedin, color: '#0A66C2', href: linkedin || '#' }
+            ]);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching footer data:", err));
+  }, []);
+
+  // Filter out empty social links
+  const activeSocials = socials.filter(s => s.href && s.href !== '#');
 
   return (
     <footer className="relative overflow-hidden pt-16 pb-8" style={{ background: '#060A12' }}>
@@ -31,22 +71,19 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-green-700"
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-green-700 bg-white"
                 style={{ boxShadow: '0 0 20px rgba(15,81,50,0.5)' }}>
-                <img src="/Kp image.png" alt="KP" className="w-full h-full object-cover" />
+                <img src={footerData.logoImage} alt="Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="text-white text-xl font-bold" style={{ fontFamily: 'Cinzel,serif' }}>
-                KP Singh{' '}
-                <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Kasana
-                </span>
+              <span className="text-white text-xl font-bold uppercase tracking-wide" style={{ fontFamily: 'Cinzel,serif' }}>
+                {footerData.logoText}
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
-              Since 1988 — a promise that was never broken. Your pain is his pain, your progress is his progress.
+              {footerData.description}
             </p>
-            <div className="flex gap-3">
-              {socials.map(({ Icon, color, href }, i) => (
+            <div className="flex gap-3 flex-wrap">
+              {activeSocials.map(({ Icon, color, href }, i) => (
                 <motion.a key={i} href={href} target="_blank" rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-white cursor-pointer"
                   style={{ background: `${color}20`, border: `1px solid ${color}25` }}
@@ -77,11 +114,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-5 tracking-wider text-sm uppercase" style={{ color: '#FFD700' }}>Vision Statement</h4>
             <p className="text-gray-500 text-sm leading-relaxed italic">
-              "A community where no child goes to bed hungry, no woman goes unheard, and no young person is left without a chance."
+              {visionDesc}
             </p>
-            <div className="mt-6 p-4 rounded-xl border border-green-900/30 bg-green-900/10">
+            <div className="mt-6 p-4 rounded-xl border border-green-900/30 bg-green-900/10 inline-block">
               <p className="text-green-400 text-xs font-semibold tracking-widest uppercase mb-1">Serving Since</p>
-              <p className="text-white font-bold text-2xl" style={{ fontFamily: 'Cinzel,serif' }}>1988</p>
+              <p className="text-white font-bold text-2xl" style={{ fontFamily: 'Cinzel,serif' }}>{footerData.servingYear}</p>
             </div>
           </div>
         </div>
@@ -89,7 +126,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-sm">
-            © 2024 K P Singh Kasana. All rights reserved.
+            {footerData.copyrightText}
           </p>
           <p className="text-gray-600 text-sm flex items-center gap-1">
             Made with <FaHeart className="text-red-500 text-xs" /> for the people

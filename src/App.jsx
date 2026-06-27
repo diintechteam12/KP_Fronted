@@ -35,6 +35,28 @@ function MainSite() {
   }, []);
 
   useEffect(() => {
+    // Record page visit
+    const recordVisit = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        await fetch(`${apiUrl}/analytics/visit`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ clientSlug: 'kp-kasana-portfolio' })
+        });
+      } catch (err) {
+        console.error('Analytics error:', err);
+      }
+    };
+    
+    // Check if we already recorded a visit this session to avoid double counting on re-renders
+    if (!sessionStorage.getItem('visit_recorded')) {
+      recordVisit();
+      sessionStorage.setItem('visit_recorded', 'true');
+    }
+  }, []);
+
+  useEffect(() => {
     if (!loaded) return;
     const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };

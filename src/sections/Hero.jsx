@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaAward, FaStar, FaHandshake, FaChevronDown } from 'react-icons/fa';
-const heroImg = '/Kp image.png';
 
 const titles = ['A Leader Who Listens', 'A Voice for the People', 'Building from the Ground Up', '38 Years, Still Going'];
 
@@ -31,6 +30,26 @@ const badges = [
 ];
 
 export default function Hero() {
+  const [heroData, setHeroData] = useState({
+    titleLine1: 'K P Singh',
+    titleLine2: 'Kasana',
+    subtitle: 'Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.',
+    buttonText: 'Our Vision',
+    buttonLink: '#vision'
+  });
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data && data.data.hero) {
+          setHeroData(data.data.hero);
+        }
+      })
+      .catch(err => console.error("Error fetching hero data:", err));
+  }, []);
+
   const go = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
@@ -38,11 +57,13 @@ export default function Hero() {
       style={{ background: '#0B0F19' }}>
 
       {/* Full screen video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/Hero section2.mp4"
-        autoPlay muted loop playsInline
-      />
+      {heroData.backgroundVideoUrl && (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={heroData.backgroundVideoUrl}
+          autoPlay muted loop playsInline
+        />
+      )}
 
       {/* Dark overlay */}
       <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(11,15,25,0.88) 0%,rgba(13,31,18,0.75) 40%,rgba(11,15,25,0.88) 100%)' }} />
@@ -76,16 +97,16 @@ export default function Hero() {
               style={{ background: 'rgba(15,81,50,0.2)' }}
               initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">Serving the People Since 1988</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">{heroData.tagline || 'SERVING THE PEOPLE SINCE 1988'}</span>
             </motion.div>
 
             <motion.h1 className="text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              K P Singh
+              {heroData.titleLine1}
               <br />
               <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Kasana
+                {heroData.titleLine2}
               </span>
             </motion.h1>
 
@@ -96,25 +117,29 @@ export default function Hero() {
 
             <motion.p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
-              Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.
+              {heroData.subtitle}
             </motion.p>
 
             {/* Buttons */}
             <motion.div className="flex flex-wrap gap-4 mb-10"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}>
-              {[
-                { label: 'Our Vision', id: '#vision', bg: 'linear-gradient(135deg,#0F5132,#1a7a4a)', shadow: 'rgba(15,81,50,0.5)' },
-                { label: 'The Journey', id: '#journey', bg: 'transparent', border: true },
-                { label: 'See the Work', id: '#initiatives', bg: 'linear-gradient(135deg,#FF6B00,#ff8c00)', shadow: 'rgba(255,107,0,0.4)' },
-              ].map(btn => (
-                <motion.button key={btn.label} onClick={() => go(btn.id)}
-                  className="px-7 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase cursor-pointer text-white"
-                  style={{ background: btn.bg, border: btn.border ? '2px solid #FFD700' : 'none', color: btn.border ? '#FFD700' : '#fff', boxShadow: btn.shadow ? `0 0 20px ${btn.shadow}` : 'none' }}
-                  whileHover={{ scale: 1.06, boxShadow: btn.shadow ? `0 0 35px ${btn.shadow}` : 'none' }}
-                  whileTap={{ scale: 0.97 }}>
-                  {btn.label}
-                </motion.button>
-              ))}
+              {(heroData.buttons || []).map((btn, idx) => {
+                const styles = [
+                  { bg: 'linear-gradient(135deg,#0F5132,#1a7a4a)', shadow: 'rgba(15,81,50,0.5)', border: false },
+                  { bg: 'transparent', shadow: null, border: true },
+                  { bg: 'linear-gradient(135deg,#FF6B00,#ff8c00)', shadow: 'rgba(255,107,0,0.4)', border: false }
+                ];
+                const btnStyle = styles[idx % styles.length];
+                return (
+                  <motion.button key={btn.label + idx} onClick={() => go(btn.link)}
+                    className="px-7 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase cursor-pointer text-white"
+                    style={{ background: btnStyle.bg, border: btnStyle.border ? '2px solid #FFD700' : 'none', color: btnStyle.border ? '#FFD700' : '#fff', boxShadow: btnStyle.shadow ? `0 0 20px ${btnStyle.shadow}` : 'none' }}
+                    whileHover={{ scale: 1.06, boxShadow: btnStyle.shadow ? `0 0 35px ${btnStyle.shadow}` : 'none' }}
+                    whileTap={{ scale: 0.97 }}>
+                    {btn.label}
+                  </motion.button>
+                );
+              })}
             </motion.div>
 
             {/* Stats row */}
@@ -150,7 +175,7 @@ export default function Hero() {
                 style={{ background: 'linear-gradient(45deg,#FFD700,#FF6B00,#0F5132,#FFD700)', backgroundSize: '300% 300%', animation: 'borderAnim 4s linear infinite' }}>
                 <div className="rounded-full overflow-hidden w-[280px] h-[280px]"
                   style={{ boxShadow: '0 0 60px rgba(15,81,50,0.4),0 0 100px rgba(255,215,0,0.08)' }}>
-                  <img src={heroImg} alt="K P Singh Kasana" className="w-full h-full object-cover" />
+                  <img src={heroData.profileImageUrl || '/Kp image.png'} alt="Profile" className="w-full h-full object-cover" />
                 </div>
               </div>
             </motion.div>

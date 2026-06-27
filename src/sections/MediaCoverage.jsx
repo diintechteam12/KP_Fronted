@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -8,18 +9,55 @@ import SectionTitle from '../components/SectionTitle';
 import { mediaNews } from '../data/data';
 
 export default function MediaCoverage() {
+  const [events, setEvents] = useState(mediaNews); // start with dummy data
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        const res = await fetch(`${apiUrl}/events`, {
+          headers: {
+            'x-client-slug': 'kp-kasana-portfolio'
+          }
+        });
+        const json = await res.json();
+        
+        if (json.success && json.data) {
+          // Filter active events
+          const activeEvents = json.data.filter(e => e.isActive);
+          
+          // Map to match the frontend card structure
+          const mappedEvents = activeEvents.map(e => ({
+            id: e._id,
+            title: e.title,
+            date: new Date(e.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+            source: e.status.toUpperCase(), // Using status as the tag instead of newspaper source
+            desc: e.description.replace(/<[^>]*>?/gm, ''), // strip HTML tags from RTE
+            image: e.coverImage
+          }));
+
+          // Combine: real events first, then dummy data
+          setEvents([...mappedEvents, ...mediaNews]);
+        }
+      } catch (err) {
+        console.error('Failed to fetch events:', err);
+      }
+    };
+    fetchEvents();
+  }, []);
+
   return (
     <section id="media" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19,#071a0e,#0B0F19)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Press Coverage" title="When the Work" highlight="Makes Headlines"
+        <SectionTitle subtitle="Our Events" title="Our Events &" highlight="Highlights"
           desc="Real work gets noticed. Here is what the press has been saying about the initiatives on the ground." light />
 
         <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
           breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           pagination={{ clickable: true }} loop className="pb-12">
-          {mediaNews.map((news, i) => (
+          {events.map((news, i) => (
             <SwiperSlide key={news.id}>
               <motion.div className="rounded-2xl overflow-hidden border border-white/5 backdrop-blur-xl"
                 style={{ background: 'rgba(255,255,255,0.03)' }}
