@@ -11,7 +11,8 @@ export default function Gallery() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/gallery', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/gallery`, {
       headers: { 'x-client-slug': 'kp-kasana-portfolio' }
     })
       .then(res => res.json())

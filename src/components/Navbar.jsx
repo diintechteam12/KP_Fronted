@@ -23,7 +23,8 @@ export default function Navbar() {
     window.addEventListener('scroll', fn);
     
     // Fetch dynamic navbar links
-    fetch('http://localhost:5000/api/portfolio-website/kp-kasana-portfolio')
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
       .then(res => res.json())
       .then(res => {
         if (res.success && res.data && res.data.navbar && res.data.navbar.links) {
