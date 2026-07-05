@@ -85,7 +85,7 @@ export default function About() {
           <motion.div className="relative"
             initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
             <div className="relative rounded-3xl overflow-hidden" style={{ boxShadow: '0 30px 80px rgba(15,81,50,0.15)' }}>
-              <img src={aboutData.imageUrl} alt={aboutData.sectionTitle} className="w-full object-cover" style={{ height: 520 }} />
+              <img src={aboutData.imageUrl || '/Kp image.png'} alt={aboutData.sectionTitle} className="w-full object-cover" style={{ height: 520 }} />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.7) 0%,transparent 60%)' }} />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="rounded-2xl px-5 py-3 backdrop-blur-xl bg-white/10 border border-white/10">

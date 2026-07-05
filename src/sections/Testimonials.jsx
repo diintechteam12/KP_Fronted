@@ -46,7 +46,7 @@ export default function Testimonials() {
           <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
             breakpoints={{ 768: { slidesPerView: 2 }, 1280: { slidesPerView: 3 } }}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
-            pagination={{ clickable: true }} loop className="pb-12">
+            pagination={{ clickable: true }} loop={visibleCards.length >= 4} className="pb-12">
             {visibleCards.map((t, i) => (
               <SwiperSlide key={i}>
                 <motion.div className="p-6 rounded-2xl relative overflow-hidden h-full"

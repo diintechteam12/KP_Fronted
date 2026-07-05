@@ -56,7 +56,7 @@ export default function MediaCoverage() {
         <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
           breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          pagination={{ clickable: true }} loop className="pb-12">
+          pagination={{ clickable: true }} loop={events.length >= 4} className="pb-12">
           {events.map((news, i) => (
             <SwiperSlide key={news.id}>
               <motion.div className="rounded-2xl overflow-hidden border border-white/5 backdrop-blur-xl"
@@ -64,7 +64,7 @@ export default function MediaCoverage() {
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -5, borderColor: 'rgba(255,215,0,0.2)' }}>
                 <div className="relative overflow-hidden" style={{ height: 200 }}>
-                  <img src={news.image} alt={news.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
+                  <img src={news.image || undefined} alt={news.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.8),transparent)' }} />
                   <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-green-900/90 text-white">
                     <FaNewspaper size={10} />{news.source}

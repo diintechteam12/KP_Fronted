@@ -25,7 +25,7 @@ export default function SocialMedia() {
     // Fetch both portfolio settings and live social stats
     Promise.all([
       fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`).then(res => res.json()),
-      fetch(`${apiUrl}/social-media/dashboard`, { headers: { 'x-client-slug': 'kp-kasana-portfolio' } }).then(res => res.json())
+      fetch(`${apiUrl}/social/dashboard`, { headers: { 'x-client-slug': 'kp-kasana-portfolio' } }).then(res => res.json())
     ]).then(([portfolioRes, statsRes]) => {
       let newData = { ...data };
       
