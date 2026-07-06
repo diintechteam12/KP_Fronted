@@ -81,14 +81,14 @@ export default function BecomeMember() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-[420px] bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl p-8 flex flex-col items-center"
+              className="relative w-full max-w-[420px] bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-2xl p-6 md:p-8 flex flex-col items-center mx-4"
             >
               {/* Close Button */}
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 rounded-full transition-colors z-20"
+                className="absolute top-3 right-3 md:top-4 md:right-4 w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 rounded-full transition-colors z-20 active:scale-95"
               >
-                <FaTimes />
+                <FaTimes size={16} />
               </button>
 
               {/* Logo Circle */}

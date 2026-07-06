@@ -125,10 +125,10 @@ export default function Footer() {
 
         {/* Large Text */}
         <div className="w-full text-center mb-12">
-          <h1 className="text-white font-black leading-tight text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
+          <h1 className="text-white font-black leading-tight text-4xl sm:text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
             हर दिल का ठिकाना
           </h1>
-          <h1 className="text-white font-black leading-tight text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
+          <h1 className="text-white font-black leading-tight text-4xl sm:text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
             के. पी. कसाना
           </h1>
         </div>

@@ -142,14 +142,14 @@ export default function Vision() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-[600px] bg-[#0B0F19] border border-white/10 rounded-2xl shadow-2xl flex flex-col my-auto"
+              className="relative w-full max-w-[600px] bg-[#0B0F19] border border-white/10 rounded-2xl shadow-2xl flex flex-col my-auto mx-4"
             >
               {/* Close Button */}
               <button 
                 onClick={() => setSelectedInitiative(null)}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white/10 hover:bg-[#FFD700] hover:text-black text-white rounded-full transition-colors z-20 backdrop-blur-sm"
+                className="absolute top-3 right-3 md:top-4 md:right-4 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-[#FFD700] hover:text-black text-white rounded-full transition-colors z-20 backdrop-blur-sm active:scale-95"
               >
-                <FaTimes />
+                <FaTimes size={16} />
               </button>
               {/* Text Content (Scrollable) */}
               <div 
