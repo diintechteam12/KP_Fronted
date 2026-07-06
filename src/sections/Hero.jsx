@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaAward, FaStar, FaHandshake, FaChevronDown } from 'react-icons/fa';
 
-const titles = ['A Leader Who Listens', 'A Voice for the People', 'Building from the Ground Up', '38 Years, Still Going'];
+const titles = ['हर दिल का ठिकाना', 'विश्वास का ख़ज़ाना', 'सेवा का पैमाना', 'जन-जन का याराना', 'भविष्य को सजाना'];
 
 function TypingText({ words }) {
   const [idx, setIdx] = useState(0);
@@ -100,20 +100,16 @@ export default function Hero() {
               <span className="text-xs font-semibold tracking-widest uppercase text-green-400">{heroData.tagline || 'SERVING THE PEOPLE SINCE 1988'}</span>
             </motion.div>
 
-            <motion.h1 className="text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4"
+            <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-4 md:gap-6"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              {heroData.titleLine1}
-              <br />
-              <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                {heroData.titleLine2}
+              <span className="text-4xl md:text-5xl xl:text-6xl min-h-[1.5em] flex items-center">
+                <TypingText words={titles} />
+              </span>
+              <span className="text-5xl md:text-6xl xl:text-7xl leading-snug" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                के. पी. कसाना
               </span>
             </motion.h1>
-
-            <motion.div className="text-xl md:text-2xl font-semibold text-orange-500 mb-6 h-8"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}>
-              <TypingText words={titles} />
-            </motion.div>
 
             <motion.p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
