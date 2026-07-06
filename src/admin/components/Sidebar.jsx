@@ -37,7 +37,7 @@ export default function Sidebar({ open, setOpen }) {
             <img src="/Kp image.png" alt="KP" className="w-full h-full object-cover" />
           </div>
           <div className="min-w-0">
-            <p className="text-white text-sm font-bold leading-tight truncate">KP Singh Kasana</p>
+            <p className="text-white text-sm font-bold leading-tight truncate">K. P. Kasana</p>
             <p className="text-green-400 text-xs">Admin Dashboard</p>
           </div>
         </div>

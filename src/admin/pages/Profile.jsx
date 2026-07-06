@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { FaEdit, FaSave, FaTimes, FaCheckCircle } from 'react-icons/fa';
 
 const initialData = {
-  name: 'K P Singh Kasana', title: 'Visionary Leader & Social Reformer',
+  name: 'K. P. Kasana', title: 'Visionary Leader & Social Reformer',
   phone: '+91 98765 43210', email: 'contact@kpsinghkasana.in', address: 'New Delhi, India',
   facebook: 'https://facebook.com/kpsinghkasana', instagram: 'https://instagram.com/kpsinghkasana',
   youtube: 'https://youtube.com/kpsinghkasana', linkedin: 'https://linkedin.com/in/kpsinghkasana',
-  bio: 'K P Singh Kasana is a dedicated political leader and social reformer who has spent over 38 years serving communities with unwavering commitment.',
+  bio: 'K. P. Kasana is a dedicated political leader and social reformer who has spent over 38 years serving communities with unwavering commitment.',
 };
 
 export default function Profile() {

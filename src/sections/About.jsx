@@ -28,11 +28,11 @@ function AnimatedNumber({ end, suffix, color, start, disableLive }) {
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * actualEnd);
-      
+
       if (ref.current) {
         ref.current.textContent = current.toLocaleString('en-IN') + actualSuffix;
       }
-      
+
       if (progress < 1) {
         frameRef.current = requestAnimationFrame(tick);
       } else if (!disableLive) {
@@ -50,9 +50,9 @@ function AnimatedNumber({ end, suffix, color, start, disableLive }) {
         timeoutRef.current = setTimeout(liveIncrement, Math.random() * 3000 + 3000);
       }
     };
-    
+
     frameRef.current = requestAnimationFrame(tick);
-    
+
     return () => {
       isCancelled = true;
       cancelAnimationFrame(frameRef.current);
@@ -72,12 +72,12 @@ export default function About() {
 
   const [aboutData, setAboutData] = useState({
     sectionSubtitle: 'The Man Behind the Work',
-    sectionTitle: 'K P Singh',
+    sectionTitle: 'K. P.',
     sectionHighlight: 'Kasana',
     sectionDesc: '38 years on the ground — no shortcuts. A story of a man who stayed when others left.',
     imageUrl: '/Kp image.png',
     yearsOfService: '38',
-    paragraph1: "K P Singh Kasana is not someone you only see at election time. For 38 years, he has been in the streets, in the villages, at people's doorsteps. He did not wait for a position to start helping — he started helping and the recognition followed.",
+    paragraph1: "K. P. Kasana is not someone you only see at election time. For 38 years, he has been in the streets, in the villages, at people's doorsteps. He did not wait for a position to start helping — he started helping and the recognition followed.",
     paragraph2: "No big office in the beginning. Just a promise — that as long as one child goes to bed hungry, one woman has no voice, one young person is jobless, there will be no rest. Today 34,000+ people walk this journey with him.",
     qualities: [
       'A Leader Who Actually Shows Up', 'Voice for Women in the Community',

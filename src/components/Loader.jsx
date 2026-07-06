@@ -56,7 +56,7 @@ export default function Loader({ onComplete }) {
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: 'backOut' }}
             >
-              <img src="/Kp image.png" alt="KP Singh Kasana" className="w-full h-full object-cover" />
+              <img src="/Kp image.png" alt="K. P. Kasana" className="w-full h-full object-cover" />
               <motion.div
                 className="absolute inset-0 rounded-full bg-yellow-400/10"
                 animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }}
@@ -73,7 +73,7 @@ export default function Loader({ onComplete }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            K P Singh{' '}
+            K. P.{' '}
             <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Kasana
             </span>

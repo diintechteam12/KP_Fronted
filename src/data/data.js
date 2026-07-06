@@ -1,5 +1,5 @@
 export const personalInfo = {
-  name: "K P Singh Kasana",
+  name: "K. P. Kasana",
   title: ["A Leader Who Listens", "A Voice for the People", "Building from the Ground Up", "38 Years, Still Going Strong"],
   tagline: "Since 1988, I have stood beside the people — not above them. Every program, every initiative, every step has been for the community I call home.",
   phone: "+91 98765 43210",
@@ -157,7 +157,23 @@ export const initiatives = [
     id: 1,
     title: "Free Books & Uniforms",
     category: "Education",
-    desc: "No child should miss school because a family cannot afford books or a uniform. We make sure that never happens.",
+    desc: `No child should miss school because a family cannot afford books or a uniform. We make sure that never happens.
+
+THE IMPORTANCE OF EARLY EDUCATION
+Education is the most powerful tool we can use to change the world, starting right here in our community. Unfortunately, for many underprivileged families, the cost of basic school supplies like textbooks, notebooks, and uniforms becomes a significant barrier to sending their children to school. This often leads to high dropout rates and a cycle of poverty. Our initiative focuses on completely eliminating this barrier.
+
+PROVIDING EQUAL OPPORTUNITIES
+When a child wears a proper uniform and has the necessary books, they walk into the classroom with confidence and a sense of belonging. They don't feel inferior to their peers. We organize annual distribution drives right before the academic year begins, ensuring thousands of students have everything they need on day one.
+
+A COMMUNITY COLLABORATION
+This is not just a charity program; it is a community-driven movement. We collaborate with local schools, teachers, and volunteers to identify the families who need the most support. We also encourage families to donate older books in good condition so they can be reused, fostering a culture of sharing and sustainability.
+
+MEASURABLE SUCCESS
+- Over 25,000 students have received full sets of textbooks and uniforms.
+- Dropout rates in our target villages have decreased by over 40% in the past five years.
+- Increased female student enrollment, as families now feel financially supported to educate their daughters.
+
+By taking care of the basic necessities, we allow the students and their parents to focus on what truly matters: learning, growing, and building a foundation for a brighter, self-sufficient future.`,
     image: "/Initiatives img1.png",
     color: "#0F5132",
   },
@@ -202,7 +218,24 @@ The success of this program relies heavily on the community. Local businesses pa
     id: 3,
     title: "Women Forward",
     category: "Women",
-    desc: "Microfinance, business training, and community support. Not charity — capability. Because capable women build capable families.",
+    desc: `Microfinance, business training, and community support. Not charity — capability. Because capable women build capable families.
+
+EMPOWERING THE BACKBONE OF SOCIETY
+Women are the foundation of any strong community. When a woman is financially independent, she invests her income back into her family’s health, education, and well-being. However, rural and semi-urban women often lack access to capital, training, and the platforms needed to start their own ventures. The 'Women Forward' initiative is designed to bridge this exact gap.
+
+MICROFINANCE & SELF-HELP GROUPS
+We have established hundreds of Self-Help Groups (SHGs) that allow women to pool their resources, save securely, and access micro-loans at negligible interest rates. These loans are used to start small businesses like tailoring shops, dairy farming, organic food packaging, and local handicrafts. By bypassing traditional banks that require heavy collateral, we empower women to take charge of their financial destinies.
+
+SKILL BUILDING & MENTORSHIP
+Capital alone isn't enough; knowledge is equally important. We host regular workshops teaching basic financial literacy, marketing skills, and product quality control. Successful female entrepreneurs from the city frequently visit to mentor our local women, sharing real-world advice and strategies for scaling their small businesses.
+
+A RIPPLE EFFECT OF CHANGE
+The impact of this program goes far beyond money. We see a profound shift in confidence. Women who once hesitated to speak up in community meetings are now leading them. 
+- Over 5,000 women are currently active members of our SHGs.
+- More than 1,200 micro-businesses have been successfully launched and sustained.
+- We have established local marketplaces where women can sell their goods directly to consumers without middlemen.
+
+We believe that true empowerment is not about giving a woman a livelihood; it's about giving her the tools to build her own.`,
     image: "/Initiatives img3.png",
     color: "#FFD700",
   },
@@ -210,7 +243,23 @@ The success of this program relies heavily on the community. Local businesses pa
     id: 4,
     title: "Free Medical Camps",
     category: "Healthcare",
-    desc: "Doctor, medicine, checkup — all free. Because healthcare should never be a luxury for anyone in our community.",
+    desc: `Doctor, medicine, checkup — all free. Because healthcare should never be a luxury for anyone in our community.
+
+BRINGING HEALTHCARE TO THE DOORSTEP
+In many rural and underserved areas, specialized medical care is miles away, and the cost of private consultations and medicines can push a family into debt. The 'Free Medical Camps' initiative was started with a core belief: access to quality healthcare is a fundamental human right, not a privilege reserved for the wealthy.
+
+COMPREHENSIVE CHECKUPS & FREE MEDICINES
+Every month, we organize large-scale medical camps in different villages. We partner with specialized doctors—including general physicians, pediatricians, gynecologists, and eye specialists—who volunteer their time. Patients receive thorough health checkups, blood sugar and blood pressure monitoring, and completely free prescribed medicines for the full course of their treatment. 
+
+FOCUS ON PREVENTIVE CARE
+Beyond treating immediate illnesses, our camps emphasize preventive healthcare. We conduct awareness sessions on hygiene, nutrition, maternal health, and sanitation. For elderly patients, we provide continuous monitoring for chronic conditions like diabetes and hypertension, ensuring they don't have to travel to the city for routine follow-ups.
+
+IMPACT & FUTURE GOALS
+- Over 250 successful medical camps organized to date.
+- Free eyeglasses distributed to more than 8,000 elderly citizens, dramatically improving their quality of life.
+- Specialized women's health camps have helped detect and treat numerous severe conditions at an early stage.
+
+Our upcoming goal is to establish a permanent, 24/7 charitable clinic that can handle emergencies and provide sustained care for the most vulnerable members of our society.`,
     image: "/Initiatives img4.png",
     color: "#0F5132",
   },
@@ -218,7 +267,24 @@ The success of this program relies heavily on the community. Local businesses pa
     id: 5,
     title: "Roads & Clean Water",
     category: "Development",
-    desc: "Paved roads, drinking water pipelines, proper sanitation. Basic things that every human being simply deserves.",
+    desc: `Paved roads, drinking water pipelines, proper sanitation. Basic things that every human being simply deserves.
+
+INFRASTRUCTURE FOR A DIGNIFIED LIFE
+A community cannot progress if its basic infrastructure is broken. Muddy roads that become impassable during monsoons, and a lack of clean, accessible drinking water are harsh realities that hold back economic and social development. This initiative focuses on the physical development of our villages to ensure a safe, hygienic, and dignified living environment for all.
+
+CLEAN DRINKING WATER PROJECTS
+Waterborne diseases are entirely preventable, yet they account for a massive percentage of illnesses in rural areas. We have taken on the mission to install deep borewells, overhead water tanks, and RO filtration plants in central village locations. We ensure that every household has access to safe, clean drinking water year-round, significantly reducing medical expenses for local families.
+
+PAVED ROADS & SANITATION
+Connectivity brings opportunity. We have funded and facilitated the construction of paved roads connecting remote villages to the main highways. This allows farmers to transport their produce easily, children to reach school safely, and ambulances to access villages during emergencies. 
+Additionally, we focus on sanitation by building public toilets and assisting families in constructing private washrooms, aligning with the Swachh Bharat mission.
+
+KEY ACHIEVEMENTS
+- Over 150 clean water projects (RO plants and borewells) successfully completed.
+- Dozens of kilometers of internal village roads paved and maintained.
+- Significant reduction in waterborne diseases in our adopted villages.
+
+We continue to work closely with local authorities and community leaders to identify areas that need urgent infrastructural upgrades, ensuring our development is sustainable and long-lasting.`,
     image: "/Initiatives img5.png",
     color: "#FF6B00",
     objPos: "top center",
@@ -237,7 +303,7 @@ The success of this program relies heavily on the community. Local businesses pa
 export const mediaNews = [
   {
     id: 1,
-    title: "KP Singh Kasana Creates Jobs for 10,000 Young People",
+    title: "K. P. Kasana Creates Jobs for 10,000 Young People",
     date: "December 15, 2024",
     source: "Dainik Jagran",
     desc: "Skill program directly connected over ten thousand youth with training and employment opportunities across the region.",
@@ -314,5 +380,5 @@ export const socialStats = [
   { platform: "Facebook", handle: "@kpsinghkasana", followers: "34K+", color: "#1877F2", icon: "FaFacebook" },
   { platform: "Instagram", handle: "@kpkasanait", followers: "12K+", color: "#E4405F", icon: "FaInstagram" },
   { platform: "YouTube", handle: "@KPKasana-o8o", followers: "8K+", color: "#FF0000", icon: "FaYoutube" },
-  { platform: "LinkedIn", handle: "K P Singh Kasana", followers: "5K+", color: "#0A66C2", icon: "FaLinkedin" },
+  { platform: "LinkedIn", handle: "K. P. Kasana", followers: "5K+", color: "#0A66C2", icon: "FaLinkedin" },
 ];

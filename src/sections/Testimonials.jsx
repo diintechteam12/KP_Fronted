@@ -48,7 +48,7 @@ export default function Testimonials() {
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             pagination={{ clickable: true }} loop={visibleCards.length >= 4} className="pb-12">
             {visibleCards.map((t, i) => (
-              <SwiperSlide key={i} className="h-auto">
+              <SwiperSlide key={i}>
                 <motion.div className="p-6 rounded-2xl relative overflow-hidden h-full flex flex-col"
                   style={{ background: 'linear-gradient(135deg,rgba(15,81,50,0.03),rgba(255,215,0,0.03))', border: '1px solid rgba(15,81,50,0.1)', boxShadow: '0 8px 30px rgba(15,81,50,0.05)' }}
                   initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}

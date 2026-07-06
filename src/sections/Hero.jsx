@@ -31,7 +31,7 @@ const badges = [
 
 export default function Hero() {
   const [heroData, setHeroData] = useState({
-    titleLine1: 'K P Singh',
+    titleLine1: 'K. P.',
     titleLine2: 'Kasana',
     subtitle: 'Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.',
     buttonText: 'Our Vision',
@@ -100,20 +100,20 @@ export default function Hero() {
               <span className="text-xs font-semibold tracking-widest uppercase text-green-400">{heroData.tagline || 'SERVING THE PEOPLE SINCE 1988'}</span>
             </motion.div>
 
-            <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-4 md:gap-6"
+            <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-0"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <span className="text-4xl md:text-5xl xl:text-6xl min-h-[1.5em] flex items-center">
+              <span className="text-4xl md:text-5xl xl:text-6xl min-h-[1.4em] z-10">
                 <TypingText words={titles} />
               </span>
-              <span className="text-5xl md:text-6xl xl:text-7xl leading-snug" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span className="text-5xl md:text-6xl xl:text-7xl leading-snug -mt-2 md:-mt-4 z-0 relative" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 के. पी. कसाना
               </span>
             </motion.h1>
 
             <motion.p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
-              {heroData.subtitle}
+              सेवा से विकास, विकास से विश्वास
             </motion.p>
 
             {/* Buttons */}

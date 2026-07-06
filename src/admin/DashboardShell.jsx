@@ -52,7 +52,7 @@ export default function DashboardShell({ navItems, children }) {
           </div>
           {expanded && (
             <div className="min-w-0 overflow-hidden">
-              <p className="text-white text-sm font-bold leading-tight truncate whitespace-nowrap">KP Singh Kasana</p>
+              <p className="text-white text-sm font-bold leading-tight truncate whitespace-nowrap">K. P. Kasana</p>
               <p className="text-green-400 text-xs whitespace-nowrap">Admin Dashboard</p>
             </div>
           )}

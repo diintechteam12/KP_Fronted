@@ -21,7 +21,7 @@ export default function Navbar() {
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', fn);
-    
+
     // Fetch dynamic navbar links
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
     fetch(`${apiUrl}/portfolio-website/kp-kasana-portfolio`)
@@ -31,7 +31,7 @@ export default function Navbar() {
           const links = res.data.navbar.links
             .filter(link => link.enabled && link.label !== 'Achievements' && link.href !== '#achievements')
             .sort((a, b) => a.order - b.order);
-            
+
           if (links.length > 0) {
             setNavLinks(links);
           }
@@ -64,7 +64,7 @@ export default function Navbar() {
               <img src="/Kp image.png" alt="KP" className="w-full h-full object-cover" />
             </div>
             <span className="text-white text-lg font-bold hidden sm:block" style={{ fontFamily: 'Cinzel,serif' }}>
-              KP Singh <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Kasana</span>
+              K. P. <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Kasana</span>
             </span>
           </button>
 

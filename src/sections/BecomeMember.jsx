@@ -81,34 +81,34 @@ export default function BecomeMember() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-[420px] bg-[#0B0F19] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl p-8 flex flex-col items-center"
+              className="relative w-full max-w-[420px] bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl p-8 flex flex-col items-center"
             >
               {/* Close Button */}
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white/10 hover:bg-[#eab308] hover:text-black text-white rounded-full transition-colors z-20"
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 rounded-full transition-colors z-20"
               >
                 <FaTimes />
               </button>
 
               {/* Logo Circle */}
-              <div className="w-20 h-20 rounded-full bg-[#eab308]/10 border-2 border-[#eab308]/30 flex items-center justify-center mb-4 shadow-sm">
-                <span className="text-[#eab308] font-bold text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>KPK</span>
+              <div className="w-24 h-24 rounded-full border-4 border-green-100 flex items-center justify-center mb-4 shadow-sm overflow-hidden bg-gray-100">
+                <img src="/Kp%20image.png" alt="K.P. Kasana" className="w-full h-full object-cover" />
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-white mb-8 text-center w-full" style={{ fontFamily: 'sans-serif' }}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center w-full" style={{ fontFamily: 'sans-serif' }}>
                 Join Our Movement
               </h3>
 
               {/* Call Card */}
-              <div className="w-full bg-[#eab308] rounded-2xl p-4 flex items-center justify-between mb-8 shadow-sm">
-                <div className="w-12 h-12 bg-[#451a03] rounded-xl flex items-center justify-center text-[#eab308]">
-                  <FaArrowRight size={20} />
+              <div className="w-full bg-[#0F5132] rounded-2xl p-4 flex items-center justify-between mb-8 shadow-sm">
+                <div className="text-left ml-2">
+                  <div className="text-[10px] uppercase font-bold text-green-200 tracking-wider mb-1">To Join Call</div>
+                  <div className="text-2xl font-extrabold text-white tracking-tight">+91 98765 43210</div>
                 </div>
-                <div className="text-right">
-                  <div className="text-[10px] uppercase font-bold text-[#78350f] tracking-wider mb-1">To Join Call</div>
-                  <div className="text-2xl font-extrabold text-[#451a03] tracking-tight">00000 00000</div>
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white shrink-0">
+                  <FaPhoneAlt size={18} />
                 </div>
               </div>
 
@@ -116,29 +116,29 @@ export default function BecomeMember() {
               <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
                 
                 {/* Name Input */}
-                <div className="w-full flex items-center bg-white/5 rounded-xl border border-white/10 px-4 py-3 shadow-sm focus-within:border-[#eab308] focus-within:ring-1 focus-within:ring-[#eab308] transition-all">
+                <div className="w-full flex items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3 shadow-sm focus-within:border-green-600 focus-within:ring-1 focus-within:ring-green-600 transition-all">
                   <FaUser className="text-gray-400 mr-3 shrink-0" />
                   <input 
                     type="text" 
                     required
                     placeholder="Full Name" 
-                    className="w-full bg-transparent outline-none text-white font-medium placeholder:text-gray-500"
+                    className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-500"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                   />
                 </div>
 
                 {/* Phone Input */}
-                <div className="w-full flex items-center bg-white/5 rounded-xl border border-white/10 px-4 py-3 shadow-sm focus-within:border-[#eab308] focus-within:ring-1 focus-within:ring-[#eab308] transition-all">
-                  <div className="flex items-center gap-2 pr-3 border-r border-white/10 shrink-0">
+                <div className="w-full flex items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3 shadow-sm focus-within:border-green-600 focus-within:ring-1 focus-within:ring-green-600 transition-all">
+                  <div className="flex items-center gap-2 pr-3 border-r border-gray-200 shrink-0">
                     <img src="https://flagcdn.com/w20/in.png" alt="IN" className="w-5 rounded-[2px]" />
-                    <span className="text-gray-400 font-bold text-sm">+91</span>
+                    <span className="text-gray-600 font-bold text-sm">+91</span>
                   </div>
                   <input 
                     type="tel" 
                     required
                     placeholder="Mobile Number" 
-                    className="w-full bg-transparent outline-none text-white font-medium placeholder:text-gray-500 pl-3"
+                    className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-500 pl-3"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   />
@@ -147,7 +147,8 @@ export default function BecomeMember() {
                 {/* Submit Button */}
                 <button 
                   type="submit"
-                  className="w-full bg-[#facc15] text-[#451a03] font-bold text-lg py-4 rounded-2xl mt-4 hover:bg-[#eab308] hover:shadow-lg transition-all active:scale-[0.98]"
+                  className="w-full text-white font-bold text-lg py-4 rounded-2xl mt-4 hover:shadow-lg transition-all active:scale-[0.98]"
+                  style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)' }}
                 >
                   Continue
                 </button>

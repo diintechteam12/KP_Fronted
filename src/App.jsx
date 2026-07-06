@@ -20,7 +20,7 @@ import Gallery from './sections/Gallery';
 import Videos from './sections/Videos';
 import MediaCoverage from './sections/MediaCoverage';
 import Testimonials from './sections/Testimonials';
-import SocialMedia from './sections/SocialMedia';
+
 import BecomeMember from './sections/BecomeMember';
 import Contact from './sections/Contact';
 
@@ -76,14 +76,14 @@ function MainSite() {
           <main>
             <Hero />
             <About />
-            <Vision />
             <Journey />
+            <Vision />
             <SocialImpact />
             <Gallery />
             <Videos />
             <MediaCoverage />
             <Testimonials />
-            <SocialMedia />
+
             <BecomeMember />
             <Contact />
           </main>

@@ -81,10 +81,10 @@ export default function Journey() {
                   {/* Card */}
                   <motion.div
                     className={`w-full md:w-[45%] ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}
-                    initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                   >
                     <motion.div
                       className="bg-white rounded-2xl overflow-hidden border border-gray-100 group"

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaNewspaper, FaLink, FaCalendar, FaPlus, FaTrash } from 'react-icons/fa';
 
 const initialMentions = [
-  { id: 1, title: 'KP Singh Kasana Creates Jobs for 10,000 Young People', source: 'Dainik Jagran', date: 'Dec 15, 2024', url: '#', type: 'News' },
+  { id: 1, title: 'K. P. Kasana Creates Jobs for 10,000 Young People', source: 'Dainik Jagran', date: 'Dec 15, 2024', url: '#', type: 'News' },
   { id: 2, title: 'National Honor for 38 Years of Community Service', source: 'Amar Ujala', date: 'Nov 28, 2024', url: '#', type: 'Award' },
   { id: 3, title: '10,000 Women Achieve Financial Independence', source: 'Navbharat Times', date: 'Oct 10, 2024', url: '#', type: 'News' },
   { id: 4, title: 'Vision 2030 — A Real Plan, Not a Manifesto', source: 'Hindustan Times', date: 'Sep 5, 2024', url: '#', type: 'Feature' },

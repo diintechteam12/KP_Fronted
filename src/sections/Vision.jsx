@@ -13,7 +13,7 @@ export default function Vision() {
     sectionSubtitle: 'What We Stand For',
     sectionTitle: 'A Future Worth',
     sectionHighlight: 'Fighting For',
-    sectionDesc: 'These are not campaign promises. These are the things we have been working on — and will keep working on.',
+    sectionDesc: 'These are the things we have been working on — and will keep working on.',
   });
   const [selectedInitiative, setSelectedInitiative] = useState(null);
 
@@ -94,17 +94,13 @@ export default function Vision() {
                     style={{ objectPosition: item.objPos || 'center center' }} 
                   />
                   
-                  {/* Persistent Subtle Gradient for Button */}
-                  <div className="absolute bottom-0 left-0 right-0 h-24 transition-opacity duration-300 opacity-80 group-hover:opacity-0"
-                    style={{ background: `linear-gradient(to top, #0B0F19 0%, transparent 100%)` }} />
-                    
-                  {/* Dark Gradient Overlay (Hover) */}
-                  <div className="absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-95"
-                    style={{ background: `linear-gradient(to top, #0B0F19 0%, rgba(11,15,25,0.8) 50%, transparent 100%)` }} />
+                  {/* Persistent Dark Gradient Overlay for Text Readability */}
+                  <div className="absolute inset-0 transition-all duration-300 opacity-90"
+                    style={{ background: `linear-gradient(to top, #0B0F19 0%, rgba(11,15,25,0.7) 60%, transparent 100%)` }} />
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 pb-6">
-                    <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="transition-all duration-500">
                       <h3 className="text-white font-bold text-xl mb-2 leading-snug" style={{ fontFamily: 'Playfair Display,serif' }}>
                         {item.title}
                       </h3>
@@ -146,8 +142,7 @@ export default function Vision() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-[500px] bg-[#0B0F19] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
-              style={{ maxHeight: '85vh', minHeight: '400px' }}
+              className="relative w-full max-w-[600px] bg-[#0B0F19] border border-white/10 rounded-2xl shadow-2xl flex flex-col my-auto"
             >
               {/* Close Button */}
               <button 
@@ -157,7 +152,10 @@ export default function Vision() {
                 <FaTimes />
               </button>
               {/* Text Content (Scrollable) */}
-              <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar flex-1">
+              <div 
+                className="p-6 md:p-8 overflow-y-auto custom-scrollbar overscroll-contain rounded-2xl" 
+                style={{ maxHeight: 'calc(100vh - 4rem)' }}
+              >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-8 h-[1px] bg-[#FFD700]" />
                   <span className="text-[#FFD700] text-xs font-bold uppercase tracking-wider">Detail Overview</span>

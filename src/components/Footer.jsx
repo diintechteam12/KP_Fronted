@@ -15,11 +15,11 @@ export default function Footer() {
   const go = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
 
   const [footerData, setFooterData] = useState({
-    logoText: 'KP SINGH KASANA',
+    logoText: 'K. P. Kasana',
     logoImage: '/Kp image.png',
     description: 'Since 1988 — a promise that was never broken. Your pain is his pain, your progress is his progress.',
     servingYear: '1988',
-    copyrightText: '© 2024 K P Singh Kasana. All rights reserved.'
+    copyrightText: '© 2024 K. P. Kasana. All rights reserved.'
   });
 
   const [visionDesc, setVisionDesc] = useState('"A community where no child goes to bed hungry, no woman goes unheard, and no young person is left without a chance."');
@@ -61,7 +61,7 @@ export default function Footer() {
   const activeSocials = socials.filter(s => s.href && s.href !== '#');
 
   return (
-    <footer className="relative overflow-hidden pt-16 pb-8" style={{ background: '#060A12' }}>
+    <footer className="relative overflow-hidden pt-16 pb-8" style={{ backgroundColor: '#0b140f' }}>
       {/* Divider top */}
       <div className="absolute top-0 left-0 right-0 h-[2px]"
         style={{ background: 'linear-gradient(90deg,transparent,#FFD700,#0F5132,#FF6B00,transparent)' }} />
@@ -79,29 +79,29 @@ export default function Footer() {
                 {footerData.logoText}
               </span>
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed mb-5">
-              {footerData.description}
-            </p>
-            <div className="flex gap-3 flex-wrap">
-              {activeSocials.map(({ Icon, color, href }, i) => (
-                <motion.a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-white cursor-pointer"
-                  style={{ background: `${color}20`, border: `1px solid ${color}25` }}
-                  whileHover={{ scale: 1.15, background: color }}>
-                  <Icon size={14} />
-                </motion.a>
-              ))}
-            </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                {footerData.description}
+              </p>
+              <div className="flex gap-3 flex-wrap">
+                {activeSocials.map(({ Icon, color, href }, i) => (
+                  <motion.a key={i} href={href} target="_blank" rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-lg flex items-center justify-center text-white cursor-pointer"
+                    style={{ background: `${color}20`, border: `1px solid ${color}25` }}
+                    whileHover={{ scale: 1.15, background: color }}>
+                    <Icon size={14} />
+                  </motion.a>
+                ))}
+              </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-5 tracking-wider text-sm uppercase" style={{ color: '#FFD700' }}>Quick Links</h4>
+            <h4 className="text-[#FFD700] font-bold mb-5 tracking-wider text-sm uppercase">Quick Links</h4>
             <ul className="space-y-3">
               {links.map(l => (
                 <li key={l.label}>
                   <button onClick={() => go(l.href)}
-                    className="text-gray-500 hover:text-white text-sm transition-colors cursor-pointer flex items-center gap-2 group">
+                    className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {l.label}
                   </button>
@@ -112,8 +112,8 @@ export default function Footer() {
 
           {/* Vision */}
           <div>
-            <h4 className="text-white font-bold mb-5 tracking-wider text-sm uppercase" style={{ color: '#FFD700' }}>Vision Statement</h4>
-            <p className="text-gray-500 text-sm leading-relaxed italic">
+            <h4 className="text-[#FFD700] font-bold mb-5 tracking-wider text-sm uppercase">Vision Statement</h4>
+            <p className="text-gray-400 text-sm leading-relaxed italic">
               {visionDesc}
             </p>
             <div className="mt-6 p-4 rounded-xl border border-green-900/30 bg-green-900/10 inline-block">
@@ -125,10 +125,10 @@ export default function Footer() {
 
         {/* Large Text */}
         <div className="w-full text-center mb-12">
-          <h1 className="text-white font-black leading-tight text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: 'sans-serif' }}>
+          <h1 className="text-white font-black leading-tight text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
             हर दिल का ठिकाना
           </h1>
-          <h1 className="text-white font-black leading-tight text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: 'sans-serif' }}>
+          <h1 className="text-white font-black leading-tight text-6xl md:text-8xl lg:text-9xl" style={{ fontFamily: 'sans-serif' }}>
             के. पी. कसाना
           </h1>
         </div>

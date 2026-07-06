@@ -38,7 +38,7 @@ export default function Login({ onLogin }) {
             <img src="/Kp image.png" alt="KP" className="w-full h-full object-cover" />
           </div>
           <h1 className="text-white text-2xl font-bold" style={{ fontFamily: 'Cinzel,serif' }}>
-            KP Singh <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Kasana</span>
+            K. P. <span style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Kasana</span>
           </h1>
           <p className="text-gray-500 text-sm mt-1">Admin Dashboard</p>
         </div>

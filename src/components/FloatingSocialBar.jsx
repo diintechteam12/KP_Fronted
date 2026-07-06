@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaTimes } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6'; // FontAwesome 6 has the X icon
 
 export default function FloatingSocialBar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
 
   const socials = [
     { name: 'Facebook', icon: FaFacebook, color: '#1877F2', href: '#' },
@@ -16,6 +19,13 @@ export default function FloatingSocialBar() {
 
   return (
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 bg-[#eab308] p-2 rounded-l-2xl shadow-[0_0_15px_rgba(234,179,8,0.5)]">
+      <button 
+        onClick={() => setIsVisible(false)}
+        className="w-6 h-6 mx-auto mb-1 flex items-center justify-center text-black/50 hover:text-black rounded-full transition-colors"
+        title="Close"
+      >
+        <FaTimes size={16} />
+      </button>
       {socials.map((social, i) => (
         <div 
           key={social.name}

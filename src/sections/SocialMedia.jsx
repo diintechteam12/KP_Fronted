@@ -15,7 +15,7 @@ export default function SocialMedia() {
         { platform: 'Facebook', handle: '@kpsinghkasana', followers: '34K+', icon: 'FaFacebook', color: '#1877F2', url: 'https://facebook.com' },
         { platform: 'Instagram', handle: '@kpkasanait', followers: '12K+', icon: 'FaInstagram', color: '#E4405F', url: 'https://instagram.com' },
         { platform: 'YouTube', handle: '@KPKasana-o8o', followers: '8K+', icon: 'FaYoutube', color: '#FF0000', url: 'https://youtube.com' },
-        { platform: 'LinkedIn', handle: 'K P Singh Kasana', followers: '5K+', icon: 'FaLinkedin', color: '#0A66C2', url: 'https://linkedin.com' }
+        { platform: 'LinkedIn', handle: 'K. P. Kasana', followers: '5K+', icon: 'FaLinkedin', color: '#0A66C2', url: 'https://linkedin.com' }
     ]
   });
 
