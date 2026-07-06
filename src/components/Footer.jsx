@@ -138,8 +138,8 @@ export default function Footer() {
           <p className="text-gray-600 text-sm">
             {footerData.copyrightText}
           </p>
-          <p className="text-gray-600 text-sm flex items-center gap-1">
-            Made with <FaHeart className="text-red-500 text-xs" /> for the people
+          <p className="text-gray-600 text-sm flex flex-wrap items-center gap-1 justify-center md:justify-end text-center md:text-right">
+            Made with <FaHeart className="text-red-500 text-xs mx-1" /> for the people <span className="mx-1 hidden sm:inline">|</span><br className="sm:hidden" /> Developed & Manages By <a href="https://diintech.com" target="_blank" rel="noopener noreferrer" className="text-[#FFD700] transition-colors ml-1 font-semibold">Diintech.com</a>
           </p>
         </div>
       </div>

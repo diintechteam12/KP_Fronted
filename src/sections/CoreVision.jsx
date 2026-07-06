@@ -12,7 +12,6 @@ export default function CoreVision() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        
         <div className="text-center mb-12">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -23,16 +22,6 @@ export default function CoreVision() {
             <FaEye className="text-yellow-400" />
             <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">Our Vision</span>
           </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight" 
-            style={{ fontFamily: 'Playfair Display,serif' }}
-          >
-            A Future Built on <br className="md:hidden" /><span className="text-[#FFD700]">Trust & Progress</span>
-          </motion.h2>
         </div>
 
         <motion.div 
@@ -52,7 +41,7 @@ export default function CoreVision() {
           
           <FaQuoteLeft className="text-6xl text-white/5 absolute top-8 left-8" />
 
-          <div className="relative z-10 flex flex-col gap-10 mt-4">
+          <div className="relative z-10 flex flex-col mt-4">
             
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -61,23 +50,15 @@ export default function CoreVision() {
               transition={{ delay: 0.4 }}
               className="flex gap-5"
             >
-              <div className="w-1.5 min-h-full bg-gradient-to-b from-[#FFD700] to-transparent rounded-full shrink-0" />
-              <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
-                "Building an educated, empowered, and prosperous society."
-              </h3>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-5"
-            >
-              <div className="w-1.5 min-h-full bg-gradient-to-b from-[#0F5132] to-transparent rounded-full shrink-0" />
-              <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
-                "Leading with service, development, and trust for every citizen."
-              </h3>
+              <div className="w-1.5 min-h-full bg-gradient-to-b from-[#FFD700] to-[#0F5132] rounded-full shrink-0" />
+              <div className="flex flex-col gap-8">
+                <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
+                  To build an educated, empowered, and prosperous society by leading with service, development, and trust.
+                </h3>
+                <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
+                  सेवा, विकास और विश्वास के साथ नेतृत्व करते हुए शिक्षित, सशक्त और समृद्ध समाज का निर्माण।
+                </h3>
+              </div>
             </motion.div>
 
           </div>

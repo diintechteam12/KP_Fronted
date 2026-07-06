@@ -31,7 +31,7 @@ export default function Gallery() {
       style={{ background: 'linear-gradient(135deg,#0B0F19,#0d1a10,#0B0F19)' }}>
 
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Photographs" title="Moments From" highlight="The Field"
+        <SectionTitle subtitle="The Work In Progress" title="Moments From" highlight="The Field"
           desc="Not a photo shoot. These are real moments from real places with real people." light />
 
         {/* Filters */}

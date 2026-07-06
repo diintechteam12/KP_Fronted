@@ -5,10 +5,11 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 const defaultLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Vision', href: '#vision' },
   { label: 'Journey', href: '#journey' },
+  { label: 'Vision', href: '#vision' },
+  { label: 'Hmare Log', href: '#hmare-log' },
   { label: 'Impact', href: '#impact' },
-  { label: 'Gallery', href: '#gallery' },
+  { label: 'See the Work', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -33,6 +34,13 @@ export default function Navbar() {
             .sort((a, b) => a.order - b.order);
 
           if (links.length > 0) {
+            links.forEach(l => {
+              if (l.label === 'Gallery') l.label = 'See the Work';
+            });
+            if (!links.some(l => l.label === 'Hmare Log')) {
+              links.push({ label: 'Hmare Log', href: '#hmare-log', order: 3.5 });
+              links.sort((a, b) => a.order - b.order);
+            }
             setNavLinks(links);
           }
         }

@@ -17,6 +17,7 @@ import CoreVision from './sections/CoreVision';
 import Vision from './sections/Vision';
 import Journey from './sections/Journey';
 import SocialImpact from './sections/SocialImpact';
+import HmareLog from './sections/HmareLog';
 import Gallery from './sections/Gallery';
 import Videos from './sections/Videos';
 import MediaCoverage from './sections/MediaCoverage';
@@ -81,6 +82,7 @@ function MainSite() {
             <CoreVision />
             <Vision />
             <SocialImpact />
+            <HmareLog />
             <Gallery />
             <Videos />
             <MediaCoverage />

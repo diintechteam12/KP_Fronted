@@ -61,7 +61,7 @@ function AnimatedNumber({ end, suffix, color, start, disableLive }) {
   }, [start, end, suffix, disableLive]);
 
   return (
-    <div className="text-4xl font-bold mb-1" ref={ref} style={{ color, fontFamily: 'Cinzel,serif' }}>
+    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 tracking-tight" ref={ref} style={{ color, fontFamily: 'Cinzel,serif' }}>
       0{suffix ? suffix.replace('K', '') : ''}
     </div>
   );

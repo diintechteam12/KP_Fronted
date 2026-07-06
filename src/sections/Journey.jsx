@@ -137,7 +137,17 @@ export default function Journey() {
                   </motion.div>
 
                   {/* Center icon dot */}
-                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 flex-col items-center">
+                    <motion.span 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="absolute -top-9 font-bold text-2xl tracking-wider bg-white px-2 rounded-full"
+                      style={{ fontFamily: 'Cinzel,serif', color: item.color }}
+                    >
+                      {item.year}
+                    </motion.span>
                     <motion.div
                       className="w-14 h-14 rounded-full flex items-center justify-center text-white border-4 border-white"
                       style={{
