@@ -13,6 +13,7 @@ import Dashboard from './admin/Dashboard';
 
 import Hero from './sections/Hero';
 import About from './sections/About';
+import CoreVision from './sections/CoreVision';
 import Vision from './sections/Vision';
 import Journey from './sections/Journey';
 import SocialImpact from './sections/SocialImpact';
@@ -77,6 +78,7 @@ function MainSite() {
             <Hero />
             <About />
             <Journey />
+            <CoreVision />
             <Vision />
             <SocialImpact />
             <Gallery />

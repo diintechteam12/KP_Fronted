@@ -42,7 +42,7 @@ export default function Vision() {
   }, [selectedInitiative]);
 
   return (
-    <section id="vision" className="py-24 relative overflow-hidden"
+    <section id="initiatives" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19 0%,#0d1a10 50%,#0B0F19 100%)' }}>
       
       <div className="absolute inset-0 pointer-events-none">
