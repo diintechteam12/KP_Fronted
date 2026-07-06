@@ -103,10 +103,10 @@ export default function Hero() {
             <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-0"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <span className="text-4xl md:text-5xl xl:text-6xl min-h-[1.4em] z-10">
+              <span className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl min-h-[1.4em] z-10 break-words">
                 <TypingText words={titles} />
               </span>
-              <span className="text-5xl md:text-6xl xl:text-7xl leading-snug -mt-2 md:-mt-4 z-0 relative" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-snug -mt-2 md:-mt-4 z-0 relative break-words" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 के. पी. कसाना
               </span>
             </motion.h1>
@@ -150,13 +150,13 @@ export default function Hero() {
           </div>
 
           {/* RIGHT - Portrait */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center mt-12 lg:mt-0">
             {/* Rotating rings */}
-            <motion.div className="absolute w-[420px] h-[420px] rounded-full border border-dashed border-yellow-400/15"
+            <motion.div className="absolute w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] rounded-full border border-dashed border-yellow-400/15"
               animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: 'linear' }} />
-            <motion.div className="absolute w-[360px] h-[360px] rounded-full border border-green-800/20"
+            <motion.div className="absolute w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] rounded-full border border-green-800/20"
               animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
-            <div className="absolute w-[300px] h-[300px] rounded-full pointer-events-none"
+            <div className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full pointer-events-none"
               style={{ background: 'radial-gradient(circle,rgba(15,81,50,0.2),transparent)' }} />
 
             {/* Image */}
@@ -169,7 +169,7 @@ export default function Hero() {
             >
               <div className="relative rounded-full p-[3px]"
                 style={{ background: 'linear-gradient(45deg,#FFD700,#FF6B00,#0F5132,#FFD700)', backgroundSize: '300% 300%', animation: 'borderAnim 4s linear infinite' }}>
-                <div className="rounded-full overflow-hidden w-[280px] h-[280px]"
+                <div className="rounded-full overflow-hidden w-[220px] h-[220px] sm:w-[280px] sm:h-[280px]"
                   style={{ boxShadow: '0 0 60px rgba(15,81,50,0.4),0 0 100px rgba(255,215,0,0.08)' }}>
                   <img src={heroData.profileImageUrl || '/Kp image.png'} alt="Profile" className="w-full h-full object-cover" />
                 </div>
