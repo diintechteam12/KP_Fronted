@@ -7,6 +7,7 @@ import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
+import FloatingSocialBar from './components/FloatingSocialBar';
 import Footer from './components/Footer';
 import Dashboard from './admin/Dashboard';
 
@@ -14,14 +15,13 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Vision from './sections/Vision';
 import Journey from './sections/Journey';
-import Achievements from './sections/Achievements';
 import SocialImpact from './sections/SocialImpact';
 import Gallery from './sections/Gallery';
 import Videos from './sections/Videos';
 import MediaCoverage from './sections/MediaCoverage';
 import Testimonials from './sections/Testimonials';
-import Initiatives from './sections/Initiatives';
 import SocialMedia from './sections/SocialMedia';
+import BecomeMember from './sections/BecomeMember';
 import Contact from './sections/Contact';
 
 function MainSite() {
@@ -72,19 +72,19 @@ function MainSite() {
           <CustomCursor />
           <ScrollProgress />
           <Navbar />
+          <FloatingSocialBar />
           <main>
             <Hero />
             <About />
             <Vision />
             <Journey />
-            <Achievements />
             <SocialImpact />
-            <Initiatives />
             <Gallery />
             <Videos />
             <MediaCoverage />
             <Testimonials />
             <SocialMedia />
+            <BecomeMember />
             <Contact />
           </main>
           <Footer />

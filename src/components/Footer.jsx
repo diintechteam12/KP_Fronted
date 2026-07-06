@@ -66,7 +66,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-[2px]"
         style={{ background: 'linear-gradient(90deg,transparent,#FFD700,#0F5132,#FF6B00,transparent)' }} />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
@@ -121,6 +121,16 @@ export default function Footer() {
               <p className="text-white font-bold text-2xl" style={{ fontFamily: 'Cinzel,serif' }}>{footerData.servingYear}</p>
             </div>
           </div>
+        </div>
+
+        {/* Large Text */}
+        <div className="w-full text-center mb-12">
+          <h1 className="text-white font-black leading-tight text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: 'sans-serif' }}>
+            हर दिल का ठिकाना
+          </h1>
+          <h1 className="text-white font-black leading-tight text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: 'sans-serif' }}>
+            के. पी. कसाना
+          </h1>
         </div>
 
         {/* Bottom */}

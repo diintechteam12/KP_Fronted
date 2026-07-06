@@ -4,29 +4,65 @@ import { useInView } from 'react-intersection-observer';
 import { FaCheckCircle } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 
-function AnimatedNumber({ end, suffix, color, start }) {
+function AnimatedNumber({ end, suffix, color, start, disableLive }) {
   const ref = useRef(null);
   const frameRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     if (!start) return;
     const duration = 2500;
     const startTime = performance.now();
+    let isCancelled = false;
+
+    let actualEnd = end;
+    let actualSuffix = suffix || '';
+    if (actualSuffix.includes('K')) {
+      actualEnd = end * 1000;
+      actualSuffix = actualSuffix.replace('K', '');
+    }
+
     const tick = (now) => {
+      if (isCancelled) return;
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * end);
-      if (ref.current) ref.current.textContent = current + suffix;
-      if (progress < 1) frameRef.current = requestAnimationFrame(tick);
+      const current = Math.round(eased * actualEnd);
+      
+      if (ref.current) {
+        ref.current.textContent = current.toLocaleString('en-IN') + actualSuffix;
+      }
+      
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(tick);
+      } else if (!disableLive) {
+        // Start continuous live counter effect
+        let liveValue = actualEnd;
+        const liveIncrement = () => {
+          if (isCancelled) return;
+          liveValue += Math.floor(Math.random() * 2) + 1;
+          if (ref.current) {
+            ref.current.textContent = liveValue.toLocaleString('en-IN') + actualSuffix;
+          }
+          // Schedule next increment between 3s and 6s
+          timeoutRef.current = setTimeout(liveIncrement, Math.random() * 3000 + 3000);
+        };
+        timeoutRef.current = setTimeout(liveIncrement, Math.random() * 3000 + 3000);
+      }
     };
+    
     frameRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frameRef.current);
-  }, [start, end, suffix]);
+    
+    return () => {
+      isCancelled = true;
+      cancelAnimationFrame(frameRef.current);
+      clearTimeout(timeoutRef.current);
+    };
+  }, [start, end, suffix, disableLive]);
 
   return (
     <div className="text-4xl font-bold mb-1" ref={ref} style={{ color, fontFamily: 'Cinzel,serif' }}>
-      0{suffix}
+      0{suffix ? suffix.replace('K', '') : ''}
     </div>
   );
 }
@@ -139,7 +175,7 @@ export default function About() {
               style={{ background: `${s.color || '#FFD700'}08`, border: `1px solid ${s.color || '#FFD700'}20` }}
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5, boxShadow: `0 20px 40px ${s.color || '#FFD700'}20` }}>
-              <AnimatedNumber end={s.count} suffix={s.suffix} color={s.color || '#FFD700'} start={inView} />
+              <AnimatedNumber end={s.count} suffix={s.suffix} color={s.color || '#FFD700'} start={inView} disableLive={s.label.includes('Years')} />
               <div className="text-gray-600 text-sm font-medium">{s.label}</div>
               <div className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
                 style={{ background: `linear-gradient(90deg,transparent,${s.color || '#FFD700'},transparent)` }} />

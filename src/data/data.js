@@ -165,7 +165,36 @@ export const initiatives = [
     id: 2,
     title: "Skill India — Local Chapter",
     category: "Youth",
-    desc: "From mobile repair to computer training — real skills that lead to real income, right in your own neighbourhood.",
+    desc: `Empowering the youth with skills, knowledge, and opportunities to build a better tomorrow.
+
+OUR VISION FOR YOUTH EMPOWERMENT
+Youth is the foundation of our nation's future. The Skill India - Local Chapter initiative was born out of a simple but powerful realization: talent is everywhere, but opportunity is not. We aim to bridge this gap by bringing world-class vocational training directly to the doorsteps of young people in our local communities. Instead of forcing our youth to migrate to larger cities for basic training, we have established local centers equipped with modern tools, computers, and expert trainers.
+
+DIGITAL & TECHNICAL TRAINING
+In today's rapidly evolving world, digital literacy is no longer a luxury—it is a basic requirement. We focus on practical, market-ready skills that translate immediately into employment and income. Our curriculum includes:
+• Mobile and Electronics Repair
+• Digital Marketing and Computer Proficiency
+• Tailoring and Boutique Management
+• Electrician and Plumbing Certifications
+• Beauty and Wellness Training
+
+By providing practical training in modern technologies, we ensure that every young man and woman is well-equipped to face the challenges of the modern job market.
+
+EMPLOYMENT & ENTREPRENEURSHIP
+Job creation is just one part of the puzzle. Helping youth find jobs and create their own opportunities is our ultimate goal. We strongly encourage and support youth to start their own small businesses. Through our mentorship programs, we provide guidance on micro-financing, business registration, and initial setup. When a young person starts a business locally, they don't just employ themselves—they create jobs for others in the neighborhood, strengthening the entire local economy.
+
+CAREER GUIDANCE PROGRAMS
+We believe that direction is just as important as education. Our dedicated career guidance programs offer mentoring, counseling, and support to shape bright careers. We help students understand their strengths, prepare for interviews, and connect with potential employers. Industry experts frequently visit our centers to host workshops, ensuring our students receive real-world advice and networking opportunities.
+
+MEASURABLE IMPACT
+Over the past few years, this initiative has transformed thousands of lives. We operate with complete transparency and pride ourselves on the tangible results we deliver:
+- Over 15,000 young individuals have successfully enrolled and completed our certification courses.
+- More than 8,000 individuals have been directly placed in local and national industries.
+- We have successfully conducted over 100 specialized training programs.
+- Our outreach has expanded to cover more than 25 villages, ensuring no youth is left behind due to geographical barriers.
+
+A COMMUNITY-DRIVEN APPROACH
+The success of this program relies heavily on the community. Local businesses partner with us to provide internships, while retired professionals volunteer their time to teach specialized skills. It's a self-sustaining ecosystem of knowledge and growth. Looking ahead, we are expanding our syllabus to include emerging technologies. We believe that with the right tools, our youth will not only build a better life for themselves but will become the pillars of a stronger, self-reliant India.`,
     image: "/Initiatives img2.png",
     color: "#FF6B00",
   },

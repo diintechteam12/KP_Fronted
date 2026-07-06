@@ -4,10 +4,8 @@ import { FaPlay, FaTimes, FaClock } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 
 const localVideos = [
-  { id: 'local1', title: 'K P Singh Kasana - Introduction', src: '/K_P_Singh_Kasana_introduction_202606081445.mp4', duration: 'Watch Now' },
-  { id: 'local2', title: 'K P Singh Kasana - Introduction Part 2', src: '/K_P_Singh_Kasana_introduction_202606081445 (1).mp4', duration: 'Watch Now' },
-  { id: 'local3', title: 'Hero Section Reels', src: '/Hero section reels.mp4', duration: 'Watch Now' },
-  { id: 'local4', title: 'Community Reels', src: '/reels for vedio galry.mp4', duration: 'Watch Now' },
+  { id: 'local1', title: 'Empowering Minds: The Education Initiative', src: '/Create_a_second_ultra_reali (1).mp4', duration: 'Watch Now' },
+  { id: 'local2', title: 'Gram Kalyan: Uplifting Our Villages', src: '/Create_a_second_ultra_reali.mp4', duration: 'Watch Now' },
   { id: 'local5', title: 'New Reels', src: '/Vedio galry new reels.mp4', duration: 'Watch Now' },
 ];
 

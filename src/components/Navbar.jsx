@@ -7,7 +7,7 @@ const defaultLinks = [
   { label: 'About', href: '#about' },
   { label: 'Vision', href: '#vision' },
   { label: 'Journey', href: '#journey' },
-  { label: 'Achievements', href: '#achievements' },
+  { label: 'Impact', href: '#impact' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -29,7 +29,7 @@ export default function Navbar() {
       .then(res => {
         if (res.success && res.data && res.data.navbar && res.data.navbar.links) {
           const links = res.data.navbar.links
-            .filter(link => link.enabled)
+            .filter(link => link.enabled && link.label !== 'Achievements' && link.href !== '#achievements')
             .sort((a, b) => a.order - b.order);
             
           if (links.length > 0) {
@@ -81,16 +81,26 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
-          <motion.button
-            onClick={() => go('#contact', 'Contact')}
-            className="hidden lg:block px-6 py-2.5 rounded-full text-sm font-semibold text-white cursor-pointer"
-            style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 15px rgba(15,81,50,0.4)' }}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(15,81,50,0.7)' }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Connect Now
-          </motion.button>
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <motion.button
+              onClick={() => go('#join-us', 'Join Us')}
+              className="px-6 py-2.5 rounded-full text-sm font-bold text-black cursor-pointer bg-[#eab308]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Join Us
+            </motion.button>
+            <motion.button
+              onClick={() => go('#contact', 'Contact')}
+              className="px-6 py-2.5 rounded-full text-sm font-semibold text-white cursor-pointer"
+              style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 15px rgba(15,81,50,0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(15,81,50,0.7)' }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Connect Now
+            </motion.button>
+          </div>
 
           <button className="lg:hidden text-white text-2xl p-2 cursor-pointer" onClick={() => setOpen(!open)}>
             {open ? <FaTimes /> : <FaBars />}
@@ -120,16 +130,27 @@ export default function Navbar() {
                 {l.label}
               </motion.button>
             ))}
-            <motion.button
-              onClick={() => go('#contact', 'Contact')}
-              className="mt-4 px-8 py-3 rounded-full font-semibold text-white cursor-pointer"
-              style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)' }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              Connect Now
-            </motion.button>
+            <div className="flex flex-col items-center gap-4 mt-4 w-[200px]">
+              <motion.button
+                onClick={() => go('#join-us', 'Join Us')}
+                className="px-8 py-3 rounded-full font-bold text-black cursor-pointer bg-[#eab308] w-full"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                Join Us
+              </motion.button>
+              <motion.button
+                onClick={() => go('#contact', 'Contact')}
+                className="px-8 py-3 rounded-full font-semibold text-white cursor-pointer w-full"
+                style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                Connect Now
+              </motion.button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
