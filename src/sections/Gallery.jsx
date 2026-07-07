@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaExpand, FaPlay } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
+import { useLanguage, useLocalized } from '../context/LanguageContext';
 
-const cats = ['All', 'Public Meetings', 'Community Events', 'Social Service', 'Education Programs'];
+const catsEn = ['All', 'Public Meetings', 'Community Events', 'Social Service', 'Education Programs'];
+const catsHi = ['सभी', 'सार्वजनिक बैठकें', 'सामुदायिक कार्यक्रम', 'समाज सेवा', 'शिक्षा कार्यक्रम'];
 
 const renderVideo = (videoUrl) => {
     if (!videoUrl) return null;
@@ -51,6 +53,8 @@ const renderVideo = (videoUrl) => {
 };
 
 export default function Gallery() {
+  const { lang } = useLanguage();
+  const cats = lang === 'hi' ? catsHi : catsEn;
   const [active, setActive] = useState('All');
   const [lb, setLb] = useState(null);
   const [images, setImages] = useState([]);
@@ -69,15 +73,24 @@ export default function Gallery() {
       .catch(err => console.error("Error fetching gallery:", err));
   }, []);
 
-  const filtered = active === 'All' ? images : images.filter(g => g.category === active);
+  // Keep active filter logic independent of language by mapping it if needed,
+  // but since active state is just a string, let's map the 'active' back to English to filter if DB images are English.
+  // Actually, images might come from DB with English categories, so we filter by English category.
+  const activeEn = catsEn[cats.indexOf(active)] || 'All';
+  const filtered = active === 'All' || active === 'सभी' ? images : images.filter(g => g.category === activeEn);
 
   return (
     <section id="gallery" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19,#0d1a10,#0B0F19)' }}>
 
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="The Work In Progress" title="Moments From" highlight="The Field"
-          desc="Not a photo shoot. These are real moments from real places with real people." light />
+        <SectionTitle 
+          subtitle={lang === 'hi' ? 'प्रगति पर कार्य' : 'The Work In Progress'} 
+          title={lang === 'hi' ? 'मैदान के कुछ' : 'Moments From'} 
+          highlight={lang === 'hi' ? 'खास पल' : 'The Field'}
+          desc={lang === 'hi' ? 'यह कोई फोटो शूट नहीं है। ये असली जगहों से, असली लोगों के साथ बिताए गए असली पल हैं।' : 'Not a photo shoot. These are real moments from real places with real people.'} 
+          light 
+        />
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -121,8 +134,8 @@ export default function Gallery() {
                   style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.9) 0%,transparent 60%)' }}>
                   <div className="flex items-end justify-between w-full">
                     <div>
-                      <p className="text-white font-semibold">{img.title}</p>
-                      <p className="text-xs text-yellow-400">{img.category}</p>
+                      <p className="text-white font-semibold">{lang === 'hi' && img.titleHi ? img.titleHi : img.title}</p>
+                      <p className="text-xs text-yellow-400">{lang === 'hi' ? catsHi[catsEn.indexOf(img.category)] || img.category : img.category}</p>
                     </div>
                     <FaExpand className="text-white/70" />
                   </div>
@@ -148,8 +161,8 @@ export default function Gallery() {
               )}
               <div className={`absolute bottom-0 left-0 right-0 p-6 ${lb.mediaType === 'video' ? 'opacity-0 hover:opacity-100 transition-opacity' : ''}`}
                 style={{ background: 'linear-gradient(to top,rgba(0,0,0,0.9),transparent)' }}>
-                <p className="text-white font-bold text-xl" style={{ fontFamily: 'Playfair Display,serif' }}>{lb.title}</p>
-                <p className="text-yellow-400 text-sm">{lb.category}</p>
+                <p className="text-white font-bold text-xl" style={{ fontFamily: 'Playfair Display,serif' }}>{lang === 'hi' && lb.titleHi ? lb.titleHi : lb.title}</p>
+                <p className="text-yellow-400 text-sm">{lang === 'hi' ? catsHi[catsEn.indexOf(lb.category)] || lb.category : lb.category}</p>
               </div>
               <button onClick={() => setLb(null)}
                 className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-white cursor-pointer bg-white/10">

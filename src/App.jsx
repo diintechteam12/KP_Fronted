@@ -25,6 +25,8 @@ import Testimonials from './sections/Testimonials';
 import BecomeMember from './sections/BecomeMember';
 import Contact from './sections/Contact';
 
+import HamareLogPage from './pages/HamareLogPage';
+
 function MainSite() {
   const [loaded, setLoaded] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -105,13 +107,18 @@ function MainSite() {
   );
 }
 
+import { LanguageProvider } from './context/LanguageContext';
+
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard/*" element={<Dashboard />} />
-        <Route path="/*" element={<MainSite />} />
-      </Routes>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/hamare-log" element={<HamareLogPage />} />
+          <Route path="/*" element={<MainSite />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

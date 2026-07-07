@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaArrowRight, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function HmareLog() {
   const [isMuted, setIsMuted] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <section id="hmare-log" className="py-20 relative z-20 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/hmarelog4.jpeg')" }}>
@@ -41,6 +43,10 @@ export default function HmareLog() {
             </p>
             
             <motion.button 
+              onClick={() => {
+                window.scrollTo(0, 0);
+                navigate('/hamare-log');
+              }}
               className="bg-[#0F5132] text-white pl-8 pr-2 py-2 rounded-full flex items-center gap-4 w-max hover:bg-[#1a7a4a] transition-colors"
               style={{ boxShadow: '0 0 20px rgba(15,81,50,0.4)' }}
               whileHover={{ scale: 1.05 }}

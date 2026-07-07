@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft, FaEye } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function CoreVision() {
-  const [lang, setLang] = useState('en');
+  const { lang } = useLanguage();
   return (
     <section id="vision" className="py-24 relative overflow-hidden" style={{ background: '#0B0F19' }}>
       
@@ -22,25 +22,9 @@ export default function CoreVision() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border border-yellow-500/30 bg-yellow-500/10"
           >
             <FaEye className="text-yellow-400" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">Our Vision</span>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-            className="flex p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-md"
-          >
-            <button 
-              onClick={() => setLang('en')}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
-            >
-              English
-            </button>
-            <button 
-              onClick={() => setLang('hi')}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
-            >
-              हिंदी
-            </button>
+            <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">
+              {lang === 'hi' ? 'हमारा दृष्टिकोण' : 'Our Vision'}
+            </span>
           </motion.div>
         </div>
 

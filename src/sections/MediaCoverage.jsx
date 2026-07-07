@@ -7,9 +7,12 @@ import 'swiper/css/pagination';
 import { FaNewspaper, FaCalendar, FaArrowRight } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 import { mediaNews } from '../data/data';
+import { useLanguage, useLocalized } from '../context/LanguageContext';
 
 export default function MediaCoverage() {
-  const [events, setEvents] = useState(mediaNews); // start with dummy data
+  const { lang } = useLanguage();
+  const localizedMediaNews = useLocalized(mediaNews);
+  const [events, setEvents] = useState(localizedMediaNews); // start with dummy data
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -37,21 +40,26 @@ export default function MediaCoverage() {
           }));
 
           // Combine: real events first, then dummy data
-          setEvents([...mappedEvents, ...mediaNews]);
+          setEvents([...mappedEvents, ...localizedMediaNews]);
         }
       } catch (err) {
         console.error('Failed to fetch events:', err);
       }
     };
     fetchEvents();
-  }, []);
+  }, [lang]); // Re-fetch or re-evaluate when language changes
 
   return (
     <section id="media" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19,#071a0e,#0B0F19)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle subtitle="Our Events" title="Our Events &" highlight="Highlights"
-          desc="Real work gets noticed. Here is what the press has been saying about the initiatives on the ground." light />
+        <SectionTitle 
+          subtitle={lang === 'hi' ? 'हमारे कार्यक्रम' : 'Our Events'} 
+          title={lang === 'hi' ? 'हमारे कार्यक्रम और' : 'Our Events &'} 
+          highlight={lang === 'hi' ? 'मुख्य झलकियां' : 'Highlights'}
+          desc={lang === 'hi' ? 'वास्तविक कार्य देखा जाता है। यहाँ वह सब है जो प्रेस ज़मीनी स्तर पर हो रही पहलों के बारे में कह रहा है।' : 'Real work gets noticed. Here is what the press has been saying about the initiatives on the ground.'} 
+          light 
+        />
 
         <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}
           breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}

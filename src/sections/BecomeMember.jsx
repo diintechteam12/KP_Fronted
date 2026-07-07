@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaArrowRight, FaUser, FaPhoneAlt } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function BecomeMember() {
+  const { lang } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
 
@@ -42,23 +44,23 @@ export default function BecomeMember() {
         >
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-[1px] w-12 bg-[#eab308]" />
-            <h4 className="text-[#eab308] uppercase tracking-widest text-sm font-semibold">BECOME A MEMBER</h4>
+            <h4 className="text-[#eab308] uppercase tracking-widest text-sm font-semibold">{lang === 'hi' ? 'सदस्य बनें' : 'BECOME A MEMBER'}</h4>
             <span className="h-[1px] w-12 bg-[#eab308]" />
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Ready to Make a <br/><span className="text-[#eab308]">Real Difference?</span>
+            {lang === 'hi' ? 'क्या आप एक वास्तविक बदलाव ' : 'Ready to Make a '}<br/><span className="text-[#eab308]">{lang === 'hi' ? 'लाने के लिए तैयार हैं?' : 'Real Difference?'}</span>
           </h2>
           
           <p className="text-gray-300 text-lg mb-10 leading-relaxed">
-            Join thousands of dedicated individuals working together for the progress and betterment of our community. Your voice matters, your action matters.
+            {lang === 'hi' ? 'हमारे समुदाय की प्रगति और भलाई के लिए एक साथ काम कर रहे हजारों समर्पित लोगों से जुड़ें। आपकी आवाज़ मायने रखती है, आपके काम मायने रखते हैं।' : 'Join thousands of dedicated individuals working together for the progress and betterment of our community. Your voice matters, your action matters.'}
           </p>
 
           <button
             onClick={() => setIsModalOpen(true)}
             className="inline-flex items-center gap-3 bg-[#eab308] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)]"
           >
-            Join Us Now <FaArrowRight />
+            {lang === 'hi' ? 'अभी हमसे जुड़ें' : 'Join Us Now'} <FaArrowRight />
           </button>
         </motion.div>
       </div>
@@ -98,13 +100,13 @@ export default function BecomeMember() {
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center w-full" style={{ fontFamily: 'sans-serif' }}>
-                Join Our Movement
+                {lang === 'hi' ? 'हमारे अभियान से जुड़ें' : 'Join Our Movement'}
               </h3>
 
               {/* Call Card */}
               <div className="w-full bg-[#0F5132] rounded-2xl p-4 flex items-center justify-between mb-8 shadow-sm">
                 <div className="text-left ml-2">
-                  <div className="text-[10px] uppercase font-bold text-green-200 tracking-wider mb-1">To Join Call</div>
+                  <div className="text-[10px] uppercase font-bold text-green-200 tracking-wider mb-1">{lang === 'hi' ? 'जुड़ने के लिए कॉल करें' : 'To Join Call'}</div>
                   <div className="text-2xl font-extrabold text-white tracking-tight">+91 98765 43210</div>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white shrink-0">
@@ -121,7 +123,7 @@ export default function BecomeMember() {
                   <input 
                     type="text" 
                     required
-                    placeholder="Full Name" 
+                    placeholder={lang === 'hi' ? 'पूरा नाम' : 'Full Name'} 
                     className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-500"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -137,7 +139,7 @@ export default function BecomeMember() {
                   <input 
                     type="tel" 
                     required
-                    placeholder="Mobile Number" 
+                    placeholder={lang === 'hi' ? 'मोबाइल नंबर' : 'Mobile Number'} 
                     className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-500 pl-3"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -150,7 +152,7 @@ export default function BecomeMember() {
                   className="w-full text-white font-bold text-lg py-4 rounded-2xl mt-4 hover:shadow-lg transition-all active:scale-[0.98]"
                   style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)' }}
                 >
-                  Continue
+                  {lang === 'hi' ? 'आगे बढ़ें' : 'Continue'}
                 </button>
               </form>
 

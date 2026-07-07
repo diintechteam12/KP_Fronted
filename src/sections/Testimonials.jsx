@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
+import { useLocalized } from '../context/LanguageContext';
 
 export default function Testimonials() {
   const [testimonialsData, setTestimonialsData] = useState({
@@ -31,7 +32,8 @@ export default function Testimonials() {
       .catch(err => console.error("Error fetching testimonials data:", err));
   }, []);
 
-  const visibleCards = (testimonialsData.cards || []).filter(c => c.enabled !== false);
+  const localizedTestimonials = useLocalized(testimonialsData);
+  const visibleCards = (localizedTestimonials.cards || []).filter(c => c.enabled !== false);
 
   return (
     <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
@@ -39,8 +41,8 @@ export default function Testimonials() {
         style={{ backgroundImage: 'radial-gradient(circle at 20% 50%,#0F5132 0%,transparent 50%),radial-gradient(circle at 80% 50%,#FF6B00 0%,transparent 50%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle subtitle={testimonialsData.sectionSubtitle} title={testimonialsData.sectionTitle} highlight={testimonialsData.sectionHighlight}
-          desc={testimonialsData.sectionDesc} />
+        <SectionTitle subtitle={localizedTestimonials.sectionSubtitle} title={localizedTestimonials.sectionTitle} highlight={localizedTestimonials.sectionHighlight}
+          desc={localizedTestimonials.sectionDesc} />
 
         {visibleCards.length > 0 ? (
           <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1}

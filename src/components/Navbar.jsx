@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useLanguage, useLocalized } from '../context/LanguageContext';
 
 const defaultLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Vision', href: '#vision' },
-  { label: 'Hmare Log', href: '#hmare-log' },
-  { label: 'Impact', href: '#impact' },
-  { label: 'See the Work', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', labelHi: 'होम', href: '#hero' },
+  { label: 'About', labelHi: 'परिचय', href: '#about' },
+  { label: 'Journey', labelHi: 'सफर', href: '#journey' },
+  { label: 'Vision', labelHi: 'दृष्टिकोण', href: '#vision' },
+  { label: 'Hmare Log', labelHi: 'हमारे लोग', href: '#hmare-log' },
+  { label: 'Impact', labelHi: 'प्रभाव', href: '#impact' },
+  { label: 'See the Work', labelHi: 'कार्य देखें', href: '#gallery' },
+  { label: 'Contact', labelHi: 'संपर्क', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -18,6 +19,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('Home');
   const [navLinks, setNavLinks] = useState(defaultLinks);
+  const { lang, toggleLanguage } = useLanguage();
+  const localizedNavLinks = useLocalized(navLinks);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -35,10 +38,13 @@ export default function Navbar() {
 
           if (links.length > 0) {
             links.forEach(l => {
-              if (l.label === 'Gallery') l.label = 'See the Work';
+              if (l.label === 'Gallery') {
+                l.label = 'See the Work';
+                l.labelHi = 'कार्य देखें';
+              }
             });
             if (!links.some(l => l.label === 'Hmare Log')) {
-              links.push({ label: 'Hmare Log', href: '#hmare-log', order: 3.5 });
+              links.push({ label: 'Hmare Log', labelHi: 'हमारे लोग', href: '#hmare-log', order: 3.5 });
               links.sort((a, b) => a.order - b.order);
             }
             setNavLinks(links);
@@ -78,26 +84,39 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map(l => (
-              <button key={l.label} onClick={() => go(l.href, l.label)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${active === l.label ? 'text-yellow-400' : 'text-white/80 hover:text-white'}`}>
-                {l.label}
-                {active === l.label && (
-                  <motion.div layoutId="nav-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400 rounded-full" />
-                )}
-              </button>
-            ))}
+            {localizedNavLinks.map((l, index) => {
+              // We use the original English label or href for the active state to keep it consistent across language toggles
+              const originalLabel = navLinks[index].label; 
+              return (
+                <button key={originalLabel} onClick={() => go(l.href, originalLabel)}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${active === originalLabel ? 'text-yellow-400' : 'text-white/80 hover:text-white'}`}>
+                  {l.label}
+                  {active === originalLabel && (
+                    <motion.div layoutId="nav-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-400 rounded-full" />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons & Language Toggle */}
           <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center p-1 bg-[#1a1a24] rounded-full border border-white/5 cursor-pointer mr-2 shadow-inner" onClick={toggleLanguage}>
+              <div className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+                English
+              </div>
+              <div className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+                हिंदी
+              </div>
+            </div>
+
             <motion.button
               onClick={() => go('#join-us', 'Join Us')}
               className="px-6 py-2.5 rounded-full text-sm font-bold text-black cursor-pointer bg-[#eab308]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
-              Join Us
+              {lang === 'hi' ? 'हमसे जुड़ें' : 'Join Us'}
             </motion.button>
             <motion.button
               onClick={() => go('#contact', 'Contact')}
@@ -106,7 +125,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(15,81,50,0.7)' }}
               whileTap={{ scale: 0.97 }}
             >
-              Connect Now
+              {lang === 'hi' ? 'अभी संपर्क करें' : 'Connect Now'}
             </motion.button>
           </div>
 
@@ -126,18 +145,30 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
           >
-            {navLinks.map((l, i) => (
-              <motion.button key={l.label} onClick={() => go(l.href, l.label)}
-                className={`text-2xl font-bold cursor-pointer ${active === l.label ? 'text-yellow-400' : 'text-white'}`}
-                style={{ fontFamily: 'Playfair Display,serif' }}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07 }}
-                whileHover={{ scale: 1.1, color: '#FFD700' }}
-              >
-                {l.label}
-              </motion.button>
-            ))}
+            <div className="flex items-center p-1 bg-[#1a1a24] rounded-full border border-white/5 cursor-pointer mt-4 shadow-inner" onClick={toggleLanguage}>
+              <div className={`px-6 py-2 rounded-full text-base font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+                English
+              </div>
+              <div className={`px-6 py-2 rounded-full text-base font-semibold transition-all duration-300 ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+                हिंदी
+              </div>
+            </div>
+            
+            {localizedNavLinks.map((l, i) => {
+              const originalLabel = navLinks[i].label;
+              return (
+                <motion.button key={originalLabel} onClick={() => go(l.href, originalLabel)}
+                  className={`text-2xl font-bold cursor-pointer ${active === originalLabel ? 'text-yellow-400' : 'text-white'}`}
+                  style={{ fontFamily: 'Playfair Display,serif' }}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.07 }}
+                  whileHover={{ scale: 1.1, color: '#FFD700' }}
+                >
+                  {l.label}
+                </motion.button>
+              );
+            })}
             <div className="flex flex-col items-center gap-4 mt-4 w-[200px]">
               <motion.button
                 onClick={() => go('#join-us', 'Join Us')}
@@ -146,7 +177,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                Join Us
+                {lang === 'hi' ? 'हमसे जुड़ें' : 'Join Us'}
               </motion.button>
               <motion.button
                 onClick={() => go('#contact', 'Contact')}
@@ -156,7 +187,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                Connect Now
+                {lang === 'hi' ? 'अभी संपर्क करें' : 'Connect Now'}
               </motion.button>
             </div>
           </motion.div>

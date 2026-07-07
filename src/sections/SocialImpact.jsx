@@ -5,6 +5,7 @@ import {
   FaUsers, FaFemale, FaGraduationCap, FaStethoscope, FaRoad, FaTint,
   FaMapMarkerAlt, FaShieldAlt, FaCheckCircle, FaHandshake, FaLeaf, FaArrowUp
 } from 'react-icons/fa';
+import { useLocalized, useLanguage } from '../context/LanguageContext';
 
 // Animated Number Component
 function AnimatedNumber({ end, suffix, color, start }) {
@@ -65,11 +66,11 @@ const topStats = [
 
 // Progress Bars Data
 const focusAreas = [
-  { icon: FaGraduationCap, label: 'Education', desc: 'Promoting quality education and learning opportunities.', pct: 85, color: '#22c55e' },
-  { icon: FaFemale, label: 'Women Empowerment', desc: 'Empowering women to become leaders of change.', pct: 90, color: '#eab308' },
-  { icon: FaStethoscope, label: 'Healthcare', desc: 'Bringing healthcare and wellness to every doorstep.', pct: 78, color: '#3b82f6' },
-  { icon: FaRoad, label: 'Development', desc: 'Building infrastructure and improving living standards.', pct: 82, color: '#a855f7' },
-  { icon: FaUsers, label: 'Youth Development', desc: 'Creating opportunities and shaping a better future.', pct: 80, color: '#22c55e' },
+  { icon: FaGraduationCap, label: 'Education', labelHi: 'शिक्षा', desc: 'Promoting quality education and learning opportunities.', descHi: 'गुणवत्तापूर्ण शिक्षा और सीखने के अवसरों को बढ़ावा देना।', pct: 85, color: '#22c55e' },
+  { icon: FaFemale, label: 'Women Empowerment', labelHi: 'महिला सशक्तिकरण', desc: 'Empowering women to become leaders of change.', descHi: 'महिलाओं को परिवर्तन के नेता बनने के लिए सशक्त बनाना।', pct: 90, color: '#eab308' },
+  { icon: FaStethoscope, label: 'Healthcare', labelHi: 'स्वास्थ्य सेवा', desc: 'Bringing healthcare and wellness to every doorstep.', descHi: 'हर घर तक स्वास्थ्य सेवा और कल्याण पहुंचाना।', pct: 78, color: '#3b82f6' },
+  { icon: FaRoad, label: 'Development', labelHi: 'विकास', desc: 'Building infrastructure and improving living standards.', descHi: 'बुनियादी ढांचे का निर्माण और जीवन स्तर में सुधार।', pct: 82, color: '#a855f7' },
+  { icon: FaUsers, label: 'Youth Development', labelHi: 'युवा विकास', desc: 'Creating opportunities and shaping a better future.', descHi: 'अवसर पैदा करना और बेहतर भविष्य को आकार देना।', pct: 80, color: '#22c55e' },
 ];
 
 // Trust Markers
@@ -82,6 +83,8 @@ const features = [
 
 export default function SocialImpact() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { lang } = useLanguage();
+  const localizedFocusAreas = useLocalized(focusAreas);
 
   return (
     <section id="impact" className="py-20 relative font-sans text-gray-700 bg-white">
@@ -96,13 +99,17 @@ export default function SocialImpact() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-[1px] w-12 bg-[#eab308]" />
-            <h4 className="text-[#eab308] uppercase tracking-widest text-sm font-semibold">OUR IMPACT</h4>
+            <h4 className="text-[#eab308] uppercase tracking-widest text-sm font-semibold">
+              {lang === 'hi' ? 'हमारा प्रभाव' : 'OUR IMPACT'}
+            </h4>
             <span className="h-[1px] w-12 bg-[#eab308]" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Changing Lives. <span className="text-[#eab308]">Building a Better Tomorrow.</span>
+            {lang === 'hi' ? 'जीवन बदलना.' : 'Changing Lives.'} <span className="text-[#eab308]">{lang === 'hi' ? 'एक बेहतर कल का निर्माण।' : 'Building a Better Tomorrow.'}</span>
           </h2>
-          <p className="text-gray-600 text-lg">Real Numbers. Real Impact. Real Change.</p>
+          <p className="text-gray-600 text-lg">
+            {lang === 'hi' ? 'वास्तविक आँकड़े। वास्तविक प्रभाव। वास्तविक बदलाव।' : 'Real Numbers. Real Impact. Real Change.'}
+          </p>
         </div>
 
 
@@ -117,11 +124,11 @@ export default function SocialImpact() {
             viewport={{ once: true }}
           >
             <h5 className="text-gray-900 text-sm font-bold uppercase tracking-widest mb-8 border-b border-gray-100 pb-4">
-              IMPACT BY FOCUS AREA
+              {lang === 'hi' ? 'फोकस क्षेत्र के अनुसार प्रभाव' : 'IMPACT BY FOCUS AREA'}
             </h5>
 
             <div className="space-y-6">
-              {focusAreas.map((area, i) => {
+              {localizedFocusAreas.map((area, i) => {
                 const Icon = area.icon;
                 return (
                   <div key={area.label} className="relative">

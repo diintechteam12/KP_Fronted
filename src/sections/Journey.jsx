@@ -5,6 +5,7 @@ import {
   FaMapMarkerAlt, FaHandHoldingHeart, FaFemale, FaGraduationCap,
   FaMedal, FaTools, FaWifi, FaFlag, FaUsers, FaGlobe
 } from 'react-icons/fa';
+import { useLocalized } from '../context/LanguageContext';
 
 const iconMap = {
   FaMapMarkerAlt, FaHandHoldingHeart, FaFemale, FaGraduationCap,
@@ -45,6 +46,8 @@ export default function Journey() {
       .catch(err => console.error("Error fetching journey data:", err));
   }, []);
 
+  const localizedJourney = useLocalized(journeyData);
+
   return (
     <section id="journey" className="py-24 bg-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
@@ -54,10 +57,10 @@ export default function Journey() {
 
       <div className="max-w-6xl mx-auto px-6">
         <SectionTitle
-          subtitle={journeyData.sectionSubtitle}
-          title={journeyData.sectionTitle}
-          highlight={journeyData.sectionHighlight}
-          desc={journeyData.sectionDesc}
+          subtitle={localizedJourney.sectionSubtitle}
+          title={localizedJourney.sectionTitle}
+          highlight={localizedJourney.sectionHighlight}
+          desc={localizedJourney.sectionDesc}
         />
 
         <div className="relative">
@@ -72,10 +75,10 @@ export default function Journey() {
           />
 
           <div className="flex flex-col md:space-y-10">
-            {(journeyData.cards || []).map((item, i) => {
+            {(localizedJourney.cards || []).map((item, i) => {
               const isLeft = i % 2 === 0;
               const Icon = iconMap[item.icon] || FaFlag;
-              const prevItem = i > 0 ? journeyData.cards[i - 1] : null;
+              const prevItem = i > 0 ? localizedJourney.cards[i - 1] : null;
 
               return (
                 <div key={i} className={`relative flex flex-col md:flex-row items-center gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} mb-2 md:mb-0`}>

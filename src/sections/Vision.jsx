@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import SectionTitle from '../components/SectionTitle';
 import { initiatives } from '../data/data';
+import { useLocalized } from '../context/LanguageContext';
 
 export default function Vision() {
   const [visionData, setVisionData] = useState({
@@ -41,6 +42,9 @@ export default function Vision() {
     };
   }, [selectedInitiative]);
 
+  const localizedVision = useLocalized(visionData);
+  const localizedInitiatives = useLocalized(initiatives);
+
   return (
     <section id="initiatives" className="py-24 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg,#0B0F19 0%,#0d1a10 50%,#0B0F19 100%)' }}>
@@ -54,10 +58,10 @@ export default function Vision() {
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <SectionTitle 
-          subtitle={visionData.sectionSubtitle} 
-          title={visionData.sectionTitle} 
-          highlight={visionData.sectionHighlight}
-          desc={visionData.sectionDesc} 
+          subtitle={localizedVision.sectionSubtitle} 
+          title={localizedVision.sectionTitle} 
+          highlight={localizedVision.sectionHighlight}
+          desc={localizedVision.sectionDesc} 
           light 
         />
         
@@ -76,7 +80,7 @@ export default function Vision() {
             pagination={{ clickable: true }} 
             className="pb-16 px-4"
           >
-            {initiatives.filter(item => !item.title.toLowerCase().includes('culture')).map((item, i) => (
+            {localizedInitiatives.filter(item => !item.title.toLowerCase().includes('culture') && !item.category?.toLowerCase().includes('culture')).map((item, i) => (
               <SwiperSlide key={item.id} className="h-auto">
                 <motion.div
                   className="relative rounded-2xl overflow-hidden group cursor-pointer w-full h-full flex flex-col"
