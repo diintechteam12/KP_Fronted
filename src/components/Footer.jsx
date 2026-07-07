@@ -4,20 +4,24 @@ import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaHeart } from 'react-i
 import { useLanguage } from '../context/LanguageContext';
 
 const linksEn = [
+  { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Vision', href: '#vision' },
   { label: 'Journey', href: '#journey' },
-  { label: 'Achievements', href: '#achievements' },
-  { label: 'Gallery', href: '#gallery' },
+  { label: 'Vision', href: '#vision' },
+  { label: 'Humare Log', href: '#hmare-log' },
+  { label: 'Impact', href: '#impact' },
+  { label: 'Work In Progress', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const linksHi = [
+  { label: 'होम', href: '#hero' },
   { label: 'परिचय', href: '#about' },
+  { label: 'सफर', href: '#journey' },
   { label: 'दृष्टिकोण', href: '#vision' },
-  { label: 'सफ़र', href: '#journey' },
-  { label: 'उपलब्धियां', href: '#achievements' },
-  { label: 'गैलरी', href: '#gallery' },
+  { label: 'हमारे लोग', href: '#hmare-log' },
+  { label: 'प्रभाव', href: '#impact' },
+  { label: 'कार्य प्रगति पर है', href: '#gallery' },
   { label: 'संपर्क', href: '#contact' },
 ];
 
@@ -37,8 +41,8 @@ export default function Footer() {
     copyrightTextHi: '© 2024 के. पी. कसाना। सर्वाधिकार सुरक्षित।'
   });
 
-  const [visionDesc, setVisionDesc] = useState('"A community where no child goes to bed hungry, no woman goes unheard, and no young person is left without a chance."');
-  const [visionDescHi, setVisionDescHi] = useState('"एक ऐसा समुदाय जहाँ कोई भी बच्चा भूखा नहीं सोता, किसी भी महिला को अनसुना नहीं किया जाता, और कोई भी युवा बिना अवसर के नहीं छूटता।"');
+  const [visionDesc, setVisionDesc] = useState('Building an educated, empowered, and prosperous society.\nLeading with service, development, and trust for every citizen.');
+  const [visionDescHi, setVisionDescHi] = useState('एक शिक्षित, सशक्त और समृद्ध समाज का निर्माण।\nहर नागरिक के लिए सेवा, विकास और विश्वास के साथ नेतृत्व।');
 
   const [socials, setSocials] = useState([
     { Icon: FaFacebook, color: '#1877F2', href: '#' },
@@ -57,8 +61,7 @@ export default function Footer() {
             setFooterData(prev => ({ ...prev, ...data.data.footer }));
           }
           if (data.data.vision) {
-            if (data.data.vision.sectionDesc) setVisionDesc(data.data.vision.sectionDesc);
-            if (data.data.vision.sectionDescHi) setVisionDescHi(data.data.vision.sectionDescHi);
+            // We ignore backend for visionDesc since the user requested a hardcoded update
           }
           if (data.data.contact) {
             const { facebook, instagram, youtube, linkedin } = data.data.contact;
@@ -130,13 +133,9 @@ export default function Footer() {
           {/* Vision */}
           <div>
             <h4 className="text-[#FFD700] font-bold mb-5 tracking-wider text-sm uppercase">{lang === 'hi' ? 'दृष्टिकोण' : 'Vision Statement'}</h4>
-            <p className="text-gray-400 text-sm leading-relaxed italic">
+            <p className="text-gray-400 text-sm leading-relaxed italic whitespace-pre-line">
               {lang === 'hi' && visionDescHi ? visionDescHi : visionDesc}
             </p>
-            <div className="mt-6 p-4 rounded-xl border border-green-900/30 bg-green-900/10 inline-block">
-              <p className="text-green-400 text-xs font-semibold tracking-widest uppercase mb-1">{lang === 'hi' ? 'सेवा में' : 'Serving Since'}</p>
-              <p className="text-white font-bold text-2xl" style={{ fontFamily: 'Cinzel,serif' }}>{footerData.servingYear}</p>
-            </div>
           </div>
         </div>
 
@@ -152,12 +151,18 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-sm text-center md:text-left mb-2 md:mb-0">
             {lang === 'hi' && footerData.copyrightTextHi ? footerData.copyrightTextHi : footerData.copyrightText}
           </p>
-          <p className="text-gray-600 text-sm flex flex-wrap items-center gap-1 justify-center md:justify-end text-center md:text-right">
-            {lang === 'hi' ? 'लोगों के लिए ' : 'Made with '}<FaHeart className="text-red-500 text-xs mx-1" />{lang === 'hi' ? ' के साथ निर्मित' : ' for the people '} <span className="mx-1 hidden sm:inline">|</span><br className="sm:hidden" /> {lang === 'hi' ? 'द्वारा विकसित और प्रबंधित' : 'Developed & Managed By'} <a href="https://diintech.com" target="_blank" rel="noopener noreferrer" className="text-[#FFD700] transition-colors ml-1 font-semibold">Diintech.com</a>
-          </p>
+          <div className="text-gray-600 text-sm flex flex-col sm:flex-row items-center gap-2 sm:gap-1 justify-center md:justify-end text-center md:text-right">
+            <span className="flex items-center justify-center">
+              {lang === 'hi' ? 'लोगों के लिए ' : 'Made with '}<FaHeart className="text-red-500 text-xs mx-1" />{lang === 'hi' ? ' के साथ निर्मित' : ' for the people '}
+            </span>
+            <span className="hidden sm:inline">|</span>
+            <span className="flex items-center justify-center flex-wrap">
+              {lang === 'hi' ? 'द्वारा विकसित और प्रबंधित ' : 'Developed & Managed By '} <a href="https://diintech.com" target="_blank" rel="noopener noreferrer" className="text-[#FFD700] transition-colors ml-1 font-semibold">Diintech.com</a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

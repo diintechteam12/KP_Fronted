@@ -33,7 +33,8 @@ export default function Hero() {
     titleLine2: 'Kasana',
     subtitle: 'Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.',
     buttonText: 'Our Vision',
-    buttonLink: '#vision'
+    buttonLink: '#vision',
+    backgroundVideoUrl: 'https://bvajozsippmhunfafzsq.supabase.co/storage/v1/object/public/rkct-images/portfolio-media/1782458249678-929b8cb5.mp4'
   });
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function Hero() {
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={heroData.backgroundVideoUrl}
-          autoPlay muted loop playsInline
+          autoPlay muted loop playsInline preload="metadata" crossOrigin="anonymous"
         />
       )}
 

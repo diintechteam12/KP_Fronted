@@ -71,7 +71,7 @@ function MainSite() {
     <>
       {!loaded && <Loader onComplete={() => setLoaded(true)} />}
       {loaded && (
-        <>
+        <div className="overflow-x-hidden w-full max-w-full relative min-h-screen">
           <CustomCursor />
           <ScrollProgress />
           <Navbar />
@@ -101,7 +101,7 @@ function MainSite() {
               <FaArrowUp size={16} />
             </button>
           )}
-        </>
+        </div>
       )}
     </>
   );

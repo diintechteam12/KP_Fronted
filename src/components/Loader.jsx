@@ -11,12 +11,12 @@ export default function Loader({ onComplete }) {
         const next = prev + Math.random() * 4 + 1;
         if (next >= 100) {
           clearInterval(interval);
-          setTimeout(() => { setDone(true); setTimeout(onComplete, 600); }, 400);
+          setTimeout(() => { setDone(true); setTimeout(onComplete, 100); }, 100);
           return 100;
         }
         return next;
       });
-    }, 55);
+    }, 15);
     return () => clearInterval(interval);
   }, [onComplete]);
 
