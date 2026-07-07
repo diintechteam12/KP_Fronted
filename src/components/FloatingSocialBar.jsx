@@ -11,10 +11,10 @@ export default function FloatingSocialBar() {
 
   const socials = [
     { name: 'Facebook', icon: FaFacebook, color: '#1877F2', href: '#' },
-    { name: 'Instagram', icon: FaInstagram, color: '#E4405F', href: '#' }, // We will use a gradient background for Instagram to match the image, but solid color for text if needed. Image shows solid bg for icons.
+    { name: 'Instagram', icon: FaInstagram, color: '#E4405F', href: 'https://www.instagram.com/kpkasanait/' }, // We will use a gradient background for Instagram to match the image, but solid color for text if needed. Image shows solid bg for icons.
     { name: 'LinkedIn', icon: FaLinkedin, color: '#0A66C2', href: '#' },
     { name: 'X', icon: FaXTwitter, color: '#000000', href: '#' },
-    { name: 'YouTube', icon: FaYoutube, color: '#FF0000', href: '#' },
+    { name: 'YouTube', icon: FaYoutube, color: '#FF0000', href: 'https://www.youtube.com/@KPKasana-o8o' },
   ];
 
   return (
