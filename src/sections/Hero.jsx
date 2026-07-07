@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaAward, FaStar, FaHandshake, FaChevronDown } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const titles = ['हर दिल का ठिकाना', 'विश्वास का ख़ज़ाना', 'सेवा का पैमाना', 'जन-जन का याराना', 'भविष्य को सजाना'];
 
@@ -28,6 +29,7 @@ const badges = [
 ];
 
 export default function Hero() {
+  const { lang } = useLanguage();
   const [heroData, setHeroData] = useState({
     titleLine1: 'K. P.',
     titleLine2: 'Kasana',
@@ -132,7 +134,7 @@ export default function Hero() {
                     style={{ background: btnStyle.bg, border: btnStyle.border ? '2px solid #FFD700' : 'none', color: btnStyle.border ? '#FFD700' : '#fff', boxShadow: btnStyle.shadow ? `0 0 20px ${btnStyle.shadow}` : 'none' }}
                     whileHover={{ scale: 1.06, boxShadow: btnStyle.shadow ? `0 0 35px ${btnStyle.shadow}` : 'none' }}
                     whileTap={{ scale: 0.97 }}>
-                    {btn.label}
+                    {lang === 'hi' && btn.labelHi ? btn.labelHi : btn.label}
                   </motion.button>
                 );
               })}

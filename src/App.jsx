@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FaArrowUp } from 'react-icons/fa';
 import Lenis from 'lenis';
 
-import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -28,7 +27,6 @@ import Contact from './sections/Contact';
 import HamareLogPage from './pages/HamareLogPage';
 
 function MainSite() {
-  const [loaded, setLoaded] = useState(false);
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -60,49 +58,45 @@ function MainSite() {
   }, []);
 
   useEffect(() => {
-    if (!loaded) return;
     const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     return () => lenis.destroy();
-  }, [loaded]);
+  }, []);
 
   return (
     <>
-      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
-      {loaded && (
-        <div className="overflow-x-hidden w-full max-w-full relative min-h-screen">
-          <CustomCursor />
-          <ScrollProgress />
-          <Navbar />
-          <FloatingSocialBar />
-          <main>
-            <Hero />
-            <About />
-            <Journey />
-            <CoreVision />
-            <Vision />
-            <SocialImpact />
-            <HmareLog />
-            <Gallery />
-            <MediaCoverage />
-            <Testimonials />
+      <div className="overflow-x-hidden w-full max-w-full relative min-h-screen">
+        <CustomCursor />
+        <ScrollProgress />
+        <Navbar />
+        <FloatingSocialBar />
+        <main>
+          <Hero />
+          <About />
+          <Journey />
+          <CoreVision />
+          <Vision />
+          <SocialImpact />
+          <HmareLog />
+          <Gallery />
+          <MediaCoverage />
+          <Testimonials />
 
-            <BecomeMember />
-            <Contact />
-          </main>
-          <Footer />
+          <BecomeMember />
+          <Contact />
+        </main>
+        <Footer />
 
-          {showTop && (
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="fixed bottom-8 right-8 z-[9999] w-12 h-12 rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg"
-              style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 20px rgba(15,81,50,0.6)' }}>
-              <FaArrowUp size={16} />
-            </button>
-          )}
-        </div>
-      )}
+        {showTop && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-8 right-8 z-[9999] w-12 h-12 rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg"
+            style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 20px rgba(15,81,50,0.6)' }}>
+            <FaArrowUp size={16} />
+          </button>
+        )}
+      </div>
     </>
   );
 }
