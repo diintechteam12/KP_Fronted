@@ -103,6 +103,7 @@ export default function Hero() {
             <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-0"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
+              
               <span className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl min-h-[1.4em] z-10 break-words">
                 <TypingText words={titles} />
               </span>

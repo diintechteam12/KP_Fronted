@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaArrowRight } from 'react-icons/fa';
+import { FaUsers, FaArrowRight, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 
 export default function HmareLog() {
+  const [isMuted, setIsMuted] = useState(true);
+
   return (
-    <section id="hmare-log" className="-mt-8 md:-mt-12 pt-0 pb-20 bg-transparent relative z-20">
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #0F5132, transparent)' }} />
+    <section id="hmare-log" className="py-20 relative z-20 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/hmarelog4.jpeg')" }}>
+      {/* Overlay for the background image */}
+      <div className="absolute inset-0 bg-[#0F5132]/5 backdrop-blur-[2px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-12 lg:p-16">
+        <div className="bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-2xl border border-white/50 px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Content */}
@@ -53,7 +55,7 @@ export default function HmareLog() {
 
           {/* Right Content (Images & Video) */}
           <motion.div 
-            className="relative w-full h-[300px] sm:h-[450px] lg:h-[550px] flex items-center justify-center mt-8 lg:mt-0"
+            className="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] flex items-center justify-center mt-6 lg:mt-0"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -61,7 +63,7 @@ export default function HmareLog() {
           >
             {/* Left Image */}
             <motion.div 
-              className="absolute left-0 sm:left-4 z-10 w-28 sm:w-48 lg:w-56 h-40 sm:h-64 lg:h-80 rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-200"
+              className="absolute left-0 sm:left-4 z-10 w-28 sm:w-44 lg:w-52 h-36 sm:h-56 lg:h-72 rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-200"
               style={{ rotate: '-12deg', y: '10%' }}
               whileHover={{ rotate: 0, scale: 1.05, zIndex: 40 }}
             >
@@ -70,22 +72,26 @@ export default function HmareLog() {
 
             {/* Center Video */}
             <motion.div 
-              className="absolute left-1/2 -translate-x-1/2 z-30 w-36 sm:w-56 lg:w-64 h-52 sm:h-80 lg:h-[400px] rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-800"
+              className="absolute left-1/2 -translate-x-1/2 z-30 w-36 sm:w-52 lg:w-60 h-48 sm:h-72 lg:h-[360px] rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-800 cursor-pointer group"
               whileHover={{ scale: 1.05 }}
+              onClick={() => setIsMuted(!isMuted)}
             >
               <video 
-                src="/Vedio galry new reels.mp4" 
+                src="/HMarelogVideo.mp4" 
                 autoPlay 
                 loop 
-                muted 
+                muted={isMuted}
                 playsInline 
                 className="w-full h-full object-cover" 
               />
+              <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-80 group-hover:opacity-100 transition-opacity">
+                {isMuted ? <FaVolumeMute size={16} /> : <FaVolumeUp size={16} />}
+              </div>
             </motion.div>
 
             {/* Right Image */}
             <motion.div 
-              className="absolute right-0 sm:right-4 z-20 w-28 sm:w-48 lg:w-56 h-40 sm:h-64 lg:h-80 rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-200"
+              className="absolute right-0 sm:right-4 z-20 w-28 sm:w-44 lg:w-52 h-36 sm:h-56 lg:h-72 rounded-2xl overflow-hidden border-4 sm:border-[6px] border-white shadow-xl sm:shadow-2xl bg-gray-200"
               style={{ rotate: '12deg', y: '5%' }}
               whileHover={{ rotate: 0, scale: 1.05, zIndex: 40 }}
             >

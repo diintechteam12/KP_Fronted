@@ -307,7 +307,7 @@ export const mediaNews = [
     date: "December 15, 2024",
     source: "Dainik Jagran",
     desc: "Skill program directly connected over ten thousand youth with training and employment opportunities across the region.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
+    image: "/Event2.png",
   },
   {
     id: 2,
@@ -315,7 +315,7 @@ export const mediaNews = [
     date: "November 28, 2024",
     source: "Amar Ujala",
     desc: "Recognized in Delhi at the national level for three decades of uninterrupted grassroots welfare work.",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80",
+    image: "/Event3.png",
   },
   {
     id: 3,
@@ -323,7 +323,7 @@ export const mediaNews = [
     date: "October 10, 2024",
     source: "Navbharat Times",
     desc: "The women self-help group initiative has given over ten thousand women their own income and sense of dignity.",
-    image: "https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=600&q=80",
+    image: "/Event1.png",
   },
   {
     id: 4,
@@ -331,7 +331,7 @@ export const mediaNews = [
     date: "September 5, 2024",
     source: "Hindustan Times",
     desc: "A detailed development roadmap covering every ward and village — with timelines, budgets, and accountability built in.",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80",
+    image: "/Event1.png",
   },
 ];
 

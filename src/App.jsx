@@ -19,7 +19,6 @@ import Journey from './sections/Journey';
 import SocialImpact from './sections/SocialImpact';
 import HmareLog from './sections/HmareLog';
 import Gallery from './sections/Gallery';
-import Videos from './sections/Videos';
 import MediaCoverage from './sections/MediaCoverage';
 import Testimonials from './sections/Testimonials';
 
@@ -84,7 +83,6 @@ function MainSite() {
             <SocialImpact />
             <HmareLog />
             <Gallery />
-            <Videos />
             <MediaCoverage />
             <Testimonials />
 

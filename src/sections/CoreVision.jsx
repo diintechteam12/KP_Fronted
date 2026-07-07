@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft, FaEye } from 'react-icons/fa';
 
 export default function CoreVision() {
+  const [lang, setLang] = useState('en');
   return (
     <section id="vision" className="py-24 relative overflow-hidden" style={{ background: '#0B0F19' }}>
       
@@ -12,7 +14,7 @@ export default function CoreVision() {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 flex flex-col items-center">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -21,6 +23,24 @@ export default function CoreVision() {
           >
             <FaEye className="text-yellow-400" />
             <span className="text-xs font-semibold tracking-widest uppercase text-yellow-400">Our Vision</span>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+            className="flex p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-md"
+          >
+            <button 
+              onClick={() => setLang('en')}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
+            >
+              English
+            </button>
+            <button 
+              onClick={() => setLang('hi')}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-lg shadow-yellow-500/20' : 'text-gray-400 hover:text-white'}`}
+            >
+              हिंदी
+            </button>
           </motion.div>
         </div>
 
@@ -51,13 +71,26 @@ export default function CoreVision() {
               className="flex gap-5"
             >
               <div className="w-1.5 min-h-full bg-gradient-to-b from-[#FFD700] to-[#0F5132] rounded-full shrink-0" />
-              <div className="flex flex-col gap-8">
-                <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
-                  To build an educated, empowered, and prosperous society by leading with service, development, and trust.
-                </h3>
-                <h3 className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}>
-                  सेवा, विकास और विश्वास के साथ नेतृत्व करते हुए शिक्षित, सशक्त और समृद्ध समाज का निर्माण।
-                </h3>
+              <div className="flex flex-col gap-8 min-h-[120px] justify-center">
+                <AnimatePresence mode="wait">
+                  {lang === 'en' ? (
+                    <motion.h3 
+                      key="en" 
+                      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+                      className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}
+                    >
+                      To build an educated, empowered, and prosperous society by leading with service, development, and trust.
+                    </motion.h3>
+                  ) : (
+                    <motion.h3 
+                      key="hi" 
+                      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+                      className="text-2xl md:text-3xl font-medium text-white leading-relaxed" style={{ fontFamily: 'Playfair Display,serif' }}
+                    >
+                      सेवा, विकास और विश्वास के साथ नेतृत्व करते हुए शिक्षित, सशक्त और समृद्ध समाज का निर्माण।
+                    </motion.h3>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
 

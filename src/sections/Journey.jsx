@@ -71,12 +71,30 @@ export default function Journey() {
             transition={{ duration: 2, ease: 'easeInOut' }}
           />
 
-          <div className="space-y-10">
+          <div className="flex flex-col md:space-y-10">
             {(journeyData.cards || []).map((item, i) => {
               const isLeft = i % 2 === 0;
               const Icon = iconMap[item.icon] || FaFlag;
+              const prevItem = i > 0 ? journeyData.cards[i - 1] : null;
+
               return (
-                <div key={i} className={`relative flex flex-col md:flex-row items-center gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                <div key={i} className={`relative flex flex-col md:flex-row items-center gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} mb-2 md:mb-0`}>
+
+                  {/* Mobile Timeline Flow */}
+                  <div className="md:hidden flex flex-col items-center w-full z-10">
+                    {i > 0 && <div className="w-[2px] h-8" style={{ background: `linear-gradient(to bottom, ${prevItem.color}, ${item.color})` }} />}
+                    
+                    <span className="font-bold text-[1.4rem] tracking-wider bg-white px-2 mt-1" style={{ fontFamily: 'Cinzel,serif', color: item.color }}>
+                      {item.year}
+                    </span>
+                    
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center text-white border-[3px] border-white my-1 relative"
+                      style={{ background: `linear-gradient(135deg,${item.color},${item.color}bb)`, boxShadow: `0 0 0 3px ${item.color}25, 0 5px 15px ${item.color}40` }}>
+                      <Icon size={16} />
+                    </div>
+                    
+                    <div className="w-[2px] h-6" style={{ background: item.color }} />
+                  </div>
 
                   {/* Card */}
                   <motion.div
@@ -108,7 +126,7 @@ export default function Journey() {
                             {item.tag}
                           </span>
                         </div>
-                        <div className="absolute bottom-3 right-4">
+                        <div className="absolute bottom-3 right-4 hidden md:block">
                           <span className="text-white font-bold text-2xl opacity-90"
                             style={{ fontFamily: 'Cinzel,serif' }}>
                             {item.year}
@@ -136,7 +154,7 @@ export default function Journey() {
                     </motion.div>
                   </motion.div>
 
-                  {/* Center icon dot */}
+                  {/* Center icon dot (Desktop only) */}
                   <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10 flex-col items-center">
                     <motion.span 
                       initial={{ opacity: 0, y: 10 }}

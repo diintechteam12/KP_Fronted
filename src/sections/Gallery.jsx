@@ -1,9 +1,54 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaExpand } from 'react-icons/fa';
+import { FaTimes, FaExpand, FaPlay } from 'react-icons/fa';
 import SectionTitle from '../components/SectionTitle';
 
 const cats = ['All', 'Public Meetings', 'Community Events', 'Social Service', 'Education Programs'];
+
+const renderVideo = (videoUrl) => {
+    if (!videoUrl) return null;
+    
+    // Handle YouTube
+    const ytMatch = videoUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+        return (
+            <iframe 
+                className="w-full aspect-video bg-black"
+                src={`https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`}
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+            ></iframe>
+        );
+    }
+    
+    // Handle Vimeo
+    const vimeoMatch = videoUrl.match(/vimeo\.com\/(?:.*#|.*\/videos\/)?([0-9]+)/i);
+    if (vimeoMatch && vimeoMatch[1]) {
+        return (
+            <iframe 
+                className="w-full aspect-video bg-black"
+                src={`https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`}
+                frameBorder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowFullScreen
+            ></iframe>
+        );
+    }
+
+    // Handle direct MP4 / WebM
+    return (
+        <video 
+            className="w-full aspect-video bg-black"
+            controls 
+            autoPlay 
+            src={videoUrl}
+        >
+            Your browser does not support the video tag.
+        </video>
+    );
+};
 
 export default function Gallery() {
   const [active, setActive] = useState('All');
@@ -63,7 +108,16 @@ export default function Gallery() {
                 onClick={() => setLb(img)} whileHover={{ y: -4 }}>
                 <img src={img.image || img.src} alt={img.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   style={{ minHeight: i % 3 === 0 ? 280 : 200 }} />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-5"
+                
+                {img.mediaType === 'video' && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                    <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg">
+                      <FaPlay className="ml-1" size={18} />
+                    </div>
+                  </div>
+                )}
+
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-5 z-20"
                   style={{ background: 'linear-gradient(to top,rgba(11,15,25,0.9) 0%,transparent 60%)' }}>
                   <div className="flex items-end justify-between w-full">
                     <div>
@@ -87,8 +141,12 @@ export default function Gallery() {
             <motion.div className="relative max-w-4xl w-full rounded-2xl overflow-hidden"
               initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }}
               onClick={e => e.stopPropagation()}>
-              <img src={lb.image || lb.src} alt={lb.title} className="w-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 p-6"
+              {lb.mediaType === 'video' && lb.videoUrl ? (
+                  renderVideo(lb.videoUrl)
+              ) : (
+                  <img src={lb.image || lb.src} alt={lb.title} className="w-full object-cover" />
+              )}
+              <div className={`absolute bottom-0 left-0 right-0 p-6 ${lb.mediaType === 'video' ? 'opacity-0 hover:opacity-100 transition-opacity' : ''}`}
                 style={{ background: 'linear-gradient(to top,rgba(0,0,0,0.9),transparent)' }}>
                 <p className="text-white font-bold text-xl" style={{ fontFamily: 'Playfair Display,serif' }}>{lb.title}</p>
                 <p className="text-yellow-400 text-sm">{lb.category}</p>
