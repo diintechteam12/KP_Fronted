@@ -270,30 +270,6 @@ Our upcoming goal is to establish a permanent, 24/7 charitable clinic that can h
   {
     id: 5,
     title: "Roads & Clean Water", titleHi: "सड़कें और साफ पानी",
-    descHi: "डॉक्टर, दवा, जांच — सब मुफ्त। क्योंकि हमारे समुदाय में स्वास्थ्य सेवा किसी के लिए भी लग्ज़री नहीं होनी चाहिए।",
-    desc: `Doctor, medicine, checkup — all free. Because healthcare should never be a luxury for anyone in our community.
-
-BRINGING HEALTHCARE TO THE DOORSTEP
-In many rural and underserved areas, specialized medical care is miles away, and the cost of private consultations and medicines can push a family into debt. The 'Free Medical Camps' initiative was started with a core belief: access to quality healthcare is a fundamental human right, not a privilege reserved for the wealthy.
-
-COMPREHENSIVE CHECKUPS & FREE MEDICINES
-Every month, we organize large-scale medical camps in different villages. We partner with specialized doctors—including general physicians, pediatricians, gynecologists, and eye specialists—who volunteer their time. Patients receive thorough health checkups, blood sugar and blood pressure monitoring, and completely free prescribed medicines for the full course of their treatment. 
-
-FOCUS ON PREVENTIVE CARE
-Beyond treating immediate illnesses, our camps emphasize preventive healthcare. We conduct awareness sessions on hygiene, nutrition, maternal health, and sanitation. For elderly patients, we provide continuous monitoring for chronic conditions like diabetes and hypertension, ensuring they don't have to travel to the city for routine follow-ups.
-
-IMPACT & FUTURE GOALS
-- Over 250 successful medical camps organized to date.
-- Free eyeglasses distributed to more than 8,000 elderly citizens, dramatically improving their quality of life.
-- Specialized women's health camps have helped detect and treat numerous severe conditions at an early stage.
-
-Our upcoming goal is to establish a permanent, 24/7 charitable clinic that can handle emergencies and provide sustained care for the most vulnerable members of our society.`,
-    image: "/Initiatives img4.png",
-    color: "#0F5132",
-  },
-  {
-    id: 5,
-    title: "Roads & Clean Water", titleHi: "सड़कें और साफ पानी",
     category: "Development", categoryHi: "विकास",
     descHi: "पक्की सड़कें, पीने के पानी की पाइपलाइन, उचित स्वच्छता। बुनियादी चीजें जिनका हर इंसान हकदार है।",
     desc: `Paved roads, drinking water pipelines, proper sanitation. Basic things that every human being simply deserves.

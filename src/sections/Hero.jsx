@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaAward, FaStar, FaHandshake, FaChevronDown } from 'react-icons/fa';
-import { useLanguage } from '../context/LanguageContext';
+
+const titles = ['हर दिल का ठिकाना', 'विश्वास का ख़ज़ाना', 'सेवा का पैमाना', 'जन-जन का याराना', 'भविष्य को सजाना'];
 
 function TypingText({ words }) {
   const [idx, setIdx] = useState(0);
@@ -17,31 +18,22 @@ function TypingText({ words }) {
     else if (del && text.length === 0) { setDel(false); setIdx((idx + 1) % words.length); }
     return () => clearTimeout(t);
   }, [text, del, idx, words]);
-
-  return <span>{text}<span className="text-yellow-400 animate-pulse">|</span></span>;
+  return <span>{text}</span>;
 }
+const badges = [
+  { icon: FaUsers, value: '34K+', label: 'Followers', color: '#0F5132', pos: 'top-6 right-0' },
+  { icon: FaAward, value: '38+', label: 'Yrs Leadership', color: '#FF6B00', pos: 'top-6 left-0' },
+  { icon: FaStar, value: '100+', label: 'Programs', color: '#FFD700', pos: 'bottom-20 right-0' },
+  { icon: FaHandshake, value: '50+', label: 'Initiatives', color: '#0F5132', pos: 'bottom-20 left-0' },
+];
+
 export default function Hero() {
-  const { lang } = useLanguage();
-  const titles = lang === 'hi' 
-    ? ['हर दिल का ठिकाना', 'विश्वास का ख़ज़ाना', 'सेवा का पैमाना', 'जन-जन का याराना', 'भविष्य को सजाना']
-    : ['A Leader Who Listens', 'A Voice for the People', 'Building from the Ground Up', '38 Years, Still Going'];
-
-  const badges = [
-    { icon: FaUsers, value: '34K+', label: lang === 'hi' ? 'फ़ॉलोअर्स' : 'Followers', color: '#0F5132', pos: 'top-6 right-0' },
-    { icon: FaAward, value: '38+', label: lang === 'hi' ? 'वर्षों का नेतृत्व' : 'Yrs Leadership', color: '#FF6B00', pos: 'top-6 left-0' },
-    { icon: FaStar, value: '100+', label: lang === 'hi' ? 'कार्यक्रम' : 'Programs', color: '#FFD700', pos: 'bottom-20 right-0' },
-    { icon: FaHandshake, value: '50+', label: lang === 'hi' ? 'पहल' : 'Initiatives', color: '#0F5132', pos: 'bottom-20 left-0' },
-  ];
-
   const [heroData, setHeroData] = useState({
     titleLine1: 'K. P.',
-    titleLine1Hi: 'के. पी.',
     titleLine2: 'Kasana',
-    titleLine2Hi: 'कसाना',
     subtitle: 'Since 1988, I have stood beside the people — not above them. Every step has been for the community I call home.',
-    subtitleHi: 'सेवा से विकास, विकास से विश्वास',
-    tagline: 'SERVING THE PEOPLE SINCE 1988',
-    taglineHi: '1988 से जनता की सेवा में'
+    buttonText: 'Our Vision',
+    buttonLink: '#vision'
   });
 
   useEffect(() => {
@@ -103,24 +95,24 @@ export default function Hero() {
               style={{ background: 'rgba(15,81,50,0.2)' }}
               initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">{lang === 'hi' ? heroData.taglineHi : heroData.tagline}</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-green-400">{heroData.tagline || 'SERVING THE PEOPLE SINCE 1988'}</span>
             </motion.div>
 
             <motion.h1 className="font-bold text-white mb-4 flex flex-col gap-0"
               style={{ fontFamily: 'Cinzel,serif' }}
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
               
-              <span className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl min-h-[1.4em] z-10 break-words">
-                <TypingText words={lang === 'hi' ? (heroData.typingTextHi || titles) : (heroData.typingText || titles)} />
+              <span className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-gray-300 min-h-[1.4em] z-10 break-words">
+                <TypingText words={titles} />
               </span>
               <span className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-snug -mt-2 md:-mt-4 z-0 relative break-words" style={{ background: 'linear-gradient(135deg,#FFD700,#FF6B00,#FFD700)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                {lang === 'hi' ? `${heroData.titleLine1Hi} ${heroData.titleLine2Hi}` : `${heroData.titleLine1} ${heroData.titleLine2}`}
+                के. पी. कसाना
               </span>
             </motion.h1>
 
             <motion.p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
-              {lang === 'hi' ? heroData.subtitleHi : heroData.subtitle}
+              सेवा से विकास, विकास से विश्वास
             </motion.p>
 
             {/* Buttons */}
@@ -139,7 +131,7 @@ export default function Hero() {
                     style={{ background: btnStyle.bg, border: btnStyle.border ? '2px solid #FFD700' : 'none', color: btnStyle.border ? '#FFD700' : '#fff', boxShadow: btnStyle.shadow ? `0 0 20px ${btnStyle.shadow}` : 'none' }}
                     whileHover={{ scale: 1.06, boxShadow: btnStyle.shadow ? `0 0 35px ${btnStyle.shadow}` : 'none' }}
                     whileTap={{ scale: 0.97 }}>
-                    {lang === 'hi' ? btn.labelHi : btn.label}
+                    {btn.label}
                   </motion.button>
                 );
               })}
@@ -147,7 +139,7 @@ export default function Hero() {
 
             {/* Stats row */}
             <motion.div className="flex gap-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}>
-              {[{ v: '34K+', l: lang === 'hi' ? 'लोग हमारे साथ' : 'People With Us' }, { v: '38+', l: lang === 'hi' ? 'वर्षों की सेवा' : 'Years Served' }, { v: '100+', l: lang === 'hi' ? 'कार्यक्रम' : 'Programs' }].map(s => (
+              {[{ v: '34K+', l: 'People With Us' }, { v: '38+', l: 'Years Served' }, { v: '100+', l: 'Programs' }].map(s => (
                 <div key={s.l}>
                   <div className="text-2xl font-bold" style={{ fontFamily: 'Cinzel,serif', background: 'linear-gradient(135deg,#FFD700,#FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{s.v}</div>
                   <div className="text-xs text-gray-500 tracking-wider">{s.l}</div>

@@ -8,9 +8,9 @@ const defaultLinks = [
   { label: 'About', labelHi: 'परिचय', href: '#about' },
   { label: 'Journey', labelHi: 'सफर', href: '#journey' },
   { label: 'Vision', labelHi: 'दृष्टिकोण', href: '#vision' },
-  { label: 'Hmare Log', labelHi: 'हमारे लोग', href: '#hmare-log' },
+  { label: 'Humare Log', labelHi: 'हमारे लोग', href: '#hmare-log' },
   { label: 'Impact', labelHi: 'प्रभाव', href: '#impact' },
-  { label: 'See the Work', labelHi: 'कार्य देखें', href: '#gallery' },
+  { label: 'Work In Progress', labelHi: 'कार्य प्रगति पर है', href: '#gallery' },
   { label: 'Contact', labelHi: 'संपर्क', href: '#contact' },
 ];
 
@@ -39,12 +39,12 @@ export default function Navbar() {
           if (links.length > 0) {
             links.forEach(l => {
               if (l.label === 'Gallery') {
-                l.label = 'See the Work';
-                l.labelHi = 'कार्य देखें';
+                l.label = 'Work In Progress';
+                l.labelHi = 'कार्य प्रगति पर है';
               }
             });
-            if (!links.some(l => l.label === 'Hmare Log')) {
-              links.push({ label: 'Hmare Log', labelHi: 'हमारे लोग', href: '#hmare-log', order: 3.5 });
+            if (!links.some(l => l.label === 'Humare Log')) {
+              links.push({ label: 'Humare Log', labelHi: 'हमारे लोग', href: '#hmare-log', order: 3.5 });
               links.sort((a, b) => a.order - b.order);
             }
             setNavLinks(links);
@@ -86,9 +86,9 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-1">
             {localizedNavLinks.map((l, index) => {
               // We use the original English label or href for the active state to keep it consistent across language toggles
-              const originalLabel = navLinks[index].label; 
+              const originalLabel = navLinks[index]?.label || `link-${index}`; 
               return (
-                <button key={originalLabel} onClick={() => go(l.href, originalLabel)}
+                <button key={`nav-desk-${index}-${originalLabel}`} onClick={() => go(l.href, originalLabel)}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${active === originalLabel ? 'text-yellow-400' : 'text-white/80 hover:text-white'}`}>
                   {l.label}
                   {active === originalLabel && (
@@ -100,19 +100,19 @@ export default function Navbar() {
           </div>
 
           {/* CTA Buttons & Language Toggle */}
-          <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center p-1 bg-[#1a1a24] rounded-full border border-white/5 cursor-pointer mr-2 shadow-inner" onClick={toggleLanguage}>
-              <div className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+          <div className="flex items-center gap-2 lg:gap-3">
+            <div className="flex items-center p-0.5 lg:p-1 bg-[#1a1a24] rounded-full border border-white/5 cursor-pointer shadow-inner" onClick={toggleLanguage}>
+              <div className={`px-2 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] sm:text-xs lg:text-sm font-semibold transition-all duration-300 ${lang === 'en' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
                 English
               </div>
-              <div className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
+              <div className={`px-2 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] sm:text-xs lg:text-sm font-semibold transition-all duration-300 ${lang === 'hi' ? 'bg-[#FFD700] text-black shadow-md' : 'text-gray-400 hover:text-white'}`}>
                 हिंदी
               </div>
             </div>
 
             <motion.button
               onClick={() => go('#join-us', 'Join Us')}
-              className="px-6 py-2.5 rounded-full text-sm font-bold text-black cursor-pointer bg-[#eab308]"
+              className="px-3 py-1.5 lg:px-6 lg:py-2.5 rounded-full text-[10px] sm:text-xs lg:text-sm font-bold text-black cursor-pointer bg-[#eab308] whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -120,18 +120,18 @@ export default function Navbar() {
             </motion.button>
             <motion.button
               onClick={() => go('#contact', 'Contact')}
-              className="px-6 py-2.5 rounded-full text-sm font-semibold text-white cursor-pointer"
+              className="hidden lg:block px-6 py-2.5 rounded-full text-sm font-semibold text-white cursor-pointer whitespace-nowrap"
               style={{ background: 'linear-gradient(135deg,#0F5132,#1a7a4a)', boxShadow: '0 0 15px rgba(15,81,50,0.4)' }}
               whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(15,81,50,0.7)' }}
               whileTap={{ scale: 0.97 }}
             >
               {lang === 'hi' ? 'अभी संपर्क करें' : 'Connect Now'}
             </motion.button>
-          </div>
 
-          <button className="lg:hidden text-white text-2xl p-2 cursor-pointer" onClick={() => setOpen(!open)}>
-            {open ? <FaTimes /> : <FaBars />}
-          </button>
+            <button className="lg:hidden text-white text-xl sm:text-2xl p-1 sm:p-2 cursor-pointer ml-1" onClick={() => setOpen(!open)}>
+              {open ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -155,9 +155,9 @@ export default function Navbar() {
             </div>
             
             {localizedNavLinks.map((l, i) => {
-              const originalLabel = navLinks[i].label;
+              const originalLabel = navLinks[i]?.label || `link-${i}`;
               return (
-                <motion.button key={originalLabel} onClick={() => go(l.href, originalLabel)}
+                <motion.button key={`nav-mob-${i}-${originalLabel}`} onClick={() => go(l.href, originalLabel)}
                   className={`text-2xl font-bold cursor-pointer ${active === originalLabel ? 'text-yellow-400' : 'text-white'}`}
                   style={{ fontFamily: 'Playfair Display,serif' }}
                   initial={{ opacity: 0, x: -30 }}
